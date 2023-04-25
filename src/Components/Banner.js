@@ -37,16 +37,6 @@ const Heading1 = styled.div`
   font-weight: 400;
   padding: 40px 0 0 45px;
 `;
-const Heading3 = styled.div`
-  font-weight: 400;
-  padding: 40px 0 0 45px;
-`;
-const Heading4 = styled.div`
-  font-weight: 900;
-  font-size: 35px;
-  padding: 40px 0 0 45px;
-  margin: 40px 0px 40px -220px;
-`;
 const Heading2 = styled.div`
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -54,6 +44,19 @@ const Heading2 = styled.div`
   font-size: 35px;
   margin: 40px 0 40px 45px;
 `;
+const Heading3 = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  padding: 40px 0px 40px 45px;
+`;
+const Heading4 = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  width: 45%;
+  font-size: 35px;
+  margin: 40px 0 50px 40px;
+`;
+
 const Heading5 = styled.div`
 font-family: Arial, Helvetica, sans-serif;
 font-weight: 400;
@@ -193,10 +196,12 @@ const BG6 = styled.div`
   margin: 0 40px 0 40px;
   height: 300px;
   width: 22%;
-  border: solid grey;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   border-radius: 20px;
   border-width: auto;
   height: 77%;
+
   
 `;
 const Button = styled.button`
@@ -206,15 +211,17 @@ const Button = styled.button`
   font-size: 15px;
   padding: 10px 13px;
   border-radius: 10px;
-  margin:50px 10px 0 800px;
-  cursor: pointer;
+  margin:50px 10px 0 450px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; 
 `;
 
 const Font2 = styled.div`
-  margin: 5px 10px 0 60px;
+  margin: 7px 0 0 60px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  width: auto;
+  width: 70%;
 `;
 
 function Banner() {
@@ -293,11 +300,10 @@ function Banner() {
         </Imgg>
       </Section3>
       <Section4>
+      <Heading1>HOW WE TRANSFORM </Heading1>
         <View>
-        <Heading3>HOW WE TRANSFORM </Heading3>
         <Heading4>Our Services </Heading4>
-       
-          <Button>View all Services </Button>
+        <Button> View all Services </Button>
         
         </View>
 
@@ -397,7 +403,7 @@ function Banner() {
         <Heading5>WORD-OF-MOUTH </Heading5>
         <Heading6>What our client have to say about us </Heading6>
        
-          <Button > -> </Button>
+          <Button > </Button>
           
         
         </View>
