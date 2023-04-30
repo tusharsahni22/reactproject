@@ -98,7 +98,7 @@ function Front() {
           </CiCircleQuestions>
         </BoxHead2>
         <Accordian />
-       // 2nd approach
+       {/* 2nd approch */}
       </Box>
     </div>
   );
