@@ -1,6 +1,6 @@
-import Login from './Components/useless/login';
+import Login from './Components/auth/login';
 import Home from './Components/Home';
-import SignUp from './Components/useless/SignUp';
+import SignUp from './Components/auth/SignUp';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
