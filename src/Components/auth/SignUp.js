@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -24,6 +25,7 @@ const AlreadyLogin = styled.span`
 `;
 const AlreadyLoginSingin = styled.span`
   font-weight: bold;
+  cursor: pointer;
 `;
 const SingUpSection = styled.div`
   padding: 10% 30%;
@@ -113,20 +115,66 @@ const SubmitButton = styled.button`
   color: white;
 `;
 
-function singup() {
+const Features = styled.div`
+    margin:15px;
+    flex-grow: 1;
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: none;
+    text-align: center;
+    letter-spacing: 0px;
+    line-height: 16px;
+    white-space: pre-line;
+    opacity: 1;
+    visibility: visible;
+    color: rgb(255, 255, 255);
+    font-family: "Work Sans";
+`;
+const HeadingFeature = styled.div`
+padding: 50% 0 0 0;
+text-align: center;
+    flex-grow: 1;
+    overflow: hidden;
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: none;
+    text-align: center;
+    letter-spacing: 0px;
+    line-height: 35px;
+    white-space: pre-line;
+    opacity: 1;
+    visibility: visible;
+    color: rgb(255, 255, 255);
+    font-family: "Work Sans";
+`;
+
+function Singup() {
+  let navigate =useNavigate()
   return (
     <Wrapper>
-      <Section1>tushar</Section1>
+      <Section1>
+        <HeadingFeature>Features</HeadingFeature>
+        <Features>Easy</Features>
+        <Features>Convenient</Features>
+        <Features>Secure</Features>
+        <Features>Many More </Features>
+      </Section1>
       <Section2>
         <Head>
           <AlreadyLogin>Already a member ?</AlreadyLogin>
-          <AlreadyLoginSingin>Sign in</AlreadyLoginSingin>
+          <AlreadyLoginSingin onClick={()=>{navigate("/login")}}>Sign in</AlreadyLoginSingin>
         </Head>
 
         <SingUpSection>
           <Title>SingUp</Title>
           <TileDesc>Singup with your Email</TileDesc>
           <Fileds>
+           
+          <SingUpInputStyle>
+              <Email placeholder="Name"></Email>
+            </SingUpInputStyle>
+
             <SingUpInputStyle>
               <Email placeholder="Email"></Email>
             </SingUpInputStyle>
@@ -144,7 +192,7 @@ function singup() {
   );
 }
 
-export default singup;
+export default Singup;
 
 
 
