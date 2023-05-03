@@ -1,33 +1,8 @@
 import styled from "styled-components";
 import { CiCircleQuestion } from "react-icons/ci";
-import { SiVault } from "react-icons/si";
 import Accordian from "./Accordian";
+import Header from "./Common/Header";
 
-const Container = styled.div`
-  display: flex;
-  background-color: #5239d1;
-  height: 70px;
-`;
-
-const Logo = styled.div`
-  margin: 10px 10px 10px 10px;
-  align-items: start;
-  padding: 20px;
-`;
-
-const Nav = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  margin: 20px 20px 20px 30px;
-`;
-const Item = styled.div`
-  color: white;
-  margin: 15px;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: small;
-`;
 
 const Box = styled.div`
   align-items: start;
@@ -74,19 +49,7 @@ const CiCircleQuestions = styled.div`
 function Front() {
   return (
     <div>
-      <Container>
-        <Logo>
-          <SiVault />
-        </Logo>
-
-        <Nav>
-          <Item>Vaults</Item>
-          <Item> Send </Item>
-          <Item> Tools </Item>
-          <Item> Reports </Item>
-        </Nav>
-      </Container>
-
+      <Header/>
       <Box>
         <BoxHead>
           <Heading> FILTERS </Heading>

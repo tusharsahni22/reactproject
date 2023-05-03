@@ -1,4 +1,5 @@
 import React from "react";
+import {useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -16,6 +17,7 @@ const Head = styled.div`
 `;
 const Text = styled.div`
   padding: 20px 0 0 0;
+  cursor: pointer;
   margin: 0px 20px;
   overflow: hidden;
   font-size: 13px;
@@ -43,13 +45,14 @@ const ProfilePic = styled.img`
 `;
 
 function Header() {
+  let navigate = useNavigate()
   return (
     <Wrapper>
       <Head>
         <Profile>
-          <Text>Vault</Text>
+          <Text onClick={()=>{navigate("/")}}>Vault</Text>
           <Text>Send</Text>
-          <Text>Tools</Text>
+          <Text onClick={()=>{navigate("/tools")}}>Tools</Text>
           <Text>Report</Text>
         </Profile>
         <Profile>
