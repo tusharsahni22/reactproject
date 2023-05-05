@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { CiCircleQuestion } from "react-icons/ci";
-import { SiVault } from "react-icons/si";
 import Accordian from "./Accordian";
+import Header from "./Common/Header";
 import Accordion2 from "./Accordion2";
 import Accordion3 from "./Accordion3";
 import { Copyright } from "@mui/icons-material";
@@ -37,6 +37,7 @@ const Item = styled.div`
   font-family: Arial, Helvetica, sans-serif;
   font-size: small;
 `;
+
 
 const Box = styled.div`
   align-items: start;
@@ -132,18 +133,7 @@ margin: 10px 10px 10px 20px;
 function Front() {
   return (
     <div>
-      <Container2>
-        <Logo>
-          <SiVault />
-        </Logo>
-
-        <Nav>
-          <Item>Vaults</Item>
-          <Item> Send </Item>
-          <Item> Tools </Item>
-          <Item> Reports </Item>
-        </Nav>
-      </Container2>
+      <Header/>
       <Container>
       <Box>
         <BoxHead>

@@ -1,64 +1,66 @@
-// import React from 'react' 
-// import styled from 'styled-components'
-// import { GoSearch } from 'react-icons/go';
+import React from "react";
+import {useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
+const Wrapper = styled.div`
+  background-color: rgb(23, 93, 220);
+`;
 
+const Head = styled.div`
+  display: flex;
+  padding: 0% 15%;
+  justify-content: space-between;
+  height: 57px;
+  opacity: 1;
+  background-color: rgb(23, 93, 220);
+  border-bottom: 0px;
+`;
+const Text = styled.div`
+  padding: 20px 0 0 0;
+  cursor: pointer;
+  margin: 0px 20px;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: none;
+  text-align: left;
+  letter-spacing: 0px;
+  line-height: 17px;
+  white-space: pre-line;
+  opacity: 1;
+  visibility: visible;
+  color: rgb(186, 207, 245);
+  font-family: "Nanum Gothic";
+`;
 
-// const Option= styled.div`
-//    color: white;
-//    margin: 15px ;
-//    text-align: center;
-//    font-family: Arial, Helvetica, sans-serif;
-//    font-size: small;
-   
-//     `;
-// const Container = styled.div`
-// display: flex;
-// background-color: #082340;
-// justify-content: space-evenly;
-// `;
-// const Logo = styled.img`
-// height: 30px;
-// width: 130px;
-// margin: 15px 0px 10px 0 ;
-// `;
-// const Text= styled.div`
-// display: flex;
-// margin: 10px 0 0 100px;
-// justify-content: space-between;
+const Profile = styled.div`
+  display: flex;
+`;
+const ProfilePic = styled.img`
+   vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  padding: 8px 0;
+  border-radius: 50%;
+`;
 
+function Header() {
+  let navigate = useNavigate()
+  return (
+    <Wrapper>
+      <Head>
+        <Profile>
+          <Text onClick={()=>{navigate("/")}}>Vault</Text>
+          <Text>Send</Text>
+          <Text onClick={()=>{navigate("/tools")}}>Tools</Text>
+          <Text>Report</Text>
+        </Profile>
+        <Profile>
+            <ProfilePic src="./avatar.jpg"/>
+        </Profile>
+      </Head>
+    </Wrapper>
+  );
+}
 
-// `;
-// const SearchIcon = styled.div`
-// color: white;
-// border-radius: 5px;
-// font-size: 20px;
-// margin: 10px 10px 10px 60px;
-
-// `;
-
-// function Header() {
-//   return (
-//     <div>
-//     <Container>
-//       <Logo src= "https://www.coforge.com/hs-fs/hubfs/dark_coforge_logo.png?width=627&name=dark_coforge_logo.png"/>
-      
-//       <Text>  
-//       <Option> About Us </Option>
-//       <Option> Indutries </Option>
-//       <Option> Services </Option>
-//       <Option> Resources </Option>
-//       <Option> Investors </Option>
-//       <Option> Newsroom </Option>
-//       <Option> Carrers </Option>
-//       <Option> Contact Us </Option>
-//       <SearchIcon><GoSearch/></SearchIcon>
-//       </Text>
-
-//     </Container>
-
-//     </div>
-//   )
-// }
-
-// export default Header
+export default Header;
