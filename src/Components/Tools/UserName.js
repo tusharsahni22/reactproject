@@ -85,7 +85,7 @@ const EmailField = styled.input`
     background-color: #fbfbfb;
     border-color: #ced4da;
     color: #465057; 
-    width: 100%;
+    /* width: 100%; */
     height: calc(1.5em + 0.75rem + 2px);
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
