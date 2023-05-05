@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Tools from './Components/Tools';
 
 
-function App() {
+function Router() {
   return (
     <BrowserRouter>
     <Routes>
@@ -18,4 +18,4 @@ function App() {
   );
 }
 
-export default App;
+export default Router;
