@@ -5,7 +5,9 @@ import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-
+import {BsFolder2} from 'react-icons/bs';
+import {AiOutlinePlus} from 'react-icons/ai';
+import {BsTrash3} from 'react-icons/bs';
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -52,17 +54,20 @@ export default function CustomizedAccordions() {
     <div>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography style={{fontWeight:'bold', fontSize:15, color:'#5239d1' }}>All Vault </Typography>
+          <Typography >Folders </Typography>
+          <AiOutlinePlus style={{margin: '5px 0 5px 100px'}}/>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-           My Vault
-          </Typography>
-          <Typography>
-           New Organisation
+            <BsFolder2 style={{paddingRight: 10}}/>
+           No folder
           </Typography>
         </AccordionDetails>
       </Accordion>
+      <div style={{display: 'flex', margin: 10}}>
+      <BsTrash3 style={{marginRight:10,marginLeft:10}}/>
+      <div> Trash </div>
+      </div>
      
     </div>
   );
