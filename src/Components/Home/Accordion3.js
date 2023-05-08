@@ -66,7 +66,7 @@ export default function CustomizedAccordions() {
       </Accordion>
       <div style={{display: 'flex', margin: 10}}>
       <BsTrash3 style={{marginRight:10,marginLeft:10}}/>
-      <div> Trash </div>
+      <div style={{paddingBottom:20}}> Trash </div>
       </div>
      
     </div>

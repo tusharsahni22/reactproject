@@ -51,7 +51,7 @@ function Header() {
       <Head>
         <Profile>
           <Text onClick={()=>{navigate("/")}}>Vault</Text>
-          <Text>Send</Text>
+          <Text onClick={()=>{navigate("/send")}}>Send</Text>
           <Text onClick={()=>{navigate("/tools")}}>Tools</Text>
           <Text>Report</Text>
         </Profile>
