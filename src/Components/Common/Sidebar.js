@@ -18,12 +18,18 @@ const Heading = styled.div`
   border: 0px;
 `;
 const ToolsSideBar = styled.div`
-padding : 0 0 0 15%; 
+    
+    outline: lightgray solid;
+    border: none;
+    /* margin: 20px 0px 40px 10px; */
+    border-radius: 5px;
+    
 `;
 
 const SpecialTools = styled.div`
+cursor: pointer;
   height: 20px;
-  width: 216px;
+  /* width: 216px; */
   border: 0px;
   background: transparent;
   padding: 10px 8px;
@@ -36,16 +42,26 @@ const SpecialTools = styled.div`
   font-size: 11px;
   letter-spacing: 0px;
   text-align: left;
+  &:hover {
+    background-color:rgb(247, 247, 247);
+  }
+`;
+const Wrapper = styled.div`
+/* padding : 0 0 0 15%;  */
+margin: 5px;
+width: 216px;
 `;
 
 function Sidebar() {
   return (
+    <Wrapper>
     <ToolsSideBar>
     <Heading> Tools </Heading>
     <SpecialTools>Genrator</SpecialTools>
     <SpecialTools>Export Data</SpecialTools>
     <SpecialTools>Import Data</SpecialTools>
   </ToolsSideBar>
+    </Wrapper>
   )
 }
 

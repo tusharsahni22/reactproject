@@ -4,40 +4,11 @@ import Accordian from "./Accordian";
 import Header from "./Common/Header";
 import Accordion2 from "./Accordion2";
 import Accordion3 from "./Accordion3";
-import { Copyright } from "@mui/icons-material";
-import { Icon } from "@mui/material";
-import { margin, style } from "@mui/system";
 import {BiDotsVerticalRounded} from 'react-icons/bi';
 
 const Container = styled.div`
 display:flex;
 `;
-const Container2 = styled.div`
-  display: flex;
-  background-color: #5239d1;
-  height: 70px;
-`;
-
-const Logo = styled.div`
-  margin: 10px 10px 10px 10px;
-  align-items: start;
-  padding: 20px;
-`;
-
-const Nav = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  margin: 20px 20px 20px 30px;
-`;
-const Item = styled.div`
-  color: white;
-  margin: 15px;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: small;
-`;
-
 
 const Box = styled.div`
   align-items: start;
