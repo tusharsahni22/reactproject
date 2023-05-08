@@ -1,6 +1,6 @@
-import React from 'react'
-import { useState } from 'react';
-import styled from 'styled-components'
+import React from "react";
+import { useState } from "react";
+import styled from "styled-components";
 // import { generateFromEmail, generateUsername } from "unique-username-generator";
 
 const CheckBoxSelector = styled.input``;
@@ -8,44 +8,45 @@ const OptionField = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Buttons =styled.div`
-display :flex;
-`; 
-
-const CopyButton =styled.button`
-    width: 158px;
-    height: 32px;
-    box-sizing: border-box;
-    overflow: hidden;
-    outline: none;
-    cursor: inherit;
-    opacity: 1;
-    background-color: rgb(23, 93, 220);
-    border-radius: 6px;
-    border: 0px;
-    color: #fff;
-    margin: 10px;
+const Buttons = styled.div`
+  display: flex;
 `;
-const RegenratePasswordButton =styled.button`
-    border: 0px;
-     width: 158px;
-    height: 32px;
-    background: transparent;
-    padding: 0px 8px;
-    margin: 10px;
-    outline: none;
-    appearance: none;
-    opacity: 1;
-    color: rgb(108, 117, 125);
-    font-family: "Nanum Gothic";
-    font-size: 13px;
-    letter-spacing: 0px;
-    text-align: center;
-    text-transform: none;
-    pointer-events: auto;
-    background-color: rgb(251, 251, 251);
-    border-radius: 4px;
-    border: 1px solid rgb(192, 192, 192);
+
+const CopyButton = styled.button`
+ border: 0px;
+  width: 158px;
+  height: 32px;
+  background: transparent;
+  padding: 0px 8px;
+  margin: 10px;
+  outline: none;
+  appearance: none;
+  opacity: 1;
+  color: rgb(108, 117, 125);
+  font-family: "Nanum Gothic";
+  font-size: 13px;
+  letter-spacing: 0px;
+  text-align: center;
+  text-transform: none;
+  pointer-events: auto;
+  background-color: rgb(251, 251, 251);
+  border-radius: 4px;
+  border: 1px solid rgb(192, 192, 192);
+
+`;
+const RegenratePasswordButton = styled.button`
+  width: 158px;
+  height: 32px;
+  box-sizing: border-box;
+  overflow: hidden;
+  outline: none;
+  cursor: inherit;
+  opacity: 1;
+  background-color: rgb(23, 93, 220);
+  border-radius: 6px;
+  border: 0px;
+  color: #fff;
+  margin: 10px;
 `;
 const RadioButton = styled.input``;
 const RadioButtonLabel = styled.label`
@@ -62,8 +63,7 @@ const RadioButtonLabel = styled.label`
   font-family: "Nanum Gothic";
 `;
 
-const RadioButtonDiv = styled.div`
-`;
+const RadioButtonDiv = styled.div``;
 const Title = styled.div`
   margin: 10px 0;
   overflow: hidden;
@@ -85,80 +85,154 @@ const CheckBoxes = styled.div`
 `;
 
 const EmailField = styled.input`
-    background-color: #fbfbfb;
-    border-color: #ced4da;
-    color: #465057; 
-    /* width: 100%; */
-    height: calc(1.5em + 0.75rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    outline: none;
+  background-color: #fbfbfb;
+  border-color: #ced4da;
+  color: #465057;
+  /* width: 100%; */
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  outline: none;
 `;
 const Hint = styled.div`
-font-size: small;
-margin: 0 0 0 15px;
-color :#6c757d ;
+  font-size: small;
+  margin: 0 0 0 15px;
+  color: #6c757d;
 `;
 
-
-const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+const characters =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 function generateString(length) {
-    let result = ' ';
-    const charactersLength = characters.length;
-    for ( let i = 0; i < length; i++ ) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
+  let result = " ";
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
 
-    return result;
+  return result;
 }
 
+function UserName(props) {
+  const [email, setEmail] = useState("");
+  const [mail, setMail] = useState("");
+  const [plusEmail, setPlusEmail] = useState(false);
+  const [catchEmail, setCatchEmail] = useState(false);
+  const [randomWord, setRandomWord] = useState(false);
+  const [reqNum, setReqNum] = useState(false);
+  const [reqCap, setReqCap] = useState(false);
 
-function UserName() {
+  function handleRegen() {
+    if (plusEmail) {
+      let x = email.split("@")[0];
+      x += "+";
+      x += generateString(7).trim();
+      x += "@";
+      x += email.split("@")[1];
+      setMail("");
+      setMail(x);
+      x = "";
+    }
+    if (catchEmail) {
+      let x = "";
+      x += generateString(7).trim();
+      x += "@";
+      x += email;
+      setMail("");
+      setMail(x);
+      x = "";
+    }
+    if (randomWord) {
+      if(reqNum){
+        let x = wordList[Math.floor(Math.random() * wordList.length)];
+        x += Math.floor(Math.random() * 10000) + "";  
+        setMail("");
+        setMail(x);
+        x = "";
+      }
+      if(reqCap){
+        let x = wordList[Math.floor(Math.random() * wordList.length)];
+        x = x.charAt(0).toUpperCase() + x.substring(1); // if uppercase        
+        setMail("");
+        setMail(x);
+        x = "";
+      }
+      if(reqCap && reqNum){
+        let x = wordList[Math.floor(Math.random() * wordList.length)];
+        x = x.charAt(0).toUpperCase() + x.substring(1); // if uppercase  
+        x += Math.floor(Math.random() * 10000) + "";        
+        setMail("");
+        setMail(x);
+        x = "";
+      }
+    }
+    props.sendData(mail)
+  }
 
- const [email,setEmail] =useState("")
- 
- const [mail,setMail] =useState("")
+  return (
+    <div>
+      <Title>Username type</Title>
+      <RadioButtonDiv>
+        <CheckBoxes>
+          <RadioButton type="radio" name="username-type" onClick={(e) => {
+            setPlusEmail(!plusEmail)
+            setRandomWord(false)
+            setCatchEmail(false)
+          }}/>
+          <RadioButtonLabel>Plus addressed email</RadioButtonLabel>
+          <Hint>Use your email provider's sub-addressing capabilities.</Hint>
+        </CheckBoxes>
+        <CheckBoxes>
+          <RadioButton type="radio" name="username-type" onClick={(e) => {
+            setCatchEmail(!catchEmail)
+            setPlusEmail(false)
+            setRandomWord(false)
 
+          }}/>
+          <RadioButtonLabel>Catch-all email</RadioButtonLabel>
+          <Hint>Use your domain's configured catch-all inbox.</Hint>
+        </CheckBoxes>
+        <CheckBoxes>
+          <RadioButton type="radio" name="username-type" onClick={(e) => {
+            setRandomWord(!randomWord)
+            setPlusEmail(false)
+            setCatchEmail(false)
+          
+          }}/>
+          <RadioButtonLabel>Random word</RadioButtonLabel>
+        </CheckBoxes>
+      </RadioButtonDiv>
+      {!randomWord ? <div> <Title>Email address</Title>
+    <EmailField onChange={(e) => {setEmail(e.target.value)}}></EmailField></div>:""} 
+      <OptionField>
+        {randomWord? <div>
 
+        <Title>Options</Title>
+        <div>
+          <CheckBoxSelector type="checkbox" onClick={(e) => {setReqCap(!reqCap)}} />
+          <RadioButtonLabel >Capitalize</RadioButtonLabel>
+        </div>
+        <div>
+          <CheckBoxSelector type="checkbox" onClick={(e) => {setReqNum(!reqNum)}} />
+          <RadioButtonLabel >Include number</RadioButtonLabel>
+        </div>
+        </div> : ""}
 
+        <Buttons>
+          <RegenratePasswordButton onClick={(e) => {handleRegen()}}> Regenrate UserName </RegenratePasswordButton>
+          <CopyButton>Copy UserName</CopyButton>
+        </Buttons>
+      </OptionField>
+    </div>
+  );
+}
 
-// +
-//   function handleRegen(){
-
-//     let x = email.split('@')[0];
-//     x+='+'
-//     x+=generateString(7).trim()
-//     x+='@'
-//     x+=email.split('@')[1]
-//     console.log(x);
-//    setMail('')
-//     setMail(x);
-//     x=''
-     
-// }
-
-
-// domain
-// function handleRegen(){
-
-//   let x ='';
-//   x+=generateString(7).trim()
-//   x+='@'
-//   x+=email
-//   console.log(x);
-//  setMail('')
-//   setMail(x);
-//   x=''
-   
-// }
-
-
+export default UserName;
 
 const wordList = [
   "ability",
@@ -2114,70 +2188,3 @@ const wordList = [
   "zoo",
   "zulu",
 ];
-
-function handleRegen(){
-
-  let x = wordList[Math.floor(Math.random()*wordList.length)]
-  x = x.charAt(0).toUpperCase()+ x.substring(1) // if uppercase
-  x += Math.floor(Math.random()* 10000)+''
-  console.log(x);
- setMail('')
-  setMail(x);
-  x=''
-   
-}
-
-
-
-  return (
-    <div>
-<Title>Username type</Title>
-{/* {username} */}
-  <RadioButtonDiv>
-    <CheckBoxes>
-      <RadioButton type="radio" />
-      <RadioButtonLabel>Plus addressed email</RadioButtonLabel>
-      <Hint>Use your email provider's sub-addressing capabilities.</Hint>
-    </CheckBoxes>
-    <CheckBoxes>
-      <RadioButton type="radio" />
-      <RadioButtonLabel>Catch-all email</RadioButtonLabel>
-      <Hint>Use your domain's configured catch-all inbox.</Hint>
-    </CheckBoxes>
-    <CheckBoxes>
-      <RadioButton type="radio" />
-      <RadioButtonLabel>Forwarded email alias</RadioButtonLabel>
-      <Hint>Generate an email alias with an external forwarding service.</Hint>
-    </CheckBoxes>
-    <CheckBoxes>
-      <RadioButton type="radio" />
-      <RadioButtonLabel>Random word</RadioButtonLabel>
-    </CheckBoxes>
-  </RadioButtonDiv>
-  <Title>Email address</Title>
-  <EmailField onChange={(e)=>{setEmail(e.target.value)}}></EmailField>
-  <OptionField>
-    <Title>Options</Title>
-    <div>
-      <CheckBoxSelector type="checkbox" />
-      <RadioButtonLabel>Capitalize</RadioButtonLabel>
-    </div>
-    <div>
-      <CheckBoxSelector type="checkbox" />
-      <RadioButtonLabel>Include number</RadioButtonLabel>
-    </div>
-
-    <Buttons>
-
-    <CopyButton>Copy UserName</CopyButton>
-    <RegenratePasswordButton onClick={(e)=>{handleRegen()}} >Regenrate UserName</RegenratePasswordButton>
-     {mail}
-    </Buttons>
-  </OptionField>
-  
-
-    </div>
-  )
-}
-
-export default UserName

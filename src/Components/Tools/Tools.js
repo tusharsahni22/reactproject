@@ -4,7 +4,7 @@ import Password from "./Password";
 import UserName from "./UserName";
 
 const Wrapper = styled.div`
-  /* display: flex; */
+
   padding: 0 1%;
   width: 100%;
 `;
@@ -108,7 +108,7 @@ function Tools() {
               <RadioButtonLabel>Username</RadioButtonLabel>
             </div>
           </RadioButtonDiv>
-          {UserNameCheck ? <UserName /> : ""}
+          {UserNameCheck ? <UserName  sendData={setGenPass} /> : ""}
           {PassCheckBox ? <Password sendData={setGenPass} /> : ""}
         </Genrator>
       </Wrapper>
