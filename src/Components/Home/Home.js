@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
+import Item from "./Item";
+import { useState } from "react";
+
 const Container = styled.div`
-  width: 70%;
-  margin-right: 15%;
+  width: 100%;
 `;
 
 const Input = styled.input`
@@ -22,7 +24,7 @@ const Row = styled.div`
   padding-top: 20px;
   margin-top: 10px;
 `;
-const R1 = styled.div``;
+const All = styled.div``;
 const R2 = styled.div``;
 const R3 = styled.div``;
 const Head = styled.div`
@@ -36,6 +38,7 @@ const Button = styled.button`
   justify-content: space-between;
   background-color: #1466e9;
   color: white;
+  border: none;
   font-size: 15px;
   border-radius: 5px;
   padding: 7px;
@@ -57,33 +60,44 @@ width: 150px;
 margin: 10px 20px 0 35%;
 `;
 const R4 = styled.div`
-margin-Left: 35%;
+display: flex;
+justify-content: center;
+`;
+const Line = styled.div`
+height: 1.5px;
+background-color: lightgrey;
+margin: 2%;
 `;
 
 function Front() {
+  const [newItem,setNewItem] = useState(false)
   return (
     <Container>
       <Head>
         All vaults
-        <Button>
+        <Button onClick={()=> {setNewItem(!newItem)}}>
           <AiOutlinePlus /> New item
         </Button>
+       
       </Head>
       <Row>
-        <Input type="checkbox" />
-        <R1>All</R1>
+        <All><Input type="checkbox" />  All </All>
         <R2>Name </R2>
         <R3> Owner </R3>
         <Iconn>
           {" "}
           <BiDotsVerticalRounded />
         </Iconn>
+        
       </Row>
+      <Line/>
       <Img src="https://static.vecteezy.com/system/resources/previews/000/570/073/original/vector-desktop-computer-icon.jpg"/>
       <R4>There are no items to list.</R4>
-      <Button2>
+      <Button2 onClick={()=> {setNewItem(!newItem)}} >
           <AiOutlinePlus /> New item
         </Button2>
+        
+        {newItem ?<Item/> : ""}
     </Container>
   );
 }

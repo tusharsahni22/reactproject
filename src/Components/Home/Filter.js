@@ -6,7 +6,7 @@ import Accordion2 from "./Accordion2";
 import Accordion3 from "./Accordion3";
 
 const Container = styled.div`
-padding: 0 0 0 15%;
+
 `;
 
 const Box = styled.div`
@@ -72,7 +72,7 @@ function Filter() {
           </CiCircleQuestions>  
         </BoxHead>
         <BoxHead2>
-          <SearchVault type="input" placeholder="Search favorites" />
+          <SearchVault type="text" placeholder="Search favorites" />
           
         </BoxHead2>
         <Accordian />

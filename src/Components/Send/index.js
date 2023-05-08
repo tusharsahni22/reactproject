@@ -1,26 +1,26 @@
 import React from "react";
-import Header from "../Common/Header";
 import styled from "styled-components";
-import Home from "./Home";
-import Filter from "./Filter";
+import Header from "../Common/Header";
+import Sidebar2 from "../Common/Sidebar2";
 import Footer from "../Common/Footer";
+import Send from "./Send";
+
 
 const Div = styled.div`
   display: flex;
-  padding: 0 15%;
 `;
 
-function ToolComponent() {
+function SendComponent() {
   return (
     <div>
       <Header />
       <Div>
-        <Filter />
-        <Home />
+        <Sidebar2 />
+        <Send/>
       </Div>
       <Footer/>
     </div>
   );
 }
 
-export default ToolComponent;
+export default SendComponent;
