@@ -4,7 +4,7 @@ import Password from "./Password";
 import UserName from "./UserName";
 
 const Wrapper = styled.div`
-  /* display: flex; */
+
   padding: 0 1%;
   width: 100%;
 `;
@@ -25,6 +25,8 @@ const HeadingGen = styled.div`
   font-family: "Nanum Gothic";
 `;
 const GenratedText = styled.div`
+  padding: 0px 0 0 10px;
+
   display: flex;
   align-items: center;
   height: 60px;
@@ -72,31 +74,42 @@ const RadioButtonDiv = styled.div`
   display: flex;
 `;
 
-
-
 function Tools() {
-    const [userPass,setUserPass] = useState("")
+  const [GenPass, setGenPass] = useState("");
+  const [UserNameCheck, setUserNameCheck] = useState("");
+  const [PassCheckBox, setPassCheckBox] = useState("");
+
   return (
     <>
       <Wrapper>
-        
         <Genrator>
           <HeadingGen>Genrator</HeadingGen>
-          <GenratedText></GenratedText>
+          <GenratedText>{GenPass}</GenratedText>
           <Title>What would you like to</Title>
-          <div>{userPass}</div>
           <RadioButtonDiv>
             <div>
-              <RadioButton type="checkbox" value="0" name="userpass" onChange={e=>setUserPass(!userPass)} />
+              <RadioButton
+                type="checkbox"
+                value="0"
+                name="PassCheckBox"
+                onChange={(e) => setPassCheckBox(!PassCheckBox)}
+              />
               <RadioButtonLabel>Password</RadioButtonLabel>
             </div>
             <div>
-              <RadioButton type="checkbox" value="1" name="userpass" onChange={(e)=>{setUserPass(e.target.value)}} />
+              <RadioButton
+                type="checkbox"
+                value="0"
+                name="UserNameCheck"
+                onChange={(e) => {
+                  setUserNameCheck(!UserNameCheck);
+                }}
+              />
               <RadioButtonLabel>Username</RadioButtonLabel>
             </div>
           </RadioButtonDiv>
-          {userPass ? <Password/>  :  <UserName/>} 
-          
+          {UserNameCheck ? <UserName  sendData={setGenPass} /> : ""}
+          {PassCheckBox ? <Password sendData={setGenPass} /> : ""}
         </Genrator>
       </Wrapper>
     </>
