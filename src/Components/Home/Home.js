@@ -97,7 +97,7 @@ function Front() {
           <AiOutlinePlus /> New item
         </Button2>
         
-        {newItem ?<Item/> : ""}
+        {newItem ?<Item sendData={setNewItem}/> : " "}
     </Container>
   );
 }
