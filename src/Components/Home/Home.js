@@ -71,6 +71,7 @@ margin: 2%;
 
 function Front() {
   const [newItem,setNewItem] = useState(false)
+  
   return (
     <Container>
       <Head>

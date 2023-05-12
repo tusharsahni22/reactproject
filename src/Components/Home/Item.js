@@ -31,6 +31,11 @@ top: 0;
 const Line = styled.div`
   height: 1px;
   background-color: lightgray;
+  
+`;
+const Line2 = styled.div`
+  height: 50px;
+  
 `;
 const Title = styled.div`
   margin: 15px 0 8px 4px;
@@ -85,6 +90,10 @@ border: 2px solid lightgray;
 `;
 const Footer = styled.div`
 display: flex;
+position: sticky;
+bottom: 0;
+width: 100%;
+border: 1px solid lightgrey;
 background-color: white;
 height: 15px;
 padding: 20px 10px;
@@ -111,13 +120,31 @@ height: fit-content;
 margin: 0px 4px;
 
 `;
+const Option = styled.option`
+
+`;
+const Option1 = styled.option`
+
+`;
+const LoginDiv = styled.div``;
+
+const Name = styled.div`
+width: 100%;
+`;
+const Div2 = styled.div``;
+const Div3 = styled.div``;
+const Month = styled.div``;
+const Buttonn = styled.input``;
 
 function Item(props) {
-  const [close, setClose] = useState(false);
+
   const handleClose = () => {
-    setClose(true);
-    props.sendData = close;
+ 
+    props.sendData(false);
   };
+  const [login,setLogin] = useState(false);
+  const [card,setCard] = useState(true);
+  
   return (
     <Container>
       <Position>
@@ -138,14 +165,18 @@ function Item(props) {
        
           <Title>What type of item is this?</Title>
           <Button > 
-            <option> Login</option>
-            <option> Card</option>
-            <option> Identity</option>
-            <option> Secure Note</option>
+            <Option1 onClick ={()=> setLogin(true)}> Login</Option1>
+            
+            
+            <Option> Card</Option>
+
           </Button>
-
-
-          <Title> Name</Title>
+          </Pannel>
+          
+      
+          {login?<LoginDiv>
+            <Pannel>
+            <Title> Name</Title>
           <Button1 type="text" placeholder=""></Button1>
 
           <Div>
@@ -164,14 +195,48 @@ function Item(props) {
         <Title>Notes </Title>
         <Notes type= "text" placeholder='' > </Notes>
       </Pannel>
-     
-      <Line />
+      <Line2/>
+          </LoginDiv> :" "}
+          {card? <div>
+            <Pannel>
+
+          <Div>
+            <Name>
+              <Title> Card Holder Name</Title>
+              <Button2 type="text" placeholder=""></Button2>
+            </Name>
+            <Name>
+              <Title> Bank Name</Title>
+              <Button2 type="text" placeholder=""></Button2>
+            </Name>
+          </Div>
+          <Div2>
+          <Name>
+              <Title> Card Number</Title>
+              <Button2 type="number" placeholder= ""></Button2>
+            </Name>
+            <Div3>
+              <Month>
+                <Buttonn type="text" placeholder="enter expiry month"> </Buttonn>
+                <Buttonn type="text" placeholder="enter expiry date "> </Buttonn>
+
+              </Month>
+
+            </Div3>
+
+          </Div2>
+
+            </Pannel>
+
+          </div>: ""}
       <Footer>
         <Button3> Save</Button3>
-        <Button4> Cancel</Button4>
+        <Button4 onClick={() => {
+              handleClose();
+            }}> Cancel</Button4>
         
       </Footer>
-
+      
     </Container>
   );
 }
