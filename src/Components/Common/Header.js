@@ -56,7 +56,7 @@ function Header() {
           <Text>Report</Text>
         </Profile>
         <Profile>
-            <ProfilePic src="./avatar.jpg"/>
+            <ProfilePic src="./avatar.jpg" onClick={()=>(navigate("/user-profile"))}/>
         </Profile>
       </Head>
     </Wrapper>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Password from "./Password";
 import UserName from "./UserName";
@@ -79,6 +79,10 @@ function Tools() {
   const [UserNameCheck, setUserNameCheck] = useState("");
   const [PassCheckBox, setPassCheckBox] = useState("");
 
+  useEffect(()=>{
+console.log("first")
+  },[setGenPass])
+
   return (
     <>
       <Wrapper>
@@ -89,20 +93,23 @@ function Tools() {
           <RadioButtonDiv>
             <div>
               <RadioButton
-                type="checkbox"
+                type="radio"
                 value="0"
-                name="PassCheckBox"
-                onChange={(e) => setPassCheckBox(!PassCheckBox)}
+                name="passCheckBox"
+                onChange={(e) => {setPassCheckBox(!PassCheckBox)
+                  setUserNameCheck(false)}}
+                  // onClick={uncheck('userNameCheck')}
               />
               <RadioButtonLabel>Password</RadioButtonLabel>
             </div>
             <div>
               <RadioButton
-                type="checkbox"
+                type="radio"
                 value="0"
-                name="UserNameCheck"
+                name="passCheckBox"
                 onChange={(e) => {
-                  setUserNameCheck(!UserNameCheck);
+                  setUserNameCheck(!UserNameCheck)
+                  setPassCheckBox(false)
                 }}
               />
               <RadioButtonLabel>Username</RadioButtonLabel>
