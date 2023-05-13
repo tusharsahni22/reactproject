@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
+import { GrFormClose } from "react-icons/gr";
 
 const Container = styled.div`
-  height: 500px;
+  height: 420px;
   width: 800px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -52,25 +53,69 @@ color: grey;
 font-size: 15px;
 margin-top: 5px;
 `;
-const Button2 = styled.input`
-  margin-left: 4px;
 
-`;
-const RadioButton = styled.div`
-display: flex;
-`;
 const P1 = styled.div`
 color: grey;
 font-size: 15px;
 padding-left: 5px;
 `;
+const Text = styled.textarea`
+width: 750px;
+height: 150px;
+margin: 5px;
+border-radius: 4px;
+border: 2px solid lightgray;
+`;
+const Footer = styled.div`
+display: flex;
+position: sticky;
+bottom: 0;
+width: 100%;
+border: 1px solid lightgrey;
+background-color: white;
+height: 15px;
+padding: 20px 10px;
+`;
 
-function File() {
+const Button2 = styled.button`
+background-color: rgb(23, 93, 220);
+color: white;
+border: none;
+font-size: 15px;
+border-radius: 5px;
+padding: 7px;
+height: fit-content;
+margin: 0px 4px;
+`;
+const Button3 = styled.div`
+background-color: white;
+color: gray;
+border: 1px solid lightgray;
+font-size: 15px;
+border-radius: 5px;
+padding: 7px;
+height: fit-content;
+margin: 0px 4px;
+
+`;
+
+function File(props) {
+  const handleClose = () => {
+ 
+    props.sendData(false);
+  };
   return (
     <Container>
       <Position>
       <Head>
         <div>NEW SEND</div>
+        <div>
+          <GrFormClose
+            onClick={() => {
+              handleClose();
+            }}
+          />
+        </div>
       </Head>
       <Line />
       </Position>
@@ -79,16 +124,16 @@ function File() {
       <Title>Name</Title>
       <Button type="text" placeholder=""></Button>
       <P> A friendly name to describe this Send. </P>
-      <Title>What type of Send is this?</Title>
-      <RadioButton>
-      <Button2 type="radio" placeholder=""></Button2>
-      <P1>File</P1>
-      </RadioButton>
-      <RadioButton>
-      <Button2 type="radio" placeholder=""></Button2>
-      <P1>Text</P1>
-      </RadioButton>
+      <Title>Text </Title>
+        <Text type= "text" placeholder='' > </Text>
       </Pannel>
+      <Footer>
+        <Button2> Save</Button2>
+        <Button3 onClick={() => {
+              handleClose();
+            }}> Cancel</Button3>
+        
+      </Footer>
 
       </Container>
   

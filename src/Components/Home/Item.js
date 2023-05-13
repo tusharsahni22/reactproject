@@ -123,18 +123,45 @@ margin: 0px 4px;
 const Option = styled.option`
 
 `;
-const Option1 = styled.option`
 
-`;
 const LoginDiv = styled.div``;
 
+const Card =styled.div`
+width:100%;
+`;
+const Cardd =styled.div`
+display:flex;
+width:100%;
+`;
+
 const Name = styled.div`
+display: flex;
 width: 100%;
 `;
-const Div2 = styled.div``;
-const Div3 = styled.div``;
-const Month = styled.div``;
-const Buttonn = styled.input``;
+const Div2 = styled.div`
+display: flex;
+`;
+const Div3 = styled.div`
+display: flex;
+`;
+const Month = styled.div`
+width: 50%;
+`;
+const Year = styled.div`
+width: 50%;
+`;
+const Buttonn = styled.input`
+margin-left: 4px;
+  width: 50%;
+  padding: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 2px solid lightgray;
+`;
+const Cvv = styled.div`
+width: 50%;
+`;
 
 function Item(props) {
 
@@ -142,8 +169,8 @@ function Item(props) {
  
     props.sendData(false);
   };
-  const [login,setLogin] = useState(false);
-  const [card,setCard] = useState(true);
+  const [login,setLogin] = useState("");
+  const [card,setCard] = useState("");
   
   return (
     <Container>
@@ -160,21 +187,20 @@ function Item(props) {
       </Head>
       <Line />
       </Position>
-      
+      {console.log("login",login)}
       <Pannel>
        
           <Title>What type of item is this?</Title>
           <Button > 
-            <Option1 onClick ={()=> setLogin(true)}> Login</Option1>
+            <Option value={"login"} onClick ={(e)=> setLogin(e.target.value)}> Login</Option>
             
             
-            <Option> Card</Option>
+            <Option value={"card"} onClick ={(e)=> setLogin(e.target.value)} > Card</Option>
 
           </Button>
           </Pannel>
           
-      
-          {login?<LoginDiv>
+          {(login === "login") ? <LoginDiv>
             <Pannel>
             <Title> Name</Title>
           <Button1 type="text" placeholder=""></Button1>
@@ -197,34 +223,41 @@ function Item(props) {
       </Pannel>
       <Line2/>
           </LoginDiv> :" "}
-          {card? <div>
+
+          {(login === "login") ? <div>
             <Pannel>
 
-          <Div>
-            <Name>
+            <Div>
+            <Card>
               <Title> Card Holder Name</Title>
               <Button2 type="text" placeholder=""></Button2>
-            </Name>
-            <Name>
-              <Title> Bank Name</Title>
-              <Button2 type="text" placeholder=""></Button2>
-            </Name>
+            </Card>
+            <Card>
+              <Title> Bank </Title>
+              <Button2 type="password" placeholder=""></Button2>
+            </Card>
           </Div>
-          <Div2>
-          <Name>
+        
+          <Div>
+            <Card>
               <Title> Card Number</Title>
-              <Button2 type="number" placeholder= ""></Button2>
-            </Name>
-            <Div3>
+              <Button2 type="number" placeholder=""></Button2>
+            </Card>
+            <Cardd>
               <Month>
-                <Buttonn type="text" placeholder="enter expiry month"> </Buttonn>
-                <Buttonn type="text" placeholder="enter expiry date "> </Buttonn>
-
+                <Title> Expiration Month </Title>
+                <Buttonn type="month" placeholder=""></Buttonn>
               </Month>
-
-            </Div3>
-
-          </Div2>
+              <Year>
+                <Title> Expiration Year </Title>
+                <Buttonn type="number" placeholder=""></Buttonn>
+              </Year>
+            </Cardd>
+          </Div>
+          <Cvv>
+              <Title>Security Code (CVV)</Title>
+              <Button2 type="password" placeholder=""></Button2>
+            </Cvv>
 
             </Pannel>
 

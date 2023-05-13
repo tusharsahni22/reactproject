@@ -35,16 +35,17 @@ height: 2px solid grey;
 
 function SendComponent()
  {
-  const [newItem,setNewItem] = useState(false)
+  const [close,setClose] = useState(false)
   return (
     <Container>
     <Head>
       All vaults
-      <Button onClick={()=> {setNewItem(!newItem)}}>
+      <Button onClick={()=> {setClose(!close)}}>
         <AiOutlinePlus /> New item
       </Button>
       </Head>
-      {newItem ?<File/> : " "}
+      {close ?<File sendData={setClose}/> : " "}
+
       </Container>
   )
 }
