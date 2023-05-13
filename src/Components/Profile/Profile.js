@@ -47,16 +47,24 @@ text-align: center;
 padding: 6px;
 border: 0px;
 `;
+const NameDiv=styled.div`
+display: flex;
+justify-content: space-between;
+`;
 
 function Profile() {
   return (
     <Wrapper>
         <Heading>My Account </Heading>
         <Line/>
-        <div>
+        <NameDiv>
+            <div>
+
             <Lable>Name</Lable>
             <Input/>
-        </div>
+            </div>
+            <div></div>
+        </NameDiv>
         <div>
             <Lable>Email</Lable>
             <Input/>
