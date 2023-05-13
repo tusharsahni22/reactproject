@@ -24,14 +24,6 @@ const Button = styled.button`
   border-radius: 5px;
   padding: 7px;
 `;
-const Send = styled.div`
-margin: 20px;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 22px;
-`;
-const Line = styled.div`
-height: 2px solid grey;
-`;
 
 function SendComponent()
  {

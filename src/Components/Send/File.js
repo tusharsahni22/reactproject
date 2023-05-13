@@ -54,11 +54,6 @@ font-size: 15px;
 margin-top: 5px;
 `;
 
-const P1 = styled.div`
-color: grey;
-font-size: 15px;
-padding-left: 5px;
-`;
 const Text = styled.textarea`
 width: 750px;
 height: 150px;

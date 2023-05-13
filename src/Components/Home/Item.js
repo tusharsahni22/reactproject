@@ -136,16 +136,6 @@ display:flex;
 width:100%;
 `;
 
-const Name = styled.div`
-display: flex;
-width: 100%;
-`;
-const Div2 = styled.div`
-display: flex;
-`;
-const Div3 = styled.div`
-display: flex;
-`;
 const Month = styled.div`
 width: 50%;
 `;

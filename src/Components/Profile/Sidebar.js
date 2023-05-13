@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Heading = styled.div`
@@ -53,12 +53,15 @@ width: 216px;
 `;
 
 function Sidebar() {
+  const [account,setAccount] = useState(true)
+  const [privacy,setPrivacy] = useState(false)
+  
   return (
     <Wrapper>
     <ToolsSideBar>
     <Heading> Account Setting </Heading>
-    <SpecialTools>My Account</SpecialTools>
-    <SpecialTools>Privacy</SpecialTools>
+    <SpecialTools onClick={()=>{ setAccount(account)}}>My Account</SpecialTools>
+    <SpecialTools onClick={()=>{ setPrivacy(!privacy)}}>Privacy</SpecialTools>
   </ToolsSideBar>
     </Wrapper>
   )
