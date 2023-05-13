@@ -10,8 +10,10 @@ const Container = styled.div`
   overflow-x: hidden;
   background-color: white;
   top: 10%;
-  left: 20%;
-  right: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   position: fixed;
   border: 1px solid;
   border-radius: 5px;
@@ -192,15 +194,13 @@ function Item(props) {
        
           <Title>What type of item is this?</Title>
           <Button > 
-            <Option value={"login"} onClick ={(e)=> setLogin(e.target.value)}> Login</Option>
-            
-            
+            <Option value={"login"} onClick ={(e)=> setLogin(e.target.value)}> Login</Option>          
             <Option value={"card"} onClick ={(e)=> setLogin(e.target.value)} > Card</Option>
 
           </Button>
           </Pannel>
           
-          {(login === "login") ? <LoginDiv>
+          {(login != "login") ? <LoginDiv>
             <Pannel>
             <Title> Name</Title>
           <Button1 type="text" placeholder=""></Button1>

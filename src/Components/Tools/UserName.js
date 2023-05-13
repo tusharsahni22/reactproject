@@ -225,7 +225,7 @@ function UserName(props) {
 
         <Buttons>
           <RegenratePasswordButton onClick={(e) => {handleRegen()}}> Regenrate UserName </RegenratePasswordButton>
-          <CopyButton>Copy UserName</CopyButton>
+          <CopyButton onClick={(e)=>{navigator.clipboard.writeText(mail)}}>Copy UserName</CopyButton>
         </Buttons>
       </OptionField>
     </div>
