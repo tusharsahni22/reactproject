@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { GrFormClose } from "react-icons/gr";
 
@@ -43,7 +43,7 @@ const Title = styled.div`
   margin: 15px 0 8px 4px;
   font-weight: 550;
 `;
-const Button = styled.select`
+const Select = styled.select`
   margin-left: 4px;
   width: 45%;
   padding: 8px;
@@ -166,14 +166,18 @@ width: 50%;
 `;
 
 function Item(props) {
-
+  const [select,setSelect] = useState("login");
+  
   const handleClose = () => {
- 
+    
     props.sendData(false);
   };
-  const [login,setLogin] = useState("");
-  const [card,setCard] = useState("");
-  
+  const handleSelect = (e) => {
+    
+    let value=e.target.value
+    setSelect(value)
+  };
+  const value= {login:"login",card:"card"}
   return (
     <Container>
       <Position>
@@ -189,18 +193,17 @@ function Item(props) {
       </Head>
       <Line />
       </Position>
-      {console.log("login",login)}
       <Pannel>
        
           <Title>What type of item is this?</Title>
-          <Button > 
-            <Option value={"login"} onClick ={(e)=> setLogin(e.target.value)}> Login</Option>          
-            <Option value={"card"} onClick ={(e)=> setLogin(e.target.value)} > Card</Option>
-
-          </Button>
+          <Select onChange ={(e)=>(setSelect(e.target.value))}> 
+            <Option value={"login"}> Login</Option>        
+            <Option value={"card"}> Card</Option>
+          </Select>
           </Pannel>
+          {console.log("login",select)}
           
-          {(login != "login") ? <LoginDiv>
+          {(select === "login") ? <LoginDiv>
             <Pannel>
             <Title> Name</Title>
           <Button1 type="text" placeholder=""></Button1>
@@ -217,14 +220,14 @@ function Item(props) {
           </Div>
      
         <Title> URL </Title>
-        <Button type="text" placeholder="ex.https://google.com "></Button>
+        <Button1 type="text" placeholder="ex. https://facebook.com "></Button1>
         <Title>Notes </Title>
         <Notes type= "text" placeholder='' > </Notes>
       </Pannel>
       <Line2/>
           </LoginDiv> :" "}
 
-          {(login === "login") ? <div>
+          {(select === "card") ? <div>
             <Pannel>
 
             <Div>
