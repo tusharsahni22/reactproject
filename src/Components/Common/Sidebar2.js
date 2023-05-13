@@ -1,11 +1,21 @@
-import React from 'react'
-import styled from 'styled-components';
-import {AiOutlineFileText} from 'react-icons/ai';
-import {AiOutlineFile} from 'react-icons/ai';
+import React from "react";
+import styled from "styled-components";
+import { AiOutlineFileText } from "react-icons/ai";
+import { AiOutlineFile } from "react-icons/ai";
 // import {HiOutlineSquares2X2} from 'react-icons/hi';
 
 const ToolsSideBar = styled.div`
-padding : 0 0 0 15%; 
+  padding: 0 0 0 15%;
+`;
+const Box = styled.div`
+  align-items: start;
+  outline: 1px solid;
+  height: auto;
+  width: 200px;
+  border: none;
+  outline-color: lightgray;
+  margin: 20px 0 40px 10px;
+  border-radius: 5px;
 `;
 
 const SearchVault = styled.input`
@@ -13,62 +23,72 @@ const SearchVault = styled.input`
   outline: none;
   margin: 5px 0px 0px 10px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px ;
+  font-size: 15px;
   width: 92%;
   height: 25px;
 `;
-
 const BoxHead = styled.div`
-  display: flex;
+  outline: 1px solid lightgray;
   height: 40px;
-  margin: 4px 0 0 0;
-  border: solid #bddaec .25px;
-  border-width: 4px;
-  border-radius: 5px;
-  margin: 15px 20px 15px 20px;
+  padding-top: 1px;
+  background-color: #f0efef;
+  
+`;
+
+const BoxHead2 = styled.div`
+  border: 4px solid rgb(189, 218, 236);
+    border-radius: 5px;
+    margin: 15px 10px 15px 10px;
 `;
 
 const AllSends = styled.div`
-color: rgb(23, 93, 220);
-font-weight: bold;
+margin: 10px;
+  color: rgb(23, 93, 220);
+  font-weight: bold;
 `;
-const AllSends2 = styled.div``;
+const AllSends2 = styled.div`
+margin-left: 10px;
+`;
+const AllSends3 = styled.div`
+margin-left: 10px;
+padding-bottom: 20px;
+`;
 
 const Heading = styled.div`
-  display: flex;
-  padding: 0 5px;
-  align-items: center;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  overflow: hidden;
-  outline: none;
-  cursor: inherit;
-  width: 216px;
-  height: 39px;
-  opacity: 1;
-  background-color: rgb(247, 247, 247);
-  border-radius: 6px;
-  border: 0px;
+  margin: 10px 0 10px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
+  font-weight: bold;
 `;
 const Type = styled.div`
-
+margin-left: 10px;
 `;
 
 function Sidebar2() {
   return (
     <ToolsSideBar>
-    <Heading> Filters </Heading>
-    <BoxHead>
-          <SearchVault type="input" placeholder="Search Sends" />
-          
+      <Box>
+        <BoxHead>
+          <Heading> FILTERS </Heading>
         </BoxHead>
-    <AllSends>All Sends </AllSends>
-    <Type>Types</Type>
-    <AllSends2> <AiOutlineFileText style={{marginRight:2,paddingTop:2 }}/>Text </AllSends2>
-    <AllSends2> <AiOutlineFile style={{marginRight:2, paddingTop:2}}/>File </AllSends2>
-    
-  </ToolsSideBar>
-  )
+        <BoxHead2>
+          <SearchVault type="input" placeholder="Search Sends" />
+        </BoxHead2>
+        <AllSends>All Sends </AllSends>
+        <Type>Types</Type>
+        <AllSends2>
+          {" "}
+          <AiOutlineFileText style={{ marginRight: 2, paddingTop: 2 }} />
+          Text{" "}
+        </AllSends2>
+        <AllSends3>
+          {" "}
+          <AiOutlineFile style={{ marginRight: 2, paddingTop: 2 }} />
+          File{" "}
+        </AllSends3>
+      </Box>
+    </ToolsSideBar>
+  );
 }
 
-export default Sidebar2
+export default Sidebar2;

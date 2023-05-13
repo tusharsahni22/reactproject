@@ -71,6 +71,7 @@ margin: 2%;
 
 function Front() {
   const [newItem,setNewItem] = useState(false)
+  
   return (
     <Container>
       <Head>
@@ -97,7 +98,7 @@ function Front() {
           <AiOutlinePlus /> New item
         </Button2>
         
-        {newItem ?<Item/> : ""}
+        {newItem ?<Item sendData={setNewItem}/> : " "}
     </Container>
   );
 }

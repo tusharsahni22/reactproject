@@ -72,7 +72,7 @@ function Filter() {
           </CiCircleQuestions>  
         </BoxHead>
         <BoxHead2>
-          <SearchVault type="text" placeholder="Search favorites" />
+          <SearchVault type="text" placeholder="Search vaults" />
           
         </BoxHead2>
         <Accordian />
