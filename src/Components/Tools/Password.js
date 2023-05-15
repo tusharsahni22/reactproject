@@ -139,7 +139,7 @@ const LableInputOption =styled.option`
 function Password(props) {
 
   const [RandomPass,setRandomPass] = useState()
-  const [Lenght,setLength] = useState()
+  const [Lenght,setLength] = useState(10)
   const [Caps,setCaps] = useState(false)
   const [Lower,setLower] = useState(false)
   const [Num,setNum] = useState(false)
@@ -167,7 +167,7 @@ function Password(props) {
   <FieldValue>
     <PasswordGENStyle>
       <Lable>Length</Lable>
-      <LableInput  onChange={(e)=>{setLength(e.target.value)}}></LableInput>
+      <LableInput value={Lenght} onChange={(e)=>{setLength(e.target.value)}}></LableInput>
     </PasswordGENStyle>
     <PasswordGENStyle>
       <Lable>Minimum Numbers</Lable>
