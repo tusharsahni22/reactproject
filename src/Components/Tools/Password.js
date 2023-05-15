@@ -21,7 +21,7 @@ const CopyButton =styled.button`
     height: 32px;
     background: transparent;
     padding: 0px 8px;
-    margin: 10px;
+    margin: 12px 10px;
     outline: none;
     appearance: none;
     opacity: 1;
@@ -48,7 +48,7 @@ const RegenratePasswordButton =styled.button`
     border-radius: 6px;
     border: 0px;
     color: #fff;
-    margin: 10px;
+    margin: 12px 0;
 `;
 
 const FieldValue = styled.div`
@@ -60,7 +60,7 @@ const PasswordGENStyle = styled.div`
 // const RadioButton = styled.input``;
 const RadioButtonLabel = styled.label`
   margin: 0 15px 0 0;
-  font-size: 13px;
+  font-size: 15px;
   text-transform: none;
   text-align: left;
   letter-spacing: 0px;

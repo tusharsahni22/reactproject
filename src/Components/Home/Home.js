@@ -42,6 +42,7 @@ const Button = styled.button`
   font-size: 15px;
   border-radius: 5px;
   padding: 7px;
+  cursor: pointer;
 `;
 const Button2 = styled.button`
   display: flex;
@@ -52,6 +53,7 @@ const Button2 = styled.button`
   border-radius: 5px;
   padding: 7px 13px 7px 15px;
   margin: 10px 20px 0 39%;
+  cursor: pointer;
 `;
 const Img = styled.img`
 

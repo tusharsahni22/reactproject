@@ -16,7 +16,7 @@ const HeadingGen = styled.div`
   font-size: 23px;
   text-transform: none;
   text-align: left;
-  letter-spacing: 0px;
+  letter-spacing: 1px;
   line-height: 29px;
   white-space: pre-line;
   opacity: 1;
@@ -25,7 +25,9 @@ const HeadingGen = styled.div`
   font-family: "Nanum Gothic";
 `;
 const GenratedText = styled.div`
-  padding: 0px 0 0 10px;
+  padding: 0px 40%;
+  letter-spacing: 1px;
+  /* align-items: center; */
 
   display: flex;
   align-items: center;

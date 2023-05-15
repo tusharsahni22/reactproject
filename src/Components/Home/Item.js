@@ -110,6 +110,7 @@ border-radius: 5px;
 padding: 7px;
 height: fit-content;
 margin: 0px 4px;
+cursor: pointer;
 `;
 const Button4 = styled.div`
 background-color: white;
@@ -120,6 +121,7 @@ border-radius: 5px;
 padding: 7px;
 height: fit-content;
 margin: 0px 4px;
+cursor: pointer;
 
 `;
 const Option = styled.option`

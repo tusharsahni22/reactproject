@@ -18,7 +18,7 @@ const CopyButton = styled.button`
   height: 32px;
   background: transparent;
   padding: 0px 8px;
-  margin: 10px;
+  margin: 12px 10px;
   outline: none;
   appearance: none;
   opacity: 1;
@@ -32,6 +32,7 @@ const CopyButton = styled.button`
   background-color: rgb(251, 251, 251);
   border-radius: 4px;
   border: 1px solid rgb(192, 192, 192);
+  cursor: pointer;
 
 `;
 const RegenratePasswordButton = styled.button`
@@ -40,13 +41,13 @@ const RegenratePasswordButton = styled.button`
   box-sizing: border-box;
   overflow: hidden;
   outline: none;
-  cursor: inherit;
+  cursor: pointer;
   opacity: 1;
   background-color: rgb(23, 93, 220);
   border-radius: 6px;
   border: 0px;
   color: #fff;
-  margin: 10px;
+  margin: 12px 0;
 `;
 const RadioButton = styled.input``;
 const RadioButtonLabel = styled.label`

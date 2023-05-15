@@ -13,6 +13,7 @@ const Head = styled.div`
   font-size: 25px;
   margin: 20px 0 10px 20px;
   justify-content: space-between;
+  letter-spacing: 1px;
 `;
 const Button = styled.button`
  
