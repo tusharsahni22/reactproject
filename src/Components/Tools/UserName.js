@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import {useState} from "react";
 import styled from "styled-components";
 // import { generateFromEmail, generateUsername } from "unique-username-generator";
 
@@ -127,7 +127,8 @@ function UserName(props) {
   const [reqNum, setReqNum] = useState(false);
   const [reqCap, setReqCap] = useState(false);
 
-  function handleRegen() {
+  function handleRegen() 
+  {
     if (plusEmail) {
       let x = email.split("@")[0];
       x += "+";
@@ -136,6 +137,7 @@ function UserName(props) {
       x += email.split("@")[1];
       setMail("");
       setMail(x);
+      props.sendData(x)
       x = "";
     }
     if (catchEmail) {
@@ -145,6 +147,7 @@ function UserName(props) {
       x += email;
       setMail("");
       setMail(x);
+      props.sendData(x)
       x = "";
     }
     if (randomWord) {
@@ -153,6 +156,7 @@ function UserName(props) {
         x += Math.floor(Math.random() * 10000) + "";  
         setMail("");
         setMail(x);
+        props.sendData(x)
         x = "";
       }
       if(reqCap){
@@ -160,6 +164,7 @@ function UserName(props) {
         x = x.charAt(0).toUpperCase() + x.substring(1); // if uppercase        
         setMail("");
         setMail(x);
+        props.sendData(x)
         x = "";
       }
       if(reqCap && reqNum){
@@ -168,10 +173,12 @@ function UserName(props) {
         x += Math.floor(Math.random() * 10000) + "";        
         setMail("");
         setMail(x);
+        props.sendData(x)
         x = "";
       }
     }
-    props.sendData(mail)
+    
+    
   }
 
   return (

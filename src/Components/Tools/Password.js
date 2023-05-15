@@ -138,16 +138,16 @@ const LableInputOption =styled.option`
 
 function Password(props) {
 
-  const [RandomPass,setRandomPass] = useState()
-  const [Lenght,setLength] = useState()
-  const [Caps,setCaps] = useState(false)
+  // const [RandomPass,setRandomPass] = useState()
+  const [Lenght,setLength] = useState(10)
+  const [Caps,setCaps] = useState(true)
   const [Lower,setLower] = useState(false)
   const [Num,setNum] = useState(false)
   const [Special,setSpecial] = useState(false)
   
   function handleRandomPass(){                           
-    setRandomPass(generate({ length: Lenght ,special: Special,lowerCase: Lower, upperCase: Caps, numeric: Num }));
-    props.sendData(RandomPass)
+    props.sendData(generate({ length: Lenght ,special: Special,lowerCase: Lower, upperCase: Caps, numeric: Num }));
+    // props.sendData(RandomPass)
   }
 
   return (
@@ -167,7 +167,7 @@ function Password(props) {
   <FieldValue>
     <PasswordGENStyle>
       <Lable>Length</Lable>
-      <LableInput  onChange={(e)=>{setLength(e.target.value)}}></LableInput>
+      <LableInput value={Lenght} onChange={(e)=>{setLength(e.target.value)}}></LableInput>
     </PasswordGENStyle>
     <PasswordGENStyle>
       <Lable>Minimum Numbers</Lable>
@@ -183,7 +183,7 @@ function Password(props) {
   <OptionField>
     <Title>Options</Title>
     <div>
-      <CheckBoxSelector type="checkbox" onClick={e=>{setCaps(!Caps)}} />
+      <CheckBoxSelector type="checkbox" checked={Caps} onClick={e=>{setCaps(!Caps)}} />
       <RadioButtonLabel>A-Z</RadioButtonLabel>
     </div>
     <div>
