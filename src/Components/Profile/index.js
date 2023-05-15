@@ -5,7 +5,6 @@ import styled from "styled-components";
 import Profile from "./Profile";
 import Footer from "../Common/Footer"
 
-
 const Div = styled.div`
   display: flex;
   padding: 20px 15%;
@@ -16,10 +15,10 @@ function ProfileComponent() {
     <div>
       <Header />
       <Div>
-        <Sidebar />
-        <Profile />
-      
+        <Sidebar/>
+        <Profile/>
       </Div>
+ 
       <Footer/>
     </div>
   );

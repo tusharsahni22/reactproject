@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { GrFormClose } from "react-icons/gr";
 
@@ -162,12 +162,6 @@ function Item(props) {
     
     props.sendData(false);
   };
-  const handleSelect = (e) => {
-    
-    let value=e.target.value
-    setSelect(value)
-  };
-  const value= {login:"login",card:"card"}
   return (
     <Container>
       <Position>
