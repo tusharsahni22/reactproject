@@ -42,6 +42,7 @@ const ProfilePic = styled.img`
   height: 40px;
   padding: 8px 0;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 function Header() {
