@@ -1,11 +1,14 @@
-import React from 'react'
+import {React , useState}from 'react'
 import styled from 'styled-components'
-
+import Sidebar from "./Sidebar";
+import PrivacyComponent from "./Privacy"
 const Account = styled.div`
 width: 100%;
 padding: 10px;
 `;
-
+const Wrapper = styled.div`
+display: flex;
+`;
 const Heading =styled.div`
 
 `;
@@ -70,10 +73,12 @@ border-radius: 5px;
 
 
 function ProfileComponent() {
+    const [account,setAccount] = useState(true)
 
   return (
-    
-        <Account>
+  <Wrapper>
+    <Sidebar sendData={setAccount}/>
+       {account ?  <Account>
         <Heading>My Account </Heading>
         <Line/>
         <Lable>Name</Lable>
@@ -95,7 +100,8 @@ function ProfileComponent() {
             <Input/>
      
         <Continue>Continue</Continue>
-        </Account>
+        </Account> : <PrivacyComponent/>}
+        </Wrapper>
 
   )
 }
