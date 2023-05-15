@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Password from "./Password";
 import UserName from "./UserName";
@@ -78,10 +78,6 @@ function Tools() {
   const [GenPass, setGenPass] = useState("");
   const [UserNameCheck, setUserNameCheck] = useState("");
   const [PassCheckBox, setPassCheckBox] = useState("");
-
-  useEffect(()=>{
-console.log("first")
-  },[setGenPass])
 
   return (
     <>
