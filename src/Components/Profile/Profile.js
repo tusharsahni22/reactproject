@@ -2,6 +2,7 @@ import {React , useState}from 'react'
 import styled from 'styled-components'
 import Sidebar from "./Sidebar";
 import PrivacyComponent from "./Privacy"
+
 const Account = styled.div`
 width: 100%;
 padding: 10px;
@@ -10,7 +11,9 @@ const Wrapper = styled.div`
 display: flex;
 `;
 const Heading =styled.div`
+font-size: 20px;
 
+letter-spacing: 0.5px;
 `;
 const Line = styled.div`
 height: 1.5px;
@@ -90,8 +93,8 @@ function ProfileComponent() {
      
         <Submit>Save</Submit>
         <br/>
-        <br/>
-        <Heading>Change email </Heading>
+      
+        <Heading>Change Email </Heading>
         <Line/>
         <Lable>Master password </Lable>
             <Input/>

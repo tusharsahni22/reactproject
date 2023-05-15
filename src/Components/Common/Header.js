@@ -53,7 +53,7 @@ function Header() {
           <Text onClick={()=>{navigate("/")}}>Vault</Text>
           <Text onClick={()=>{navigate("/send")}}>Send</Text>
           <Text onClick={()=>{navigate("/tools")}}>Tools</Text>
-          <Text>Report</Text>
+          
         </Profile>
         <Profile>
             <ProfilePic src="./avatar.jpg" onClick={()=>(navigate("/user-profile"))}/>

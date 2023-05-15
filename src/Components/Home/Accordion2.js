@@ -8,8 +8,7 @@ import Typography from '@mui/material/Typography';
 import {AiOutlineStar} from 'react-icons/ai';
 import {MdOutlineLogin} from 'react-icons/md';
 import {AiOutlineCreditCard} from 'react-icons/ai';
-import {AiOutlineIdcard} from 'react-icons/ai';
-import {CiStickyNote} from 'react-icons/ci';
+import {BsTrash3} from 'react-icons/bs';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -73,17 +72,14 @@ export default function CustomizedAccordions() {
             <AiOutlineCreditCard style={{paddingRight :5}}/>
            Card
           </Typography>
-          <Typography>
-            <AiOutlineIdcard style={{paddingRight :5}}/>
-           Identity
-          </Typography>
-          <Typography>
-            <CiStickyNote style={{paddingRight :5}}/>
-           Secure Note
-          </Typography>
+          
           
         </AccordionDetails>
       </Accordion>
+      <div style={{display: 'flex', margin: 10}}>
+      <BsTrash3 style={{marginRight:10,marginLeft:10}}/>
+      <div style={{paddingBottom:20}}> Trash </div>
+      </div>
      
     </div>
   );

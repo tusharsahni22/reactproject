@@ -47,7 +47,6 @@ cursor: pointer;
   }
 `;
 const Wrapper = styled.div`
-/* padding : 0 0 0 15%;  */
 margin: 5px;
 width: 216px;
 `;
@@ -58,8 +57,6 @@ function Sidebar() {
     <ToolsSideBar>
     <Heading> Tools </Heading>
     <SpecialTools>Genrator</SpecialTools>
-    <SpecialTools>Export Data</SpecialTools>
-    <SpecialTools>Import Data</SpecialTools>
   </ToolsSideBar>
     </Wrapper>
   )

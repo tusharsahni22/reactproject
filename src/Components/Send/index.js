@@ -8,6 +8,7 @@ import Send from "./Send";
 
 const Div = styled.div`
   display: flex;
+  padding: 0 15%;
 `;
 
 function SendComponent() {

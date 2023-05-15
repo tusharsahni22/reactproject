@@ -6,7 +6,11 @@ const Privacy = styled.div`
 width: 100%;
 padding: 10px;
 `;
-const Heading =styled.div``;
+const Heading =styled.div`
+color:'#175ddc';
+font-size: 20px;
+letter-spacing: 0.5px;
+`;
 const Line = styled.div`
 height: 1.5px;
 background-color: lightgrey;
@@ -16,12 +20,14 @@ margin: 2% 0;
 const Heading2 = styled.div`
 font-size: 20px;
 font-weight: bold;
+letter-spacing: 0.5px;
 `;
 
 const Lable = styled.div`
     color: #333;
     margin: 7px 0; 
     font-weight: 550;
+    letter-spacing: 0.5px;
 `;
 const Input = styled.input`
     background-color: #fbfbfb;
@@ -61,13 +67,14 @@ margin: 15px 0;
 text-align: center;
 padding: 6px;
 border-radius: 5px;
+letter-spacing: 0.5px;
 `;
 
 function PrivacyComponent() {
   return (
    
     <Privacy>
-        <Heading style={{color:'#175ddc', fontSize: 20}}>Master password </Heading>
+        <Heading >Master password </Heading>
       <Line />
       <Heading2> Change master password</Heading2>
       <br/>
@@ -85,7 +92,7 @@ function PrivacyComponent() {
         </Pwd1>
       </Div>
       <Lable> master password hint</Lable>
-          <Input type='text' placeholder='qwerty@1-9'/>
+          <Input type='text' placeholder=' hint'/>
           <ChangePwd> Change master password</ChangePwd>
 
         </Privacy>

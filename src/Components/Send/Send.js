@@ -15,14 +15,17 @@ const Head = styled.div`
   justify-content: space-between;
 `;
 const Button = styled.button`
-  margin-right: 20%;
+ 
   display: flex;
   justify-content: space-between;
-  color: Blue;
+  color: #175ddc;
   border: none;
-  font-size: 15px;
+  font-size: 13px;
   border-radius: 5px;
   padding: 7px;
+  &:hover { background-color:#175ddc; color:white}
+  outline: solid 0.5px #ced4da;
+  
 `;
 
 function SendComponent()
@@ -31,7 +34,7 @@ function SendComponent()
   return (
     <Container>
     <Head>
-      All vaults
+      Send
       <Button onClick={()=> {setClose(!close)}}>
         <AiOutlinePlus /> New item
       </Button>
