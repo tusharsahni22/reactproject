@@ -138,32 +138,23 @@ const LableInputOption =styled.option`
 
 function Password(props) {
 
-  const [RandomPass,setRandomPass] = useState()
+  const [RandomPass,setRandomPass] = useState("")
   const [Lenght,setLength] = useState(10)
   const [Caps,setCaps] = useState(true)
   const [Lower,setLower] = useState(false)
   const [Num,setNum] = useState(false)
   const [Special,setSpecial] = useState(false)
+  let copiedData = ""
   
   function handleRandomPass(){                           
-    setRandomPass(props.sendData(generate({ length: Lenght ,special: Special,lowerCase: Lower, upperCase: Caps, numeric: Num })))
-    // props.sendData(RandomPass)
+    copiedData=((generate({ length: Lenght ,special: Special,lowerCase: Lower, upperCase: Caps, numeric: Num })))
+    props.sendData(copiedData)
+    setRandomPass(copiedData)
   }
 
   return (
     <>
-    {console.log(Lenght)}
     <Title>Password Type</Title>
-  {/* <RadioButtonDiv>
-    <div>
-      <RadioButton type="radio" />
-      <RadioButtonLabel>Password</RadioButtonLabel>
-    </div>
-    <div>
-      <RadioButton type="radio" />
-      <RadioButtonLabel>Passphrase</RadioButtonLabel>
-    </div>
-  </RadioButtonDiv> */}
   <FieldValue>
     <PasswordGENStyle>
       <Lable>Length</Lable>
