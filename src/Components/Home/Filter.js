@@ -4,7 +4,6 @@ import { CiCircleQuestion } from "react-icons/ci";
 import Accordion2 from "./Accordion2";
 
 const Container = styled.div`
-
 `;
 
 const Box = styled.div`
@@ -43,7 +42,7 @@ const SearchVault = styled.input`
   letter-spacing: 0.5px;
   height: 25px;
   background-color: rgb(249 249 249);
-  &:active { border-color: rgb(249 249 249)}
+  &:active { border-color: red}
 `;
 
 const CiCircleQuestions = styled.div`

@@ -9,8 +9,10 @@ const Container = styled.div`
   overflow-x: hidden;
   background-color: white;
   top: 10%;
-  left: 20%;
-  right: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   position: fixed;
   border: 1px solid;
   border-radius: 5px;
