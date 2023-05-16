@@ -68,6 +68,7 @@ text-align: center;
 padding: 6px;
 border-radius: 5px;
 letter-spacing: 0.5px;
+&:hover{ background-color:darkblue;}
 `;
 
 function PrivacyComponent() {
