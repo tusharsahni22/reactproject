@@ -52,14 +52,22 @@ margin: 5px;
 width: 216px;
 `;
 
-function Sidebar() {
+function Sidebar(props) {
+  const handleSidebar= (field)=>{
+    if(field === "myaccount"){      
+    props.sendData(true)
+  }
+  else{
+    props.sendData(false)
+  }
+}
   return (
     <Wrapper>
     <ToolsSideBar>
-    <Heading> Account Setting </Heading>
-    <SpecialTools>My Account</SpecialTools>
-    <SpecialTools>Privacy</SpecialTools>
-  </ToolsSideBar>
+    <Heading > Account Setting </Heading>
+    <SpecialTools onClick={()=>{handleSidebar("myaccount")}} >My Account</SpecialTools>
+    <SpecialTools onClick={()=>{handleSidebar("privacy")}} >Privacy</SpecialTools>
+    </ToolsSideBar>
     </Wrapper>
   )
 }

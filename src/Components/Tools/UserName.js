@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import {useState} from "react";
 import styled from "styled-components";
 // import { generateFromEmail, generateUsername } from "unique-username-generator";
 
@@ -18,7 +18,7 @@ const CopyButton = styled.button`
   height: 32px;
   background: transparent;
   padding: 0px 8px;
-  margin: 10px;
+  margin: 12px 10px;
   outline: none;
   appearance: none;
   opacity: 1;
@@ -32,6 +32,7 @@ const CopyButton = styled.button`
   background-color: rgb(251, 251, 251);
   border-radius: 4px;
   border: 1px solid rgb(192, 192, 192);
+  cursor: pointer;
 
 `;
 const RegenratePasswordButton = styled.button`
@@ -40,13 +41,13 @@ const RegenratePasswordButton = styled.button`
   box-sizing: border-box;
   overflow: hidden;
   outline: none;
-  cursor: inherit;
+  cursor: pointer;
   opacity: 1;
   background-color: rgb(23, 93, 220);
   border-radius: 6px;
   border: 0px;
   color: #fff;
-  margin: 10px;
+  margin: 12px 0;
 `;
 const RadioButton = styled.input``;
 const RadioButtonLabel = styled.label`
@@ -127,7 +128,8 @@ function UserName(props) {
   const [reqNum, setReqNum] = useState(false);
   const [reqCap, setReqCap] = useState(false);
 
-  function handleRegen() {
+  function handleRegen() 
+  {
     if (plusEmail) {
       let x = email.split("@")[0];
       x += "+";
@@ -136,6 +138,7 @@ function UserName(props) {
       x += email.split("@")[1];
       setMail("");
       setMail(x);
+      props.sendData(x)
       x = "";
     }
     if (catchEmail) {
@@ -145,6 +148,7 @@ function UserName(props) {
       x += email;
       setMail("");
       setMail(x);
+      props.sendData(x)
       x = "";
     }
     if (randomWord) {
@@ -153,6 +157,7 @@ function UserName(props) {
         x += Math.floor(Math.random() * 10000) + "";  
         setMail("");
         setMail(x);
+        props.sendData(x)
         x = "";
       }
       if(reqCap){
@@ -160,6 +165,7 @@ function UserName(props) {
         x = x.charAt(0).toUpperCase() + x.substring(1); // if uppercase        
         setMail("");
         setMail(x);
+        props.sendData(x)
         x = "";
       }
       if(reqCap && reqNum){
@@ -168,10 +174,12 @@ function UserName(props) {
         x += Math.floor(Math.random() * 10000) + "";        
         setMail("");
         setMail(x);
+        props.sendData(x)
         x = "";
       }
     }
-    props.sendData(mail)
+    
+    
   }
 
   return (

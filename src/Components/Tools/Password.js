@@ -21,7 +21,7 @@ const CopyButton =styled.button`
     height: 32px;
     background: transparent;
     padding: 0px 8px;
-    margin: 10px;
+    margin: 12px 10px;
     outline: none;
     appearance: none;
     opacity: 1;
@@ -48,7 +48,7 @@ const RegenratePasswordButton =styled.button`
     border-radius: 6px;
     border: 0px;
     color: #fff;
-    margin: 10px;
+    margin: 12px 0;
 `;
 
 const FieldValue = styled.div`
@@ -60,7 +60,7 @@ const PasswordGENStyle = styled.div`
 // const RadioButton = styled.input``;
 const RadioButtonLabel = styled.label`
   margin: 0 15px 0 0;
-  font-size: 13px;
+  font-size: 15px;
   text-transform: none;
   text-align: left;
   letter-spacing: 0px;
@@ -138,32 +138,23 @@ const LableInputOption =styled.option`
 
 function Password(props) {
 
-  const [RandomPass,setRandomPass] = useState()
+  const [RandomPass,setRandomPass] = useState("")
   const [Lenght,setLength] = useState(10)
-  const [Caps,setCaps] = useState(false)
+  const [Caps,setCaps] = useState(true)
   const [Lower,setLower] = useState(false)
   const [Num,setNum] = useState(false)
   const [Special,setSpecial] = useState(false)
+  let copiedData = ""
   
   function handleRandomPass(){                           
-    setRandomPass(generate({ length: Lenght ,special: Special,lowerCase: Lower, upperCase: Caps, numeric: Num }));
-    props.sendData(RandomPass)
+    copiedData=((generate({ length: Lenght ,special: Special,lowerCase: Lower, upperCase: Caps, numeric: Num })))
+    props.sendData(copiedData)
+    setRandomPass(copiedData)
   }
 
   return (
     <>
-    {console.log(Lenght)}
     <Title>Password Type</Title>
-  {/* <RadioButtonDiv>
-    <div>
-      <RadioButton type="radio" />
-      <RadioButtonLabel>Password</RadioButtonLabel>
-    </div>
-    <div>
-      <RadioButton type="radio" />
-      <RadioButtonLabel>Passphrase</RadioButtonLabel>
-    </div>
-  </RadioButtonDiv> */}
   <FieldValue>
     <PasswordGENStyle>
       <Lable>Length</Lable>
@@ -183,7 +174,7 @@ function Password(props) {
   <OptionField>
     <Title>Options</Title>
     <div>
-      <CheckBoxSelector type="checkbox" onClick={e=>{setCaps(!Caps)}} />
+      <CheckBoxSelector type="checkbox" checked={Caps} onClick={e=>{setCaps(!Caps)}} />
       <RadioButtonLabel>A-Z</RadioButtonLabel>
     </div>
     <div>
@@ -205,7 +196,7 @@ function Password(props) {
     <Buttons>
 
     <RegenratePasswordButton onClick={()=>{handleRandomPass()}}>Regenrate Password</RegenratePasswordButton>
-    <CopyButton>Copy Password</CopyButton>
+    <CopyButton onClick={(e)=>{navigator.clipboard.writeText(RandomPass)}}>Copy Password</CopyButton>
     </Buttons>
   </OptionField>
   

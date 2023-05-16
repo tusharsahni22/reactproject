@@ -9,8 +9,10 @@ const Container = styled.div`
   overflow-x: hidden;
   background-color: white;
   top: 10%;
-  left: 20%;
-  right: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   position: fixed;
   border: 1px solid;
   border-radius: 5px;
@@ -54,11 +56,6 @@ font-size: 15px;
 margin-top: 5px;
 `;
 
-const P1 = styled.div`
-color: grey;
-font-size: 15px;
-padding-left: 5px;
-`;
 const Text = styled.textarea`
 width: 750px;
 height: 150px;
@@ -86,6 +83,7 @@ border-radius: 5px;
 padding: 7px;
 height: fit-content;
 margin: 0px 4px;
+cursor: pointer;
 `;
 const Button3 = styled.div`
 background-color: white;
@@ -96,6 +94,7 @@ border-radius: 5px;
 padding: 7px;
 height: fit-content;
 margin: 0px 4px;
+cursor: pointer;
 
 `;
 

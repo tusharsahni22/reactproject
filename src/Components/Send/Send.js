@@ -13,24 +13,20 @@ const Head = styled.div`
   font-size: 25px;
   margin: 20px 0 10px 20px;
   justify-content: space-between;
+  letter-spacing: 1px;
 `;
 const Button = styled.button`
-  margin-right: 20%;
+ 
   display: flex;
   justify-content: space-between;
-  color: Blue;
+  color: #175ddc;
   border: none;
-  font-size: 15px;
+  font-size: 13px;
   border-radius: 5px;
   padding: 7px;
-`;
-const Send = styled.div`
-margin: 20px;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 22px;
-`;
-const Line = styled.div`
-height: 2px solid grey;
+  &:hover { background-color:#175ddc; color:white}
+  outline: solid 0.5px #ced4da;
+  
 `;
 
 function SendComponent()
@@ -39,7 +35,7 @@ function SendComponent()
   return (
     <Container>
     <Head>
-      All vaults
+      Send
       <Button onClick={()=> {setClose(!close)}}>
         <AiOutlinePlus /> New item
       </Button>

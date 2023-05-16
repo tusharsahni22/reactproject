@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { GrFormClose } from "react-icons/gr";
 
@@ -110,6 +110,7 @@ border-radius: 5px;
 padding: 7px;
 height: fit-content;
 margin: 0px 4px;
+cursor: pointer;
 `;
 const Button4 = styled.div`
 background-color: white;
@@ -120,6 +121,7 @@ border-radius: 5px;
 padding: 7px;
 height: fit-content;
 margin: 0px 4px;
+cursor: pointer;
 
 `;
 const Option = styled.option`
@@ -136,16 +138,6 @@ display:flex;
 width:100%;
 `;
 
-const Name = styled.div`
-display: flex;
-width: 100%;
-`;
-const Div2 = styled.div`
-display: flex;
-`;
-const Div3 = styled.div`
-display: flex;
-`;
 const Month = styled.div`
 width: 50%;
 `;
@@ -172,7 +164,6 @@ function Item(props) {
     
     props.sendData(false);
   };
-  const value= {login:"login",card:"card"}
   return (
     <Container>
       <Position>

@@ -42,6 +42,7 @@ const ProfilePic = styled.img`
   height: 40px;
   padding: 8px 0;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 function Header() {
@@ -53,7 +54,7 @@ function Header() {
           <Text onClick={()=>{navigate("/")}}>Vault</Text>
           <Text onClick={()=>{navigate("/send")}}>Send</Text>
           <Text onClick={()=>{navigate("/tools")}}>Tools</Text>
-          <Text>Report</Text>
+          
         </Profile>
         <Profile>
             <ProfilePic src="./avatar.jpg" onClick={()=>(navigate("/user-profile"))}/>
