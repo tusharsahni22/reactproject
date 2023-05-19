@@ -202,17 +202,17 @@ function Item(props) {
           
           {(select === "login") ? <LoginDiv>
             <Pannel>
-            <Title> Name</Title>
-          <Button1 type="text" placeholder=""></Button1>
+            <Title>Name</Title>
+          <Button1 type="text" placeholder="Domain"></Button1>
 
           <Div>
             <User>
               <Title> Username</Title>
-              <Button2 type="text" placeholder=""></Button2>
+              <Button2 type="text" placeholder="CaptainAmera"></Button2>
             </User>
             <Pwd>
               <Title> Password</Title>
-              <Button2 type="password" placeholder=""></Button2>
+              <Button2 type="password"></Button2>
             </Pwd>
           </Div>
      
