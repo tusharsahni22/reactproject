@@ -9,6 +9,10 @@ import Send from "./Send";
 const Div = styled.div`
   display: flex;
   padding: 0 15%;
+  @media(max-width:1024px){
+
+    padding: 0 7%;
+  }
 `;
 
 function SendComponent() {

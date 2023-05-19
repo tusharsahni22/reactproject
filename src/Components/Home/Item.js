@@ -17,6 +17,11 @@ const Container = styled.div`
   position: fixed;
   border: 1px solid;
   border-radius: 5px;
+
+  @media(max-width: 1024px)
+  {
+    width: 590px;
+  }
 `;
 const Head = styled.div`
   display: flex;
@@ -61,7 +66,6 @@ const Button1 = styled.input`
 `;
 const Button2 = styled.input`
   margin-left: 4px;
-  width: 90%;
   padding: 8px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -89,6 +93,10 @@ height: 150px;
 margin: 5px;
 border-radius: 4px;
 border: 2px solid lightgray;
+@media(max-width: 1024px){
+  width: auto;
+
+}
 `;
 const Footer = styled.div`
 display: flex;
@@ -109,7 +117,7 @@ font-size: 15px;
 border-radius: 5px;
 padding: 7px;
 height: fit-content;
-margin: 0px 4px;
+margin: -5px 4px;
 cursor: pointer;
 &:hover{ background-color:darkblue;}
 `;
@@ -121,7 +129,7 @@ font-size: 15px;
 border-radius: 5px;
 padding: 7px;
 height: fit-content;
-margin: 0px 4px;
+margin: -5px 4px;
 cursor: pointer;
 &:hover{ background-color:lightgrey; color:black;}
 
@@ -156,7 +164,8 @@ margin-left: 4px;
   border: 2px solid lightgray;
 `;
 const Cvv = styled.div`
-width: 50%;
+padding: 0 0 78px 0;
+display: flex;
 `;
 
 function Item(props) {
@@ -246,13 +255,20 @@ function Item(props) {
             </Cardd>
           </Div>
           <Cvv>
+            <div>
               <Title>Security Code (CVV)</Title>
               <Button2 type="password" placeholder=""></Button2>
+              </div>
+              <div>
+              <Title></Title>
+              <Title></Title>
+              </div>
             </Cvv>
 
             </Pannel>
 
           </div>: ""}
+          
       <Footer>
         <Button3> Save</Button3>
         <Button4 onClick={() => {

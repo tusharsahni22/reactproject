@@ -160,16 +160,7 @@ function Password(props) {
       <Lable>Length</Lable>
       <LableInput value={Lenght} onChange={(e)=>{setLength(e.target.value)}}></LableInput>
     </PasswordGENStyle>
-    <PasswordGENStyle>
-      <Lable>Minimum Numbers</Lable>
-      <LableInputSelect><LableInputOption value="yes">Yes</LableInputOption>
-  <LableInputOption value="no">No</LableInputOption></LableInputSelect>
-    </PasswordGENStyle>
-    <PasswordGENStyle>
-      <Lable>Minimum special</Lable>
-      <LableInputSelect><LableInputOption value="yes">Yes</LableInputOption>
-  <LableInputOption value="no">No</LableInputOption></LableInputSelect>
-    </PasswordGENStyle>
+    
   </FieldValue>
   <OptionField>
     <Title>Options</Title>
