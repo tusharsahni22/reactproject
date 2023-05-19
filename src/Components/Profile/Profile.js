@@ -56,6 +56,7 @@ margin: 15px 0;
 text-align: center;
 padding: 6px;
 border-radius: 5px;
+&:hover{ background-color:darkblue;}
 `;
 const Continue = styled.div`
 background-color: #175ddc;
@@ -72,7 +73,9 @@ margin: 15px 0;
 text-align: center;
 padding: 6px;
 border-radius: 5px;
+&:hover{ background-color:darkblue;}
 `;
+
 
 
 function ProfileComponent() {

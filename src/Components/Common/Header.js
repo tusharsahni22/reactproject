@@ -31,6 +31,7 @@ const Text = styled.div`
   visibility: visible;
   color: rgb(186, 207, 245);
   font-family: "Nanum Gothic";
+  &:hover{ font-weight: bold; color:white;}
 `;
 
 const Profile = styled.div`

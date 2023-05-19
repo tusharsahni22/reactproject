@@ -111,10 +111,11 @@ padding: 7px;
 height: fit-content;
 margin: 0px 4px;
 cursor: pointer;
+&:hover{ background-color:darkblue;}
 `;
 const Button4 = styled.div`
 background-color: white;
-color: gray;
+color: grey;
 border: 1px solid lightgray;
 font-size: 15px;
 border-radius: 5px;
@@ -122,6 +123,7 @@ padding: 7px;
 height: fit-content;
 margin: 0px 4px;
 cursor: pointer;
+&:hover{ background-color:lightgrey; color:black;}
 
 `;
 const Option = styled.option`

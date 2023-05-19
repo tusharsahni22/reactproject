@@ -43,6 +43,7 @@ const Button = styled.button`
   border-radius: 5px;
   padding: 7px;
   cursor: pointer;
+    &:hover{ background-color: darkblue;}
 `;
 const Button2 = styled.button`
   display: flex;
@@ -54,6 +55,7 @@ const Button2 = styled.button`
   padding: 7px 13px 7px 15px;
   margin: 10px 20px 0 39%;
   cursor: pointer;
+  &:hover{ background-color: darkblue;}
 `;
 const Img = styled.img`
 
