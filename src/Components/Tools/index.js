@@ -9,6 +9,9 @@ const Div = styled.div`
   display: flex;
   padding: 0 15%;
   margin: 20px 0;
+  @media( max-width: 1024px ){
+    padding: 0 7%;
+  }
 `;
 
 function ToolComponent() {

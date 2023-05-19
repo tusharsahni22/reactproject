@@ -7,12 +7,20 @@ margin: 5px 5px 5px 5px;
 const Footerr = styled.div`
 display: flex;
 justify-content: space-between;
-margin: 0 15% 0 15%;
+margin: 0 15%;
+@media(max-width: 1024px)
+{
+  margin: 0 7%;
+}
 `;
 const Line = styled.div`
   height: 1.25px;
     background-color: lightgrey;
     margin: 20px 15% 30px 15%;
+    @media(max-width: 1024px)
+{
+  margin: 20px 7% 30px 7%;
+}
 `;
 
 

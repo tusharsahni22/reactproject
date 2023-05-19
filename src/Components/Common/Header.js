@@ -14,6 +14,10 @@ const Head = styled.div`
   opacity: 1;
   background-color: rgb(23, 93, 220);
   border-bottom: 0px;
+  @media( max-width:1024px)
+  {
+    padding: 0 7%;
+  }
 `;
 const Text = styled.div`
   padding: 20px 0 0 0;

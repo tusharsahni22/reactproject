@@ -26,6 +26,9 @@ const Button = styled.button`
   padding: 7px;
   &:hover { background-color:#175ddc; color:white}
   outline: solid 0.5px #ced4da;
+  @media(max-width: 1024px){
+    &:hover { background-color:#175ddc; color:white}
+  }
   
 `;
 

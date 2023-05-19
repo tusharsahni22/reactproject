@@ -16,6 +16,9 @@ const Container = styled.div`
   position: fixed;
   border: 1px solid;
   border-radius: 5px;
+  @media(max-width: 1024px){
+    width: 600px;
+  }
 `;
 const Position = styled.div`
 position: sticky;
@@ -33,7 +36,6 @@ const Line = styled.div`
   background-color: lightgray;
 `;
 const Pannel = styled.div`
-width: 100%;
   padding-left: 1%;
 `;
 const Title = styled.div`
@@ -82,7 +84,7 @@ font-size: 15px;
 border-radius: 5px;
 padding: 7px;
 height: fit-content;
-margin: 0px 4px;
+margin: -5px 4px;
 cursor: pointer;
 &:hover{ background-color:darkblue;}
 `;
@@ -94,7 +96,7 @@ font-size: 15px;
 border-radius: 5px;
 padding: 7px;
 height: fit-content;
-margin: 0px 4px;
+margin: -5px 4px;
 cursor: pointer;
 &:hover{ background-color:lightgrey; color:black;}
 
