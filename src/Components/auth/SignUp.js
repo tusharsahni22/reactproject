@@ -5,6 +5,7 @@ import { singUpService } from "../services/auth_service";
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -160,18 +161,23 @@ function Singup() {
   const [password, setPassword] = useState('');
   
   const handlesignUpData= ()=>{
-      // e.preventDefault();
       let data = {"name": name,
       "email":email,
       "password":password
       }
       singUpService(data).then((result)=>{
-        if(result.data === "User already exits"){
-        console.log("sub",result.data)}
-        toast(result.data);
-      })
-      
-    }
+        console.log("submit",result.status)
+        if(result.status === 201){
+          console.log("sub",result.data)
+          toast.success("Signup Successfull")
+          setName("")
+          setPassword("")
+          setEmail("")        
+        }
+        else toast.error(result.data)        
+      }
+    )     
+  }
 
   return (
     <Wrapper>

@@ -1,6 +1,10 @@
-import React from "react";
+import React ,{useState} from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import {loginService} from "../services/auth_service"
+import {  ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -133,8 +137,32 @@ text-align: center;
 
 function Login() {
   let navigate = useNavigate()
+  const [email,setEmail]= useState("")
+  const [password,setPassword]= useState("")
+  
+  const handleLogin =()=>{
+    let data = {
+      "email":email,
+      "password":password
+    }
+    console.log("log",data)
+    loginService(data).then((result)=>{
+      console.log("log",result)
+      if(result.status === 200) {
+        toast.success("Login Sucess")
+        setPassword("")
+        setEmail("")
+      }
+      else{toast.error(result.data)
+        setPassword("")
+        setEmail("")}
+    }).catch((e)=>{
+      console.log("login err",e)
+    })
+  }
   return (
     <Wrapper>
+      <ToastContainer/>
       <Section1>
         <HeadingFeature>Features</HeadingFeature>
         <Features>Easy</Features>
@@ -153,13 +181,13 @@ function Login() {
           <Fileds>
            
             <SingUpInputStyle>
-              <Email placeholder="Email"></Email>
+              <Email  value={email}  onChange={(e)=>{setEmail(e.target.value)}} placeholder="Email"></Email>
             </SingUpInputStyle>
             <SingUpInputStyle>
-              <Password placeholder="Password"></Password>
+              <Password type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password"></Password>
             </SingUpInputStyle>
           </Fileds>
-          <SubmitButton>LogIn</SubmitButton>
+          <SubmitButton onClick={()=>{handleLogin()}}>LogIn</SubmitButton>
         </SingUpSection>
       </Section2>
     </Wrapper>
