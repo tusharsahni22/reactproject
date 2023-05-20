@@ -2,6 +2,8 @@ import {React , useState}from 'react'
 import styled from 'styled-components'
 import Sidebar from "./Sidebar";
 import PrivacyComponent from "./Privacy"
+import { StyledEngineProvider } from '@mui/styled-engine';
+import { style } from '@mui/system';
 
 const Account = styled.div`
 width: 100%;
@@ -75,6 +77,32 @@ padding: 6px;
 border-radius: 5px;
 &:hover{ background-color:darkblue;}
 `;
+const Heading2 =styled.div`
+font-size: 25px;
+color: #ec3f3f;
+font-weight: 500;
+margin: 15px 0;
+`;
+const LogoutBox = styled.div`
+height: max-content;
+outline: solid .5px #ec3f3f;
+`;
+const LogoutButton = styled.button`
+margin: 20px;
+padding: 5px 15px;
+cursor: pointer;
+font-size: 14px;
+font-weight: bold;
+color: #ec3f3f;
+background-color: white;
+&:hover{ background-color: #ec3f3f;
+color: white;
+font-weight: bold;
+}
+`;
+const Para = styled.p`
+padding: 15px 0 5px 20px;
+`;
 
 
 
@@ -106,6 +134,13 @@ function ProfileComponent() {
             <Input/>
      
         <Continue>Continue</Continue>
+
+        <br/>
+        <Heading2> Danger Zone</Heading2>
+        <LogoutBox>
+            <Para>Careful, these actions are not reversible!</Para>
+            <LogoutButton> Logout</LogoutButton>
+        </LogoutBox>
         </Account> : <PrivacyComponent/>}
         </Wrapper>
 
