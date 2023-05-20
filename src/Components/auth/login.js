@@ -1,10 +1,10 @@
 import React ,{useState} from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {loginService} from "../services/auth_service"
-import {  ToastContainer,toast } from "react-toastify";
+import {ToastContainer,toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+import { doLoggedIn } from ".";
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -100,6 +100,7 @@ const SubmitButton = styled.button`
   margin: 10px 0 0 0;
   border: none;
   color: white;
+  cursor: pointer;
 `;
 const Features = styled.div`
     margin:15px;
@@ -145,13 +146,17 @@ function Login() {
       "email":email,
       "password":password
     }
+  
     console.log("log",data)
     loginService(data).then((result)=>{
       console.log("log",result)
       if(result.status === 200) {
         toast.success("Login Sucess")
+        doLoggedIn(result.data)
         setPassword("")
         setEmail("")
+        navigate("/")
+        
       }
       else{toast.error(result.data)
         setPassword("")
