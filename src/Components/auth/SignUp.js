@@ -118,6 +118,7 @@ const SubmitButton = styled.button`
   margin: 10px 0 0 0;
   border: none;
   color: white;
+  cursor: pointer;
 `;
 
 const Features = styled.div`
@@ -154,17 +155,35 @@ text-align: center;
     font-family: "Work Sans";
 `;
 
+const Error=styled.div`
+color:red;
+text-align: center;
+`;
+
 function Singup() {
   let navigate =useNavigate()
+  const [error,setError] =useState("")
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+  const [cnfPassword, setcnfPassword] = useState('');
+
+  const handleRedirect=()=>{
+    navigate("/login")
+  }  
   const handlesignUpData= ()=>{
+    if(name==="" || email === "" || password==="" || cnfPassword===""){
+      setError("Enter all fields")
+    }
+    else if(password !== cnfPassword ){
+      setError("Password and Confirm password does not matched")
+    }
+    else {
       let data = {"name": name,
       "email":email,
       "password":password
       }
+      
       singUpService(data).then((result)=>{
         console.log("submit",result.status)
         if(result.status === 201){
@@ -172,12 +191,15 @@ function Singup() {
           toast.success("Signup Successfull")
           setName("")
           setPassword("")
-          setEmail("")        
+          setEmail("") 
+          setError("")
+          handleRedirect()       
         }
         else toast.error(result.data)        
       }
     )     
   }
+}
 
   return (
     <Wrapper>
@@ -208,13 +230,15 @@ function Singup() {
               <Email value={email} onChange={(e)=>(setEmail(e.target.value))} placeholder="Email"></Email>
             </SingUpInputStyle>
             <SingUpInputStyle>
-              <Password value={password} onChange={(e)=>(setPassword(e.target.value))} placeholder="Password"></Password>
+              <Password type="password" value={password} onChange={(e)=>(setPassword(e.target.value))} placeholder="Password"></Password>
             </SingUpInputStyle>
             <SingUpInputStyle>
-              <RePassword placeholder="Repeat Password"></RePassword>
+              <RePassword value={cnfPassword} onChange={(e)=>(setcnfPassword(e.target.value))} placeholder="Repeat Password"></RePassword>
             </SingUpInputStyle>
           </Fileds>
           <SubmitButton onClick={()=>{handlesignUpData()}}>Submit</SubmitButton>
+          <Error>{error}</Error>
+          
         </SingUpSection>
       </Section2>
     </Wrapper>
