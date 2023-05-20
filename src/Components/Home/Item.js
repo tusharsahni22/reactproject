@@ -20,7 +20,8 @@ const Container = styled.div`
 
   @media(max-width: 1024px)
   {
-    width: 590px;
+    width: 600px;
+    
   }
 `;
 const Head = styled.div`
@@ -94,7 +95,7 @@ margin: 5px;
 border-radius: 4px;
 border: 2px solid lightgray;
 @media(max-width: 1024px){
-  width: auto;
+  width: 550px;
 
 }
 `;

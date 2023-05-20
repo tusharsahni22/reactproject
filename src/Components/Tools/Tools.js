@@ -25,10 +25,9 @@ const HeadingGen = styled.div`
   font-family: "Nanum Gothic";
 `;
 const GenratedText = styled.div`
-  padding: 0px 40%;
+  margin: 10px 0;
+  padding-left: 5px;
   letter-spacing: 1px;
-  /* align-items: center; */
-
   display: flex;
   align-items: center;
   height: 60px;
@@ -71,7 +70,15 @@ const RadioButtonLabel = styled.label`
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
 `;
-
+const Line = styled.div`
+height: .5px;
+background-color: lightgrey;
+margin: 4px 0;
+@media(max-width: 1024px)
+{
+  margin: 5px 0 12px 0;
+}
+`;
 const RadioButtonDiv = styled.div`
   display: flex;
 `;
@@ -86,6 +93,7 @@ function Tools() {
       <Wrapper>
         <Genrator>
           <HeadingGen>Genrator</HeadingGen>
+          <Line/>
           <GenratedText>{GenPass}</GenratedText>
           <Title>What would you like to</Title>
           <RadioButtonDiv>

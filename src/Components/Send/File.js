@@ -18,6 +18,7 @@ const Container = styled.div`
   border-radius: 5px;
   @media(max-width: 1024px){
     width: 600px;
+    overflow: hidden;
   }
 `;
 const Position = styled.div`
@@ -64,6 +65,10 @@ height: 150px;
 margin: 5px;
 border-radius: 4px;
 border: 2px solid lightgray;
+@media(max-width:1024px)
+{
+  width: 550px;
+}
 `;
 const Footer = styled.div`
 display: flex;
