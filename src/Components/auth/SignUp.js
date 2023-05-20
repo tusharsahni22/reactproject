@@ -14,6 +14,9 @@ const Section1 = styled.div`
   background-color: rgb(44, 122, 223);
   height: 100vh;
   width: 500px;
+  @media(max-width: 1024px){
+    width: 300px;
+  }
 `;
 const Head = styled.div`
   display: flex;
