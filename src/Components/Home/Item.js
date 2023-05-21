@@ -75,8 +75,8 @@ const Button2 = styled.input`
 `;
 
 const Pannel = styled.div`
-width: 100%;
-  padding-left: 1%;
+  width: 100%;
+  padding: 0 2%;
 `;
 
 const Div = styled.div`

@@ -221,8 +221,8 @@ function Singup() {
         </Head>
 
         <SingUpSection>
-          <Title>SingUp</Title>
-          <TileDesc>Singup with your Email</TileDesc>
+          <Title>SignUp</Title>
+          <TileDesc>Signup with your Email</TileDesc>
           <Fileds>
            
           <SingUpInputStyle>

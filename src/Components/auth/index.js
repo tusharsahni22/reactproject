@@ -18,6 +18,7 @@ export const isLoggedIn = ()=>{
 
 export const doLogout = (data)=>{
     window.localStorage.removeItem("token")
+    window.location.reload(true)
     }
 
 
