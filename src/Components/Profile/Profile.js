@@ -2,8 +2,7 @@ import {React , useState}from 'react'
 import styled from 'styled-components'
 import Sidebar from "./Sidebar";
 import PrivacyComponent from "./Privacy"
-import { StyledEngineProvider } from '@mui/styled-engine';
-import { style } from '@mui/system';
+import { doLogout } from '../auth';
 
 const Account = styled.div`
 width: 100%;
@@ -109,6 +108,10 @@ padding: 15px 0 5px 20px;
 function ProfileComponent() {
     const [account,setAccount] = useState(true)
 
+    const handleLogout = ()=>{
+        doLogout()
+    }
+
   return (
   <Wrapper>
     <Sidebar sendData={setAccount}/>
@@ -139,7 +142,7 @@ function ProfileComponent() {
         <Heading2> Danger Zone</Heading2>
         <LogoutBox>
             <Para>Careful, these actions are not reversible!</Para>
-            <LogoutButton> Logout</LogoutButton>
+            <LogoutButton onClick={()=>{handleLogout()}}> Logout</LogoutButton>
         </LogoutBox>
         </Account> : <PrivacyComponent/>}
         </Wrapper>

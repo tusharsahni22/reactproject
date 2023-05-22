@@ -6,6 +6,9 @@ import Footer from "../Common/Footer"
 
 const Div = styled.div`
   padding: 20px 15%;
+  @media(max-width:1024px){
+    padding:20px 7%
+  }
 `;
 
 function ProfileComponent() {
