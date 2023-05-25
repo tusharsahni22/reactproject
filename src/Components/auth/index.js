@@ -23,3 +23,6 @@ export const doLogout = (data)=>{
 
 
 // currentUser
+export const currentUser = ()=>{
+    return window.localStorage.getItem("token")
+}
