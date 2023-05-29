@@ -114,7 +114,8 @@ function PrivacyComponent() {
     } else {
       let data = { password: password, newpassword: newpassword };
       changeProfile(data).then((result) => {
-        if (result.status === 200) {
+        console.log("first",result)
+        if (result.status === 201) {
           setPassword("");
           setNewPassword("");
           setcnfPassword("");

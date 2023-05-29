@@ -121,7 +121,7 @@ function ProfileComponent() {
     useEffect(()=>{
         const handleProfileDetails = ()=>{
             getUser().then((result)=>{
-                    setProfileDetails(result)
+                setProfileDetails(result)
             })
         }
         handleProfileDetails()
@@ -139,7 +139,7 @@ function ProfileComponent() {
             
         let data = {"password":password,"email":email}
         changeProfile(data).then((result)=>{
-        if(result.status===200){
+        if(result.status===201){
           setPassword("")
           setEmail("")
           toast.success("Email changed sucessfully")
