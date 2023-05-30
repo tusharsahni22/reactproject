@@ -114,27 +114,6 @@ const LableInput = styled.input`
   border-radius: 6px;
   border: 1px solid rgb(199, 199, 203);
 `;
-const LableInputSelect = styled.select`
-  height: 34px;
-  width: 175px;
-  padding: 0 5px;
-  overflow: hidden;
-  opacity: 1;
-  outline: none;
-  background-color: rgb(251, 251, 251);
-  border-radius: 6px;
-  border: 1px solid rgb(199, 199, 203);
-`;
-const LableInputOption =styled.option`
-  height: 34px;
-  padding: 0 5px;
-  overflow: hidden;
-  opacity: 1;
-  outline: none;
-  background-color: rgb(251, 251, 251);
-  border-radius: 6px;
-  border: 1px solid rgb(199, 199, 203);
-`;
 
 function Password(props) {
 
