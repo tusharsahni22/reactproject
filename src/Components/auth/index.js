@@ -8,8 +8,10 @@ export const isLoggedIn = ()=>{
 
 
 // doLoggedIn
- export const doLoggedIn = (data)=>{
- window.localStorage.setItem("token",data)
+ export const doLoggedIn = async(data,next)=>{
+    window.localStorage.clear()
+    window.localStorage.setItem("token",JSON.stringify(data))
+    next()
  }
 
 
@@ -23,3 +25,10 @@ export const doLogout = (data)=>{
 
 
 // currentUser
+export const currentUser =()=>{
+    let dataString= window.localStorage.getItem("token")
+    let data=JSON.parse(dataString)
+    console.log("user",data)
+     return data?.result  
+    
+}

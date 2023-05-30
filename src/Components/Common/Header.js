@@ -18,6 +18,10 @@ const Head = styled.div`
   {
     padding: 0 7%;
   }
+  @media( max-width:767px)
+  {
+    display:none;
+  }
 `;
 const Text = styled.div`
   padding: 20px 0 0 0;
@@ -40,6 +44,10 @@ const Text = styled.div`
 
 const Profile = styled.div`
   display: flex;
+  @media (max-width: 767px){
+  justify-content: space-evenly;
+  width: 100%;
+}
 `;
 const ProfilePic = styled.img`
    vertical-align: middle;
@@ -48,6 +56,21 @@ const ProfilePic = styled.img`
   padding: 8px 0;
   border-radius: 50%;
   cursor: pointer;
+`;
+
+const Mobile = styled.div`
+position:absolute;
+bottom:0px;
+width:100%;
+display: flex;
+justify-content: space-between;
+height: 57px;
+opacity: 1;
+background-color: rgb(23, 93, 220);
+border-bottom: 0px;
+@media (min-width:768px){
+  display: none;
+}
 `;
 
 function Header() {
@@ -65,6 +88,18 @@ function Header() {
             <ProfilePic src="./avatar.jpg" onClick={()=>(navigate("/user-profile"))}/>
         </Profile>
       </Head>
+
+      <Mobile>
+      
+        <Profile>
+          <Text onClick={()=>{navigate("/")}}>Vault</Text>
+          <Text onClick={()=>{navigate("/send")}}>Send</Text>
+          <Text onClick={()=>{navigate("/tools")}}>Tools</Text>
+          <ProfilePic src="./avatar.jpg" onClick={()=>(navigate("/user-profile"))}/>
+        </Profile>
+     
+          
+      </Mobile>
     </Wrapper>
   );
 }

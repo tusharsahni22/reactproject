@@ -143,6 +143,12 @@ function Login() {
   let navigate = useNavigate()
   const [email,setEmail]= useState("")
   const [password,setPassword]= useState("")
+
+  const clearState=()=>{
+    setPassword("")
+        setEmail("")
+        navigate("/")
+  }
   
   const handleLogin =()=>{
     let data = {
@@ -155,10 +161,8 @@ function Login() {
       console.log("log",result)
       if(result.status === 200) {
         toast.success("Login Sucess")
-        doLoggedIn(result.data)
-        setPassword("")
-        setEmail("")
-        navigate("/")
+        doLoggedIn(result.data,clearState)
+        
         
       }
       else{toast.error(result.data)
