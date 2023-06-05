@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Password from "./Password";
 import UserName from "./UserName";
+import {BsThreeDotsVertical} from "react-icons/bs";
 
 const Wrapper = styled.div`
 
@@ -23,6 +24,13 @@ const HeadingGen = styled.div`
   visibility: visible;
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
+  @media (max-width: 768px)
+  {
+    /* align-items: center; */
+    padding: 0 40%;
+    background-color: black;
+    color: white;
+  }
 `;
 const GenratedText = styled.div`
   margin: 10px 0;
@@ -78,9 +86,19 @@ margin: 4px 0;
 {
   margin: 5px 0 12px 0;
 }
+@media (max-width: 768px){
+  display: none;
+}
 `;
 const RadioButtonDiv = styled.div`
   display: flex;
+`;
+const Div = styled.div`
+@media (max-width:768px){
+display: flex;
+justify-content: space-around;
+background-color: black;
+}
 `;
 
 function Tools() {
@@ -92,7 +110,10 @@ function Tools() {
     <>
       <Wrapper>
         <Genrator>
+          <Div>
           <HeadingGen>Genrator</HeadingGen>
+          <BsThreeDotsVertical style={{color: 'white', marginTop: '8px'}}/>
+          </Div>
           <Line/>
           <GenratedText>{GenPass}</GenratedText>
           <Title>What would you like to</Title>

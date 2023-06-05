@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import {AiOutlinePlus} from 'react-icons/ai'
 import { useState } from 'react';
 import File from './File';
+import {BsSearch} from "react-icons/bs";
+import {AiOutlineInfoCircle} from "react-icons/ai";
 
 const Container = styled.div`
   width: 100%;
@@ -14,6 +16,9 @@ const Head = styled.div`
   margin: 20px 0 10px 20px;
   justify-content: space-between;
   letter-spacing: 1px;
+  @media (max-width: 768px){
+    display: none;
+  }
 `;
 const Button = styled.button`
  
@@ -32,6 +37,20 @@ const Button = styled.button`
   
 `;
 
+const Mobile  = styled.div`
+ @media (max-width: 768px){
+  display: flex;
+  /* margin-right: 20%; */
+  font-size: 20px;
+  padding: 10px;
+  margin: 20px 0 10px 20px;
+  justify-content: space-between;
+  letter-spacing: 1px;
+  background-color: black;
+  color: white;
+ }
+`;
+
 function SendComponent()
  {
   const [close,setClose] = useState(false)
@@ -44,6 +63,15 @@ function SendComponent()
       </Button>
       </Head>
       {close ?<File sendData={setClose}/> : " "}
+
+      <Mobile>
+        <AiOutlineInfoCircle/>
+      Send
+      <BsSearch/>      
+        <AiOutlinePlus onClick={()=> {setClose(!close)}}/> 
+       
+      </Mobile>
+      {/* {close ?<File sendData={setClose}/> : " "} */}
 
       </Container>
   )

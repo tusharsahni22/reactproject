@@ -23,6 +23,14 @@ const Container = styled.div`
     width: 600px;
     
   }
+  @media (max-width:768px){
+    width: 400px;
+    overflow: hidden;
+    top: 15%;
+    height: 480px;
+    overflow: scroll;
+    width: 500px;
+  }
 `;
 const Head = styled.div`
   display: flex;
@@ -30,15 +38,25 @@ const Head = styled.div`
   background-color: white;
   height: 15px;
   padding: 20px 10px;
+  @media(max-width: 768px){
+  width: 470px;
+  }
+  
 `;
 const Position = styled.div`
 position: sticky;
 top: 0;
+@media(max-width: 768px){
+  width: 470px;
+  }
 `;
 
 const Line = styled.div`
   height: 1px;
   background-color: lightgray;
+  @media(max-width: 768px){
+  width: 470px;
+  }
   
 `;
 const Line2 = styled.div`
@@ -96,8 +114,10 @@ border-radius: 4px;
 border: 2px solid lightgray;
 @media(max-width: 1024px){
   width: 550px;
-
-}
+  }
+  @media(max-width: 768px){
+  width: 470px;
+  }
 `;
 const Footer = styled.div`
 display: flex;

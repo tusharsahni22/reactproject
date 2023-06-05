@@ -3,6 +3,8 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import Item from "./Item";
 import { useState } from "react";
+import {AiOutlineCreditCard} from 'react-icons/ai';
+import {BsSearch} from "react-icons/bs";
 
 const Container = styled.div`
   width: 100%;
@@ -27,11 +29,15 @@ const Row = styled.div`
 const All = styled.div``;
 const R2 = styled.div``;
 const R3 = styled.div``;
+
 const Head = styled.div`
   display: flex;
   font-size: 25px;
   margin: 20px 0 10px 20px;
   justify-content: space-between;
+  @media (max-width:768px){
+    display: none;
+  }
 `;
 const Button = styled.button`
   display: flex;
@@ -72,6 +78,22 @@ height: 1.5px;
 background-color: lightgrey;
 margin: 2%;
 `;
+const Mobile = styled.div`
+@media (max-width: 767px){
+  display: flex;
+  font-size: 20px;
+  padding: 10px;
+  /* margin: 20px 0 10px 20px; */
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+}
+`;
+const Div =styled.div`
+@media (max-width:768px){
+  display: none;
+}
+`;
 
 function Front() {
   const [newItem,setNewItem] = useState(false)
@@ -85,22 +107,35 @@ function Front() {
         </Button>
        
       </Head>
+      <Mobile>
+        My vault
+        <BsSearch/>  
+          <AiOutlinePlus onClick={()=> {setNewItem(!newItem)}}/>
+             
+      </Mobile>
       <Row>
         <All><Input type="checkbox" />  All </All>
         <R2>Name </R2>
         <R3> Owner </R3>
-        <Iconn>
-          {" "}
-          <BiDotsVerticalRounded />
-        </Iconn>
-        
+          <BiDotsVerticalRounded />        
+        <Line/>
+      </Row>
+      <Row>
+        <All><Input type="checkbox" />  All </All>
+        <R2>Name </R2>
+        <R3> Owner </R3>
+          <BiDotsVerticalRounded />        
+        <Line/>
       </Row>
       <Line/>
+      {/* tdhfvnmbjh */}
+      <Div>
       <Img src="https://static.vecteezy.com/system/resources/previews/000/570/073/original/vector-desktop-computer-icon.jpg"/>
       <R4>There are no items to list.</R4>
       <Button2 onClick={()=> {setNewItem(!newItem)}} >
           <AiOutlinePlus /> New item
         </Button2>
+        </Div>
         
         {newItem ?<Item sendData={setNewItem}/> : " "}
     </Container>

@@ -13,6 +13,13 @@ margin: 0 15%;
   margin: 0 7%;
 }
 `;
+const Wrapper = styled.div`
+@media(max-width: 767px)
+{
+  display: none;
+}
+`;
+
 const Line = styled.div`
   height: 1.25px;
     background-color: lightgrey;
@@ -26,13 +33,13 @@ const Line = styled.div`
 
 function Footer() {
   return (
-  <>
+  <Wrapper>
    <Line/>
     <Footerr>    
       <Copy>© 2023 Bitwarden Inc.</Copy>
       <Copy>Version 2023.4.0</Copy>
       </Footerr>
-      </>
+      </Wrapper>
   )
 }
 

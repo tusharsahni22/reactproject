@@ -4,6 +4,9 @@ import { CiCircleQuestion } from "react-icons/ci";
 import Accordion2 from "./Accordion2";
 
 const Container = styled.div`
+@media (max-width: 768px){
+  display: none;
+}
 `;
 
 const Box = styled.div`

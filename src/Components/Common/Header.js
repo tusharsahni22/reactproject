@@ -1,6 +1,10 @@
 import React from "react";
 import {useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import {AiFillLock} from "react-icons/ai";
+import {RiSendPlaneFill} from "react-icons/ri";
+import {MdRestartAlt} from "react-icons/md";
+import {RiSettings2Line} from "react-icons/ri";
 
 const Wrapper = styled.div`
   background-color: rgb(23, 93, 220);
@@ -21,7 +25,10 @@ const Head = styled.div`
   @media( max-width:767px)
   {
     display:none;
+    
   }
+
+  
 `;
 const Text = styled.div`
   padding: 20px 0 0 0;
@@ -40,6 +47,10 @@ const Text = styled.div`
   color: rgb(186, 207, 245);
   font-family: "Nanum Gothic";
   &:hover{ font-weight: bold; color:white;}
+
+  @media (max-width:768px){
+    margin: -15px 0;
+  };
 `;
 
 const Profile = styled.div`
@@ -66,12 +77,25 @@ display: flex;
 justify-content: space-between;
 height: 57px;
 opacity: 1;
-background-color: rgb(23, 93, 220);
+background-color: black;
 border-bottom: 0px;
 @media (min-width:768px){
   display: none;
+
 }
 `;
+const Line1 = styled.div`
+`;
+const Line2 = styled.div`
+
+`;
+const Line3 = styled.div`
+
+`;
+const Line4 = styled.div`
+
+`;
+
 
 function Header() {
   let navigate = useNavigate()
@@ -92,13 +116,24 @@ function Header() {
       <Mobile>
       
         <Profile>
-          <Text onClick={()=>{navigate("/")}}>Vault</Text>
+          <Line1>
+        <AiFillLock style={{backgroundColor: 'white', margin: '10px 0 1px 15px'}}/>
+          <Text onClick={()=>{navigate("/")}}>My vault</Text>
+          </Line1>
+          <Line2>
+          <RiSendPlaneFill style={{backgroundColor: 'white',margin: '10px 0 1px 5px'}}/>
           <Text onClick={()=>{navigate("/send")}}>Send</Text>
-          <Text onClick={()=>{navigate("/tools")}}>Tools</Text>
-          <ProfilePic src="./avatar.jpg" onClick={()=>(navigate("/user-profile"))}/>
+          </Line2>
+          <Line3>
+            <MdRestartAlt style={{backgroundColor: 'white', margin: '10px 0 1px 15px'}}/>
+          <Text onClick={()=>{navigate("/tools")}}>Generator</Text>
+          </Line3>
+          <Line4>
+            <RiSettings2Line style={{backgroundColor: 'white', margin: '10px 0 1px 12px'}}/>
+          <Text onClick={()=>(navigate("/user-profile"))}> Settings</Text>
+          </Line4>
         </Profile>
-     
-          
+             
       </Mobile>
     </Wrapper>
   );

@@ -12,6 +12,10 @@ const Div = styled.div`
   {
     padding: 0px 7%;
   }
+  @media(max-width: 767px)
+  {
+    padding: 0;
+  }
 `;
 
 function ToolComponent() {

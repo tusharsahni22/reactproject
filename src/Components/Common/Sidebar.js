@@ -49,6 +49,9 @@ cursor: pointer;
 const Wrapper = styled.div`
 margin: 5px;
 width: 216px;
+@media (max-width: 768px){
+    display: none;
+  }
 `;
 
 function Sidebar() {

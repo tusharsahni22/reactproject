@@ -20,6 +20,11 @@ const Container = styled.div`
     width: 600px;
     overflow: hidden;
   }
+  @media (max-width:768px){
+    width: 400px;
+    overflow: hidden;
+    top: 15%;
+  }
 `;
 const Position = styled.div`
 position: sticky;
@@ -68,6 +73,9 @@ border: 2px solid lightgray;
 @media(max-width:1024px)
 {
   width: 550px;
+}
+@media (max-width:768px){
+  width: 378px;
 }
 `;
 const Footer = styled.div`
