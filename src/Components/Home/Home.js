@@ -25,6 +25,10 @@ const Row = styled.div`
   margin: 20px 10px 0 10px;
   padding-top: 20px;
   margin-top: 10px;
+  @media (max-width: 767px){
+    background-color: rgb(48,48,48);
+    color: white;
+  }
 `;
 const All = styled.div``;
 const R2 = styled.div``;
@@ -94,6 +98,14 @@ const Div =styled.div`
   display: none;
 }
 `;
+const ProfilePic = styled.img`
+   vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  padding: 8px 0;
+  border-radius: 50%;
+  cursor: pointer;
+`;
 
 function Front() {
   const [newItem,setNewItem] = useState(false)
@@ -108,10 +120,14 @@ function Front() {
        
       </Head>
       <Mobile>
+      <ProfilePic src="./avatar.jpg"/>
+      <div>
         My vault
+        </div>
+        <div>
         <BsSearch/>  
           <AiOutlinePlus onClick={()=> {setNewItem(!newItem)}}/>
-             
+          </div>
       </Mobile>
       <Row>
         <All><Input type="checkbox" />  All </All>
@@ -130,7 +146,7 @@ function Front() {
       <Line/>
       {/* tdhfvnmbjh */}
       <Div>
-      <Img src="https://static.vecteezy.com/system/resources/previews/000/570/073/original/vector-desktop-computer-icon.jpg"/>
+      <Img src="./img.png"/>
       <R4>There are no items to list.</R4>
       <Button2 onClick={()=> {setNewItem(!newItem)}} >
           <AiOutlinePlus /> New item

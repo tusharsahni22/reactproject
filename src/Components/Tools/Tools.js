@@ -63,6 +63,9 @@ const Title = styled.div`
   visibility: visible;
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
+  @media (max-width: 767px){
+    color: white;
+  }
 `;
 const RadioButton = styled.input``;
 const RadioButtonLabel = styled.label`

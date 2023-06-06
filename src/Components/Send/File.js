@@ -20,7 +20,7 @@ const Container = styled.div`
     width: 600px;
     overflow: hidden;
   }
-  @media (max-width:768px){
+  @media (max-width:767px){
     width: 400px;
     overflow: hidden;
     top: 15%;
@@ -74,7 +74,7 @@ border: 2px solid lightgray;
 {
   width: 550px;
 }
-@media (max-width:768px){
+@media (max-width:767px){
   width: 378px;
 }
 `;

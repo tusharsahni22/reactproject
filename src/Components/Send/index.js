@@ -13,6 +13,10 @@ const Div = styled.div`
 
     padding: 0 7%;
   }
+  @media(max-width:767px){
+
+padding: 0%;
+}
 `;
 
 function SendComponent() {
