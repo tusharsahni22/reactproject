@@ -3,7 +3,7 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import Item from "./Item";
 import { useState } from "react";
-import {AiOutlineCreditCard} from 'react-icons/ai';
+// import {AiOutlineCreditCard} from 'react-icons/ai';
 import {BsSearch} from "react-icons/bs";
 
 const Container = styled.div`
@@ -18,7 +18,6 @@ const Input = styled.input`
   border: 0 white;
   background-color: #24195f;
 `;
-const Iconn = styled.div``;
 const Row = styled.div`
   display: flex;
   justify-content: space-between;

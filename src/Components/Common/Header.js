@@ -91,15 +91,6 @@ const Line1 = styled.div`
     margin: auto;
     align-items: center;
 `;
-const Line2 = styled.div`
-
-`;
-const Line3 = styled.div`
-
-`;
-const Line4 = styled.div`
-
-`;
 const style={color: 'white',fontSize: '150%'};
 
 function Header() {
