@@ -34,50 +34,70 @@ const Button = styled.button`
   @media(max-width: 1024px){
     &:hover { background-color:#175ddc; color:white}
   }
-  
+`;
+const Line = styled.div`
+height: 1.5px;
+background-color: lightgrey;
+margin: 2% 0 0 2%;
+@media (max-width: 767px){
+  display: none;
+}
 `;
 
 const Mobile  = styled.div`
  @media (max-width: 767px){
-  /* display: flex; */
-  /* margin-right: 20%; */
   font-size: 20px;
   padding: 10px;
-  /* margin: 20px 0 10px 20px; */
-  /* justify-content: space-between; */
   letter-spacing: 1px;
-  background-color: black;
   color: white;
  }
+  
 `;
 const Div = styled.div`
 display: flex;
 justify-content: space-between;
 background-color: rgb(34 34 34);
+@media (min-width: 768px){
+  display: none;
+}
 `;
 const Heads = styled.div`
 display: flex;
 justify-content: space-between;
 background-color: rgb(34 34 34);
+@media (min-width: 768px){
+  display: none;
+}
+
 `;
 const Div2 = styled.div`
+@media (max-width: 767px){
+display: flex;
+justify-content: center;
 color: white;
 align-items: center;
 font-size: 15px;
-margin: 200px 200px 0 200px;
+margin: 200px 0 0 0;
+}
+@media (min-width: 768px){
+  display: none;
+}
 `;
 const Button2 = styled.button`
 @media (max-width: 767px){
+  width: 100%;
+  background-color: gray;
   color: white;
   border: none;
   font-size: 13px;
   border-radius: 5px;
-  padding: 15px;
-  background-color: rgb(34 34 34);
-  margin: 20px 0px 0px 235px;
-  width: max-content;
-  background-color: rgb(48 48 48);
+  padding: 12px;
+  margin: 20px 0px 0px 0px;
 }
+  @media (min-width: 768px){
+  display: none;
+}
+
 `;
 
 function SendComponent()
@@ -91,8 +111,8 @@ function SendComponent()
         <AiOutlinePlus /> New item
       </Button>
       </Head>
-      {close ?<File sendData={setClose}/> : " "}
-
+      <Line/>
+      
       <Mobile>
         <Heads>
         <AiOutlineInfoCircle/>
@@ -102,12 +122,13 @@ function SendComponent()
           <AiOutlinePlus onClick={()=> {setClose(!close)}}/> 
         </Div>
         </Heads>
-      </Mobile>
+   
       {/* {close ?<File sendData={setClose}/> : " "} */}
 
       <Div2> There are no sends in your account.</Div2>
       <Button2 onClick={()=> {setClose(!close)}}> Add a Send </Button2>
-
+      </Mobile>
+      {close ?<File sendData={setClose}/> : " "}
       </Container>
   )
 }

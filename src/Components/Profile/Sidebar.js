@@ -50,6 +50,9 @@ const Wrapper = styled.div`
 /* padding : 0 0 0 15%;  */
 margin: 5px;
 width: 216px;
+@media (max-width: 767px){
+  display: none;
+}
 `;
 
 function Sidebar(props) {
