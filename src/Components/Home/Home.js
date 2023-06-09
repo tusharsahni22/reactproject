@@ -102,7 +102,6 @@ const ProfilePic = styled.img`
    vertical-align: middle;
   width: 40px;
   height: 40px;
-  padding: 8px 0;
   border-radius: 50%;
   cursor: pointer;
 `;
@@ -144,7 +143,6 @@ function Front() {
         <Line/>
       </Row>
       <Line/>
-      {/* tdhfvnmbjh */}
       <Div>
       <Img src="./img.png"/>
       <R4>There are no items to list.</R4>
