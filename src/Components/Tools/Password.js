@@ -32,9 +32,16 @@ const CopyButton =styled.button`
     text-align: center;
     text-transform: none;
     pointer-events: auto;
-    background-color: rgb(251, 251, 251);
+    background-color: rgb(23, 93, 220);
     border-radius: 4px;
     border: 1px solid rgb(192, 192, 192);
+     @media (max-width: 767px){
+    color: white;
+    letter-spacing: 2px;
+    margin: 2% 1%;
+    font-weight: 200;
+    margin: 3% 2%;
+  }
 `;
 const RegenratePasswordButton =styled.button`
     width: 158px;
@@ -49,6 +56,12 @@ const RegenratePasswordButton =styled.button`
     border: 0px;
     color: #fff;
     margin: 12px 0;
+     @media (max-width: 767px){
+    color: white;
+    letter-spacing: 2px;
+    margin: 3% 2%;
+    font-weight: 200;
+  }
 `;
 
 const FieldValue = styled.div`
@@ -70,6 +83,12 @@ const RadioButtonLabel = styled.label`
   visibility: visible;
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
+  @media (max-width: 767px){
+    color: white;
+    letter-spacing: 2px;
+    margin: 2% 1%;
+    font-weight: 200;
+  }
 `;
 
 // const RadioButtonDiv = styled.div`
@@ -89,6 +108,12 @@ const Title = styled.div`
   visibility: visible;
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
+   @media (max-width: 767px){
+    color: white;
+    letter-spacing: 2px;
+    margin: 2% 1%;
+    font-weight: 200;
+  }
 `;
 
 const Lable = styled.div`
@@ -102,6 +127,12 @@ const Lable = styled.div`
   visibility: visible;
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
+   @media (max-width: 767px){
+    color: white;
+    letter-spacing: 2px;
+    margin: 2% ;
+    font-weight: 200;
+  }
 `;
 
 const LableInput = styled.input`
@@ -113,6 +144,10 @@ const LableInput = styled.input`
   background-color: rgb(251, 251, 251);
   border-radius: 6px;
   border: 1px solid rgb(199, 199, 203);
+  @media (max-width: 767px){
+    color: black;
+    margin: 2% 1%;
+  }
 `;
 
 function Password(props) {

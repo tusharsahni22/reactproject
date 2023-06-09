@@ -15,8 +15,13 @@ display: flex;
 `;
 const Heading =styled.div`
 font-size: 20px;
-
+font-weight: bold;
 letter-spacing: 0.5px;
+@media (max-width: 767px){
+color: white;
+font-weight:200;
+margin: 2% 1%;
+}
 `;
 const Line = styled.div`
 height: 1.5px;
@@ -36,12 +41,20 @@ const Input = styled.input`
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: 0.30rem;
+     @media (max-width: 767px){
+        margin: 2% 1%;
+    }
 `;
 
 const Lable = styled.div`
     color: #333;
     margin: 7px 0; 
     font-weight: 550;
+    @media (max-width: 767px){
+        color: white;
+        font-weight:200;
+        margin: 2% 1%;
+    }
 `;
 
 // const Submit = styled.div`
@@ -77,16 +90,36 @@ text-align: center;
 padding: 6px;
 border-radius: 5px;
 &:hover{ background-color:darkblue;}
+ @media (max-width: 767px){
+color: white;
+font-weight:200;
+margin: 2% 1%;
+    }
 `;
 const Heading2 =styled.div`
 font-size: 25px;
 color: #ec3f3f;
 font-weight: 500;
 margin: 15px 0;
+ @media (max-width: 767px){
+color: white;
+font-weight:200;
+margin: 2% 1%;
+}
 `;
 const LogoutBox = styled.div`
 height: max-content;
 outline: solid .5px #ec3f3f;
+ @media (max-width: 767px){
+color: white;
+font-weight:200;
+margin: 2% 1%;
+@media (max-width: 767px){
+color: white;
+font-weight:200;
+margin: 2% 1%;
+}
+}
 `;
 const LogoutButton = styled.button`
 margin: 20px;
@@ -99,13 +132,26 @@ background-color: white;
 &:hover{ background-color: #ec3f3f;
 color: white;
 font-weight: bold;
+ @media (max-width: 767px){
+margin: 2% 1%;
+}
 }
 `;
 const Para = styled.p`
 padding: 15px 0 5px 20px;
+ @media (max-width: 767px){
+color: white;
+font-weight:200;
+margin: 2% 1%;
+    }
 `;
 const Error=styled.div`
 color:red;
+ @media (max-width: 767px){
+color: white;
+font-weight:200;
+margin: 2% 1%;
+    }
 `;
 
 
@@ -157,7 +203,7 @@ function ProfileComponent() {
     <Sidebar sendData={setAccount}/>
        {account ?  <Account>
         <ToastContainer/>
-        <Heading>My Account </Heading>
+        <Heading>Settings </Heading>
         
         <Line/>
         <Lable >Name</Lable>

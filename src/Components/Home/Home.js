@@ -92,6 +92,9 @@ const Mobile = styled.div`
   background-color: black;
   color: white;
 }
+@media (min-width: 768px){
+  display: none;
+}
 `;
 const Div =styled.div`
 @media (max-width:768px){

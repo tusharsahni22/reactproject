@@ -12,6 +12,10 @@ const Div = styled.div`
   @media( max-width: 1024px ){
     padding: 0 7%;
   }
+  @media (max-width: 767px){
+  padding: 1% 0%;
+  margin-top:0%;
+  }
 `;
 
 function ToolComponent() {

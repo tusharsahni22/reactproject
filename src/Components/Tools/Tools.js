@@ -8,6 +8,9 @@ const Wrapper = styled.div`
 
   padding: 0 1%;
   width: 100%;
+  @media (max-width: 767px){
+    overflow:
+  }
 `;
 
 const HeadingGen = styled.div`
@@ -45,6 +48,10 @@ const GenratedText = styled.div`
   background-color: rgb(255, 255, 255);
   border-radius: 0px;
   border: 1px solid rgb(237, 238, 237);
+  @media (max-width: 767px){
+    background-color: rgb(34 34 34);
+    border: none;
+  }
 `;
 const Genrator = styled.div`
   width: 100%;
@@ -65,6 +72,9 @@ const Title = styled.div`
   font-family: "Nanum Gothic";
   @media (max-width: 767px){
     color: white;
+    letter-spacing: 2px;
+    margin: 2% 1%;
+    font-weight: 200;
   }
 `;
 const RadioButton = styled.input``;
@@ -80,6 +90,10 @@ const RadioButtonLabel = styled.label`
   visibility: visible;
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
+  @media (max-width: 767px){
+    color: white;
+    margin-left: 5px;
+  }
 `;
 const Line = styled.div`
 height: .5px;
@@ -119,7 +133,7 @@ function Tools() {
           </Div>
           <Line/>
           <GenratedText>{GenPass}</GenratedText>
-          <Title>What would you like to</Title>
+          <Title>What would you like to generate? </Title>
           <RadioButtonDiv>
             <div>
               <RadioButton

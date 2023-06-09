@@ -33,6 +33,12 @@ const CopyButton = styled.button`
   border-radius: 4px;
   border: 1px solid rgb(192, 192, 192);
   cursor: pointer;
+   @media (max-width: 767px){
+    color: white;
+    margin: 2% 1%;
+    font-weight: 200;
+    background-color: rgb(23, 93, 220);
+  }
 
 `;
 const RegenratePasswordButton = styled.button`
@@ -48,6 +54,11 @@ const RegenratePasswordButton = styled.button`
   border: 0px;
   color: #fff;
   margin: 12px 0;
+   @media (max-width: 767px){
+    color: white;
+    margin: 2% 1%;
+    font-weight: 200;
+  }
 `;
 const RadioButton = styled.input``;
 const RadioButtonLabel = styled.label`
@@ -62,6 +73,11 @@ const RadioButtonLabel = styled.label`
   visibility: visible;
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
+   @media (max-width: 767px){
+    color: white;
+    margin: 2% 1%;
+    font-weight: 200;
+  }
 `;
 
 const RadioButtonDiv = styled.div``;
@@ -79,6 +95,11 @@ const Title = styled.div`
   visibility: visible;
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
+   @media (max-width: 767px){
+    color: white;
+    margin: 2% 1%;
+    font-weight: 200;
+  }
 `;
 
 const CheckBoxes = styled.div`
@@ -104,6 +125,11 @@ const Hint = styled.div`
   font-size: small;
   margin: 0 0 0 15px;
   color: #6c757d;
+   @media (max-width: 767px){
+    color: white;
+    margin: 2% 1%;
+    font-weight: 200;
+  }
 `;
 
 const characters =
