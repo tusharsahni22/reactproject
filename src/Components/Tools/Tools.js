@@ -25,9 +25,9 @@ const HeadingGen = styled.div`
   white-space: pre-line;
   opacity: 1;
   visibility: visible;
-  color: rgb(51, 51, 51);
+  color: black;
   font-family: "Nanum Gothic";
-  @media (max-width: 768px)
+  @media (max-width: 767px)
   {
     /* align-items: center; */
     padding: 0 40%;
@@ -56,7 +56,6 @@ background-color: rgb(48 48 48);
 `;
 
 const GenratedText = styled.div`
-  margin: 10px 0;
   padding-left: 5px;
   letter-spacing: 1px;
   display: flex;
@@ -71,7 +70,9 @@ const GenratedText = styled.div`
   @media (max-width: 767px){
     background-color: rgb(48 48 48);
     border: none;
-
+  }
+  @media (max-width:767px){
+    min-height: auto;
   }
 `;
 const Genrator = styled.div`
@@ -133,12 +134,15 @@ margin: 4px 0;
   height: 4px;
 background-color: rgb(34 34 34);
 }
+@media (min-width: 768px){
+  display: none;
+}
 `;
 const RadioButtonDiv = styled.div`
   display: flex;
 `;
 const Div = styled.div`
-@media (max-width:768px){
+@media (max-width:767px){
 display: flex;
 justify-content: space-around;
 background-color: black;

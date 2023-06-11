@@ -6,6 +6,9 @@ import { generate } from '@wcj/generate-password';
 
 const CheckBoxSelector = styled.input`
 cursor: pointer;
+@media (max-width:767px){
+  display:none;
+}
 `;
 const OptionField = styled.div`
   display: flex;
@@ -32,7 +35,7 @@ const CopyButton =styled.button`
     text-align: center;
     text-transform: none;
     pointer-events: auto;
-    background-color: rgb(23, 93, 220);
+    /* background-color: rgb(23, 93, 220); */
     border-radius: 4px;
     border: 1px solid rgb(192, 192, 192);
      @media (max-width: 767px){
@@ -64,11 +67,14 @@ const RegenratePasswordButton =styled.button`
   }
 `;
 
-const FieldValue = styled.div`
-  display: flex;
-`;
+// const FieldValue = styled.div`
+//   display: flex;
+// `;
 const PasswordGENStyle = styled.div`
   padding: 0 10px 0 0;
+  @media (max-width:767px){
+    display: none;
+  }
 `;
 // const RadioButton = styled.input``;
 const RadioButtonLabel = styled.label`
@@ -141,7 +147,7 @@ const Lable2 = styled.div`
   opacity: 1;
   visibility: visible;
   color: white;
-  margin: 2%;
+  margin: 2% 1%;
   font-weight: 200;
   font-family: "Nanum Gothic";
 }
@@ -163,6 +169,17 @@ const LableInput = styled.input`
     display: none;
   }
 `;
+
+const Slider= styled.div`
+@media (max-width: 767px){
+display: flex;
+justify-content: space-between;
+padding: 0 10px 0 0;
+}
+@media (min-width: 768px){
+  display: none;
+}
+`;
 const LableInput2 = styled.input`
 @media (max-width: 767px){
   width: 100%;
@@ -178,6 +195,69 @@ const LableInput2 = styled.input`
   @media (min-width: 768px){
     display: none;
   }
+`;
+
+const Lenghtt = styled.div`
+  font-size: 12px;
+  font-weight: 200;
+  font-family: "Nanum Gothic";
+  margin: auto;
+`;
+
+
+const ToggleSwitch = styled.label`
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  @media (min-width:768px){
+    display:none;
+  }
+`;
+const ToggleInput = styled.input`
+  opacity: 0;
+  width: 0;
+  height: 0;
+`; 
+const ToggleSlider = styled.span`
+  position: absolute;
+  cursor: pointer;
+  height: 25px;
+  width: 53px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+`;
+const ToggleInputChecked = styled(ToggleInput)`
+&:checked + ${ToggleSlider} {
+   background-color: green;
+ }
+
+&:checked + ${ToggleSlider}:before {
+   transform: translateX(26px);
+ }
+`;
+const ToggleButtons = styled.div`
+@media (max-width: 767px){
+  display: flex;
+  justify-content: space-between;
+}
 `;
 
 function Password(props) {
@@ -199,22 +279,28 @@ function Password(props) {
   return (
     <>
     <Title>Password Type</Title>
-  <FieldValue>
+  {/* <FieldValue> */}
     <PasswordGENStyle>
       <Lable>Length</Lable>
       <LableInput value={Lenght} onChange={(e)=>{setLength(e.target.value)}}></LableInput>
-      <Lable2>Length
-      <LableInput2 type="range" min="1" max="100" value="10" ></LableInput2>
-      </Lable2>
-    </PasswordGENStyle>
-    
-  </FieldValue>
+      </PasswordGENStyle>
+      
+      <Slider>
+      <Lable2>Length</Lable2>
+      <Lenghtt> {Lenght}</Lenghtt>
+      <LableInput2 type="range" min="1" max="100" value= {Lenght} onChange={(e)=> {setLength(e.target.value)}} ></LableInput2>
+      </Slider>   
+  {/* </FieldValue> */}
   <OptionField>
     <Title>Options</Title>
-    <div>
+    <ToggleButtons>
       <CheckBoxSelector type="checkbox" checked={Caps} onClick={e=>{setCaps(!Caps)}} />
       <RadioButtonLabel>A-Z</RadioButtonLabel>
-    </div>
+      <ToggleSwitch>
+    <ToggleInputChecked type ="checkbox" checked={Caps} onClick={e=>{setCaps(!Caps)}} />
+    <ToggleSlider/>
+    </ToggleSwitch>
+    </ToggleButtons>
     <div>
       <CheckBoxSelector type="checkbox" onClick={e=>{setLower(!Lower)}}/>
       <RadioButtonLabel>a-z</RadioButtonLabel>

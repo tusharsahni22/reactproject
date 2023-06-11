@@ -4,7 +4,7 @@ import { CiCircleQuestion } from "react-icons/ci";
 import Accordion2 from "./Accordion2";
 
 const Container = styled.div`
-@media (max-width: 768px){
+@media (max-width: 767px){
   display: none;
 }
 `;
@@ -52,6 +52,7 @@ const CiCircleQuestions = styled.div`
   padding: 16px;
   
 `;
+
 
 function Filter() {
   return (

@@ -5,7 +5,7 @@ import styled from "styled-components";
 // import {HiOutlineSquares2X2} from 'react-icons/hi';
 
 const ToolsSideBar = styled.div`
-@media (max-width:768px){
+@media (max-width:767px){
   display: none;
 }
 

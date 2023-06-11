@@ -3,10 +3,9 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import Item from "./Item";
 import { useState } from "react";
-<<<<<<< HEAD
-=======
+
 // import {AiOutlineCreditCard} from 'react-icons/ai';
->>>>>>> 1f1a530ff1605a16c9eac3da8bfec8e74f0efe5f
+
 import {BsSearch} from "react-icons/bs";
 
 const Container = styled.div`
@@ -41,7 +40,7 @@ const Head = styled.div`
   font-size: 25px;
   margin: 20px 0 10px 20px;
   justify-content: space-between;
-  @media (max-width:768px){
+  @media (max-width:767px){
     display: none;
   }
 `;
