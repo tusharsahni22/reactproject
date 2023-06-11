@@ -46,9 +46,10 @@ const Text = styled.div`
   font-family: "Nanum Gothic";
   &:hover{ font-weight: bold; color:white;}
 
-  @media (max-width:768px){
+  @media (max-width:767px){
    padding: 0%;
    font-size: 18px;
+   margin: auto;
   };
 `;
 
@@ -84,18 +85,11 @@ border-bottom: 0px;
 }
 `;
 const Line1 = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-`;
-const Line2 = styled.div`
-
-`;
-const Line3 = styled.div`
-
-`;
-const Line4 = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
 `;
 const style={color: 'white',fontSize: '150%'};
 

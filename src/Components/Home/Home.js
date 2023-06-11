@@ -3,6 +3,10 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import Item from "./Item";
 import { useState } from "react";
+<<<<<<< HEAD
+=======
+// import {AiOutlineCreditCard} from 'react-icons/ai';
+>>>>>>> 1f1a530ff1605a16c9eac3da8bfec8e74f0efe5f
 import {BsSearch} from "react-icons/bs";
 
 const Container = styled.div`
@@ -17,7 +21,6 @@ const Input = styled.input`
   border: 0 white;
   background-color: #24195f;
 `;
-const Iconn = styled.div``;
 const Row = styled.div`
   display: flex;
   justify-content: space-between;
@@ -104,7 +107,6 @@ const ProfilePic = styled.img`
    vertical-align: middle;
   width: 40px;
   height: 40px;
-  padding: 8px 0;
   border-radius: 50%;
   cursor: pointer;
 `;
@@ -146,7 +148,6 @@ function Front() {
         <Line/>
       </Row>
       <Line/>
-      {/* tdhfvnmbjh */}
       <Div>
       <Img src="./img.png"/>
       <R4>There are no items to list.</R4>
