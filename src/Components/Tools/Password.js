@@ -127,12 +127,27 @@ const Lable = styled.div`
   visibility: visible;
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
-   @media (max-width: 767px){
-    color: white;
-    letter-spacing: 2px;
-    margin: 2% ;
-    font-weight: 200;
-  }
+  
+`;
+const Lable2 = styled.div`
+@media (max-width: 767px){
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  text-transform: none;
+  text-align: left;
+  letter-spacing: 2px;
+  white-space: pre-line;
+  opacity: 1;
+  visibility: visible;
+  color: white;
+  margin: 2%;
+  font-weight: 200;
+  font-family: "Nanum Gothic";
+}
+   @media (min-width: 768px){
+    display: none;
+}
 `;
 
 const LableInput = styled.input`
@@ -145,8 +160,23 @@ const LableInput = styled.input`
   border-radius: 6px;
   border: 1px solid rgb(199, 199, 203);
   @media (max-width: 767px){
-    color: black;
-    margin: 2% 1%;
+    display: none;
+  }
+`;
+const LableInput2 = styled.input`
+@media (max-width: 767px){
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+  margin: 2%;
+  background-color: rgb(251, 251, 251);
+}
+  @media (min-width: 768px){
+    display: none;
   }
 `;
 
@@ -173,6 +203,9 @@ function Password(props) {
     <PasswordGENStyle>
       <Lable>Length</Lable>
       <LableInput value={Lenght} onChange={(e)=>{setLength(e.target.value)}}></LableInput>
+      <Lable2>Length
+      <LableInput2 type="range" min="1" max="100" value="10" ></LableInput2>
+      </Lable2>
     </PasswordGENStyle>
     
   </FieldValue>
@@ -193,10 +226,6 @@ function Password(props) {
     <div>
       <CheckBoxSelector type="checkbox" onClick={e=>{setSpecial(!Special)}}/>
       <RadioButtonLabel>!@#$%^&*</RadioButtonLabel>
-    </div>
-    <div>
-      <CheckBoxSelector type="checkbox" />
-      <RadioButtonLabel>Avoid ambiguous characters</RadioButtonLabel>
     </div>
     <Buttons>
 

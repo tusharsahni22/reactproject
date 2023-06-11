@@ -3,7 +3,6 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import Item from "./Item";
 import { useState } from "react";
-import {AiOutlineCreditCard} from 'react-icons/ai';
 import {BsSearch} from "react-icons/bs";
 
 const Container = styled.div`
@@ -124,10 +123,10 @@ function Front() {
       </Head>
       <Mobile>
       <ProfilePic src="./avatar.jpg"/>
-      <div>
+      <div style={{marginTop:'9px', backgroundColor:'black'}}>
         My vault
         </div>
-        <div>
+        <div style={{marginTop: '10px',backgroundColor:'black'}}>
         <BsSearch/>  
           <AiOutlinePlus onClick={()=> {setNewItem(!newItem)}}/>
           </div>

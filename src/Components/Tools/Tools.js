@@ -3,14 +3,14 @@ import styled from "styled-components";
 import Password from "./Password";
 import UserName from "./UserName";
 import {BsThreeDotsVertical} from "react-icons/bs";
+import {FiRefreshCw} from "react-icons/fi";
+import {MdOutlineContentCopy} from "react-icons/md";
 
 const Wrapper = styled.div`
 
   padding: 0 1%;
   width: 100%;
-  @media (max-width: 767px){
-    overflow:
-  }
+  
 `;
 
 const HeadingGen = styled.div`
@@ -35,6 +35,26 @@ const HeadingGen = styled.div`
     color: white;
   }
 `;
+const GenText = styled.div`
+@media (max-width: 767px){
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(48 48 48);
+}
+`;
+const DivGen = styled.div`
+@media (max-width: 767px){
+  align-items: center;
+display: flex;
+justify-content: space-between;
+background-color: rgb(48 48 48);
+}
+@media (min-width: 768px){
+  display: none;
+  
+}
+`;
+
 const GenratedText = styled.div`
   margin: 10px 0;
   padding-left: 5px;
@@ -49,12 +69,17 @@ const GenratedText = styled.div`
   border-radius: 0px;
   border: 1px solid rgb(237, 238, 237);
   @media (max-width: 767px){
-    background-color: rgb(34 34 34);
+    background-color: rgb(48 48 48);
     border: none;
+
   }
 `;
 const Genrator = styled.div`
   width: 100%;
+  @media (max-width: 767px){
+    background-color: rgb(48 48 48);
+  }
+
 `;
 const Title = styled.div`
   margin: 10px 0;
@@ -75,6 +100,7 @@ const Title = styled.div`
     letter-spacing: 2px;
     margin: 2% 1%;
     font-weight: 200;
+    background-color: rgb(48 48 48);
   }
 `;
 const RadioButton = styled.input``;
@@ -103,8 +129,9 @@ margin: 4px 0;
 {
   margin: 5px 0 12px 0;
 }
-@media (max-width: 768px){
-  display: none;
+@media (max-width: 768px){  
+  height: 4px;
+background-color: rgb(34 34 34);
 }
 `;
 const RadioButtonDiv = styled.div`
@@ -129,10 +156,20 @@ function Tools() {
         <Genrator>
           <Div>
           <HeadingGen>Genrator</HeadingGen>
-          <BsThreeDotsVertical style={{color: 'white', marginTop: '8px'}}/>
+          <BsThreeDotsVertical style={{color: 'white', margin: '8px'}}/>
           </Div>
           <Line/>
+
+          <GenText>
           <GenratedText>{GenPass}</GenratedText>
+          <DivGen>
+          <MdOutlineContentCopy style={{margin:'10px'}}/>
+          <FiRefreshCw style={{margin:'10px'}}/>
+          </DivGen>
+          </GenText>
+
+          <Line/>
+
           <Title>What would you like to generate? </Title>
           <RadioButtonDiv>
             <div>
