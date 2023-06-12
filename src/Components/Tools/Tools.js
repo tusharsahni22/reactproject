@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Password from "./Password";
 import UserName from "./UserName";
-import {BsThreeDotsVertical} from "react-icons/bs";
 import {FiRefreshCw} from "react-icons/fi";
 import {MdOutlineContentCopy} from "react-icons/md";
 
 const Wrapper = styled.div`
 
-  padding: 0 1%;
-  width: 100%;
+  padding: 1% 2%;
+  width: auto;
+  @media (max-width: 767px){
+    background-color: #212121;
+  }
   
 `;
-
 const HeadingGen = styled.div`
   height: 29px;
   margin: 0px;
@@ -30,9 +31,10 @@ const HeadingGen = styled.div`
   @media (max-width: 767px)
   {
     /* align-items: center; */
-    padding: 0 40%;
-    background-color: black;
+    padding: 0 38%;
+    background-color: #212121;
     color: white;
+    font-size: 18px;
   }
 `;
 const GenText = styled.div`
@@ -75,13 +77,6 @@ const GenratedText = styled.div`
     min-height: auto;
   }
 `;
-const Genrator = styled.div`
-  width: 100%;
-  @media (max-width: 767px){
-    background-color: rgb(48 48 48);
-  }
-
-`;
 const Title = styled.div`
   margin: 10px 0;
   overflow: hidden;
@@ -120,16 +115,14 @@ const RadioButtonLabel = styled.label`
   @media (max-width: 767px){
     color: white;
     margin-left: 5px;
+     background-color: rgb(48 48 48);
+    
   }
 `;
 const Line = styled.div`
 height: .5px;
 background-color: lightgrey;
-margin: 4px 0;
-@media(max-width: 1024px)
-{
-  margin: 5px 0 12px 0;
-}
+margin: 5px 0 12px 0;
 @media (max-width: 768px){  
   height: 4px;
 background-color: rgb(34 34 34);
@@ -138,16 +131,22 @@ background-color: rgb(34 34 34);
   display: none;
 }
 `;
-const RadioButtonDiv = styled.div`
-  display: flex;
-`;
-const Div = styled.div`
-@media (max-width:767px){
-display: flex;
-justify-content: space-around;
-background-color: black;
+const Buttondiv = styled.div`
+background-color: white;
+@media (max-width: 767px){
+  background-color: rgb(48 48 48);
 }
 `;
+
+const RadioButtonDiv = styled.div`
+  display: flex;
+  background-color: white;
+  @media (max-width: 767px){
+   background-color: rgb(48 48 48);
+   margin: 5px;
+  }
+`;
+
 
 function Tools() {
   const [GenPass, setGenPass] = useState("");
@@ -157,11 +156,8 @@ function Tools() {
   return (
     <>
       <Wrapper>
-        <Genrator>
-          <Div>
+        {/* <Genrator> */}
           <HeadingGen>Genrator</HeadingGen>
-          <BsThreeDotsVertical style={{color: 'white', margin: '8px'}}/>
-          </Div>
           <Line/>
 
           <GenText>
@@ -176,7 +172,7 @@ function Tools() {
 
           <Title>What would you like to generate? </Title>
           <RadioButtonDiv>
-            <div>
+            <Buttondiv>
               <RadioButton
                 type="radio"
                 value="0"
@@ -186,8 +182,8 @@ function Tools() {
                   // onClick={uncheck('userNameCheck')}
               />
               <RadioButtonLabel>Password</RadioButtonLabel>
-            </div>
-            <div>
+            </Buttondiv>
+            <Buttondiv>
               <RadioButton
                 type="radio"
                 value="0"
@@ -198,11 +194,11 @@ function Tools() {
                 }}
               />
               <RadioButtonLabel>Username</RadioButtonLabel>
-            </div>
+            </Buttondiv>
           </RadioButtonDiv>
           {UserNameCheck ? <UserName  sendData={setGenPass} /> : ""}
           {PassCheckBox ? <Password sendData={setGenPass} /> : ""}
-        </Genrator>
+        {/* </Genrator> */}
       </Wrapper>
     </>
   );

@@ -3,7 +3,12 @@ import {useState} from "react";
 import styled from "styled-components";
 // import { generateFromEmail, generateUsername } from "unique-username-generator";
 
-const CheckBoxSelector = styled.input``;
+const CheckBoxSelector = styled.input`
+cursor: pointer;
+@media (max-width:767px){
+  display:none;
+}
+`;
 const OptionField = styled.div`
   display: flex;
   flex-direction: column;
@@ -77,6 +82,8 @@ const RadioButtonLabel = styled.label`
     color: white;
     margin: 2% 1%;
     font-weight: 200;
+    background-color: rgb(34 34 34);
+    
   }
 `;
 
@@ -99,6 +106,7 @@ const Title = styled.div`
     color: white;
     margin: 2% 1%;
     font-weight: 200;
+    background-color: rgb(34 34 34);
   }
 `;
 
@@ -120,6 +128,11 @@ const EmailField = styled.input`
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   outline: none;
+  @media (max-width: 767px){
+   border: black;
+   min-height: auto;
+   width: 100%;
+  }
 `;
 const Hint = styled.div`
   font-size: small;
@@ -130,6 +143,63 @@ const Hint = styled.div`
     margin: 2% 1%;
     font-weight: 200;
   }
+`;
+
+const ToggleSwitch = styled.label`
+  background-color: rgb(48 48 48);
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  @media (min-width:768px){
+    display:none;
+  }
+`;
+const ToggleInput = styled.input`
+  opacity: 0;
+  width: 0;
+  height: 0;
+`; 
+const ToggleSlider = styled.span`
+  position: absolute;
+  cursor: pointer;
+  height: 25px;
+  width: 53px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+`;
+const ToggleInputChecked = styled(ToggleInput)`
+&:checked + ${ToggleSlider} {
+   background-color: #ff6a00;
+ }
+
+&:checked + ${ToggleSlider}:before {
+   transform: translateX(26px);
+ }
+`;
+const ToggleButtons = styled.div`
+@media (max-width: 767px){
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(48 48 48);
+}
 `;
 
 const characters =
@@ -208,7 +278,7 @@ function UserName(props) {
     
   }
 
-  return (
+    return (
     <div>
       <Title>Username type</Title>
       <RadioButtonDiv>
@@ -243,18 +313,28 @@ function UserName(props) {
       </RadioButtonDiv>
       {!randomWord ? <div> <Title>Email address</Title>
     <EmailField onChange={(e) => {setEmail(e.target.value)}}></EmailField></div>:""} 
+    {/* <EmailField2 onChange={(e) => {setEmail(e.target.value)}}></EmailField2></div>:""}  */}
       <OptionField>
         {randomWord? <div>
 
         <Title>Options</Title>
-        <div>
+        <ToggleButtons>
           <CheckBoxSelector type="checkbox" onClick={(e) => {setReqCap(!reqCap)}} />
           <RadioButtonLabel >Capitalize</RadioButtonLabel>
-        </div>
-        <div>
+          <ToggleSwitch>
+          <ToggleInputChecked type ="checkbox" onClick={(e) => {setReqCap(!reqCap)}} />
+          <ToggleSlider/>
+          </ToggleSwitch>
+        </ToggleButtons>
+
+        <ToggleButtons>
           <CheckBoxSelector type="checkbox" onClick={(e) => {setReqNum(!reqNum)}} />
           <RadioButtonLabel >Include number</RadioButtonLabel>
-        </div>
+          <ToggleSwitch>
+          <ToggleInputChecked type ="checkbox" onClick={(e) => {setReqNum(!reqNum)}} />
+          <ToggleSlider/>
+          </ToggleSwitch>
+        </ToggleButtons>
         </div> : ""}
 
         <Buttons>

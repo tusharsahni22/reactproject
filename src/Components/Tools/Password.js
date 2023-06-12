@@ -13,6 +13,9 @@ cursor: pointer;
 const OptionField = styled.div`
   display: flex;
   flex-direction: column;
+  @media (max-width: 767px){
+    background-color: rgb(48 48 48);
+  }
 `;
 const Buttons =styled.div`
 display :flex;
@@ -94,6 +97,7 @@ const RadioButtonLabel = styled.label`
     letter-spacing: 2px;
     margin: 2% 1%;
     font-weight: 200;
+    background-color: rgb(48 48 48);
   }
 `;
 
@@ -115,10 +119,7 @@ const Title = styled.div`
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
    @media (max-width: 767px){
-    color: white;
-    letter-spacing: 2px;
-    margin: 2% 1%;
-    font-weight: 200;
+     display: none;
   }
 `;
 
@@ -135,6 +136,13 @@ const Lable = styled.div`
   font-family: "Nanum Gothic";
   
 `;
+const LenghtDiv = styled.div`
+display: none;
+@media (max-width: 767px){
+display: flex;
+ background-color: rgb(48 48 48);
+}
+`;
 const Lable2 = styled.div`
 @media (max-width: 767px){
   font-size: 12px;
@@ -150,6 +158,7 @@ const Lable2 = styled.div`
   margin: 2% 1%;
   font-weight: 200;
   font-family: "Nanum Gothic";
+  background-color: rgb(48 48 48);
 }
    @media (min-width: 768px){
     display: none;
@@ -175,6 +184,7 @@ const Slider= styled.div`
 display: flex;
 justify-content: space-between;
 padding: 0 10px 0 0;
+ background-color: rgb(48 48 48);
 }
 @media (min-width: 768px){
   display: none;
@@ -182,15 +192,14 @@ padding: 0 10px 0 0;
 `;
 const LableInput2 = styled.input`
 @media (max-width: 767px){
-  width: 100%;
   height: 15px;
   border-radius: 5px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
   transition: opacity .2s;
-  margin: 2%;
-  background-color: rgb(251, 251, 251);
+  margin: auto;
+  background-color: rgb(48 48 48);
 }
   @media (min-width: 768px){
     display: none;
@@ -201,11 +210,13 @@ const Lenghtt = styled.div`
   font-size: 12px;
   font-weight: 200;
   font-family: "Nanum Gothic";
-  margin: auto;
+  margin: auto 16px;
+
 `;
 
 
 const ToggleSwitch = styled.label`
+  background-color: rgb(48 48 48);
   position: relative;
   display: inline-block;
   width: 60px;
@@ -246,7 +257,7 @@ const ToggleSlider = styled.span`
 `;
 const ToggleInputChecked = styled(ToggleInput)`
 &:checked + ${ToggleSlider} {
-   background-color: green;
+   background-color: #ff6a00;
  }
 
 &:checked + ${ToggleSlider}:before {
@@ -257,6 +268,18 @@ const ToggleButtons = styled.div`
 @media (max-width: 767px){
   display: flex;
   justify-content: space-between;
+  background-color: rgb(48 48 48);
+}
+`;
+const Line = styled.div`
+height: .5px;
+background-color: lightgrey;
+@media (max-width: 768px){  
+  height: 2px;
+background-color: rgb(34 34 34);
+}
+@media (min-width: 768px){
+  display: none;
 }
 `;
 
@@ -287,12 +310,15 @@ function Password(props) {
       
       <Slider>
       <Lable2>Length</Lable2>
+      <LenghtDiv>
       <Lenghtt> {Lenght}</Lenghtt>
       <LableInput2 type="range" min="1" max="100" value= {Lenght} onChange={(e)=> {setLength(e.target.value)}} ></LableInput2>
+      </LenghtDiv>
       </Slider>   
   {/* </FieldValue> */}
   <OptionField>
     <Title>Options</Title>
+    <Line/>
     <ToggleButtons>
       <CheckBoxSelector type="checkbox" checked={Caps} onClick={e=>{setCaps(!Caps)}} />
       <RadioButtonLabel>A-Z</RadioButtonLabel>
@@ -301,18 +327,34 @@ function Password(props) {
     <ToggleSlider/>
     </ToggleSwitch>
     </ToggleButtons>
-    <div>
+    <Line/>
+    <ToggleButtons>
       <CheckBoxSelector type="checkbox" onClick={e=>{setLower(!Lower)}}/>
       <RadioButtonLabel>a-z</RadioButtonLabel>
-    </div>
-    <div>
+      <ToggleSwitch>
+    <ToggleInputChecked type ="checkbox" checked={Lower} onClick={e=>{setLower(!Lower)}} />
+    <ToggleSlider/>
+    </ToggleSwitch>
+    </ToggleButtons>
+    <Line/>
+    <ToggleButtons>
       <CheckBoxSelector type="checkbox" onClick={e=>{setNum(!Num)}} />
       <RadioButtonLabel>0-9</RadioButtonLabel>
-    </div>
-    <div>
+      <ToggleSwitch>
+    <ToggleInputChecked type ="checkbox" checked={Num} onClick={e=>{setNum(!Num)}} />
+    <ToggleSlider/>
+    </ToggleSwitch>
+    </ToggleButtons>
+    <Line/>
+    <ToggleButtons>
       <CheckBoxSelector type="checkbox" onClick={e=>{setSpecial(!Special)}}/>
       <RadioButtonLabel>!@#$%^&*</RadioButtonLabel>
-    </div>
+      <ToggleSwitch>
+    <ToggleInputChecked type ="checkbox" checked={Special} onClick={e=>{setSpecial(!Special)}} />
+    <ToggleSlider/>
+    </ToggleSwitch>
+    </ToggleButtons>
+    <Line/>
     <Buttons>
 
     <RegenratePasswordButton onClick={()=>{handleRandomPass()}}>Regenrate Password</RegenratePasswordButton>

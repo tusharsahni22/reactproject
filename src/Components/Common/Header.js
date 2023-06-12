@@ -48,7 +48,7 @@ const Text = styled.div`
 
   @media (max-width:767px){
    padding: 0%;
-   font-size: 18px;
+   font-size: 13px;
    margin: auto;
   };
 `;
@@ -77,7 +77,7 @@ display: flex;
 justify-content: space-between;
 height: 57px;
 opacity: 1;
-background-color: rgb(34,34,34);
+background-color: #212121;
 border-bottom: 0px;
 @media (min-width:768px){
   display: none;
@@ -113,19 +113,19 @@ function Header() {
       
         <Profile>
           <Line1>
-        <AiFillLock style={style}/>
+        <AiFillLock onClick={()=>{navigate("/")}} style={style}/>
           <Text onClick={()=>{navigate("/")}}>My vault</Text>
           </Line1>
           <Line1>
-          <RiSendPlaneFill style={style}/>
+          <RiSendPlaneFill  onClick={()=>{navigate("/send")}} style={style}/>
           <Text onClick={()=>{navigate("/send")}}>Send</Text>
           </Line1>
           <Line1>
-            <MdRestartAlt style={style}/>
+            <MdRestartAlt onClick={()=>{navigate("/tools")}} style={style}/>
           <Text onClick={()=>{navigate("/tools")}}>Generator</Text>
           </Line1>
           <Line1>
-            <RiSettings2Line style={style}/>
+            <RiSettings2Line onClick={()=>(navigate("/user-profile"))} style={style}/>
           <Text onClick={()=>(navigate("/user-profile"))}> Settings</Text>
           </Line1>
         </Profile>
