@@ -3,10 +3,12 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import Item from "./Item";
 import { useState } from "react";
-
-// import {AiOutlineCreditCard} from 'react-icons/ai';
-
+import {AiOutlineCreditCard} from 'react-icons/ai';
+import {MdOutlineLogin} from 'react-icons/md';
 import {BsSearch} from "react-icons/bs";
+import {BsTrash3} from 'react-icons/bs';
+
+
 
 const Container = styled.div`
   width: 100%;
@@ -27,8 +29,9 @@ const Row = styled.div`
   padding-top: 20px;
   margin-top: 10px;
   @media (max-width: 767px){
-    background-color: rgb(48,48,48);
-    color: white;
+    /* background-color: rgb(48,48,48);
+    color: white; */
+    display: none;
   }
 `;
 const All = styled.div``;
@@ -82,6 +85,9 @@ const Line = styled.div`
 height: 1.5px;
 background-color: lightgrey;
 margin: 2%;
+@media (max-width: 767px){
+  display: none;
+}
 `;
 const Mobile = styled.div`
 @media (max-width: 767px){
@@ -97,6 +103,25 @@ const Mobile = styled.div`
   display: none;
 }
 `;
+const MobileVault = styled.div`
+@media (min-width: 768px){
+  display: none;
+}
+`;
+const H1 = styled.div`
+color: skyblue;
+font-size: 15px;
+margin: 10px 5px 15px 5px;
+`;
+const VaultDiv = styled.div`
+margin-top: 5px;
+`;
+const MobileLogin = styled.div`
+/* display: flex;
+margin: 3px 5px 10px 0px ; */
+`;
+const MobileCard = styled.div``;
+
 const Div =styled.div`
 @media (max-width:768px){
   display: none;
@@ -132,6 +157,23 @@ function Front() {
           <AiOutlinePlus onClick={()=> {setNewItem(!newItem)}}/>
           </div>
       </Mobile>
+      <MobileVault>
+        <H1>Types</H1>
+        <VaultDiv>
+          
+          <MobileLogin>  
+           <MdOutlineLogin/> Login 
+          </MobileLogin>
+
+          <MobileCard>
+          <AiOutlineCreditCard/> Card
+          </MobileCard>
+          <H1> Trash </H1>
+          <BsTrash3/> Trash
+     
+        </VaultDiv>
+        
+      </MobileVault>
       <Row>
         <All><Input type="checkbox" />  All </All>
         <R2>Name </R2>
