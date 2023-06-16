@@ -6,6 +6,8 @@ import Tools from './Components/Tools';
 import Send from "./Components/Send"
 import Profile from './Components/Profile';
 import PrivateRoutes from './Components/PrivateRoutes/PrivateRoutes';
+import Cards from './Components/Home/MobileScreen/Cards';
+import LoginDetails from './Components/Home/MobileScreen/Login';
 
 
 
@@ -21,6 +23,9 @@ function Router() {
       <Route path="/tools" element={<Tools/>}/>  
       <Route path="/send" element={<Send/>}/> 
       <Route path="user-profile" element={<Profile/>}/>
+      <Route path="/Cards" element={<Cards/>}/>
+      <Route path="/LoginDetails" element={<LoginDetails/>}/>
+      
       </Route> 
       
     </Routes>

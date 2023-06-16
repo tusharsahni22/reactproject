@@ -7,6 +7,7 @@ import {AiOutlineCreditCard} from 'react-icons/ai';
 import {MdOutlineLogin} from 'react-icons/md';
 import {BsSearch} from "react-icons/bs";
 import {BsTrash3} from 'react-icons/bs';
+import {useNavigate } from "react-router-dom";
 
 
 
@@ -116,11 +117,15 @@ margin: 10px 5px 15px 5px;
 const VaultDiv = styled.div`
 margin-top: 5px;
 `;
-const MobileLogin = styled.div`
-/* display: flex;
-margin: 3px 5px 10px 0px ; */
+const UserDetails = styled.div`
+display: flex;
+justify-content: flex-start;
+/* margin: 3px 5px 10px 0px ; */ 
 `;
-const MobileCard = styled.div``;
+const LoginDiv = styled.div``;
+
+const CardDiv = styled.div``;
+
 
 const Div =styled.div`
 @media (max-width:768px){
@@ -137,6 +142,7 @@ const ProfilePic = styled.img`
 
 function Front() {
   const [newItem,setNewItem] = useState(false)
+  let navigate = useNavigate()
   
   return (
     <Container>
@@ -161,13 +167,15 @@ function Front() {
         <H1>Types</H1>
         <VaultDiv>
           
-          <MobileLogin>  
-           <MdOutlineLogin/> Login 
-          </MobileLogin>
+          <UserDetails>  
+           <MdOutlineLogin onClick={()=>{navigate("/LoginDetails")}}/> 
+           <LoginDiv onClick={()=>{navigate("/LoginDetails")}}>Login  </LoginDiv> 
+          </UserDetails>
 
-          <MobileCard>
-          <AiOutlineCreditCard/> Card
-          </MobileCard>
+          <UserDetails>
+          <AiOutlineCreditCard onClick={()=>{navigate("/Cards")}}/>
+          <CardDiv onClick={()=>{navigate("/Cards")}}>Card</CardDiv> 
+          </UserDetails>
           <H1> Trash </H1>
           <BsTrash3/> Trash
      
