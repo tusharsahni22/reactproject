@@ -1,9 +1,44 @@
 import React from 'react'
+import styled from 'styled-components';
+import {AiOutlineArrowLeft} from "react-icons/ai";
+import {BiDotsVerticalRounded} from "react-icons/bi";
+import {BsSearch} from "react-icons/bs";
 
-function Cards() {
-  return (
-    <div>Cards</div>
+const Heads = styled.div`
+@media (min-width: 767px){
+display: flex;
+justify-content: space-between;
+background-color: rgb(34 34 34);
+}
+@media (min-width: 768px){
+  display: none;
+}
+`;
+
+// const Div = styled.div`
+// @media (min-width: 767px){
+// display: flex;
+// justify-content: space-between;
+// background-color: rgb(34 34 34);
+// }
+// @media (min-width: 768px){
+//   display: none;
+// }
+// `;
+
+function Card() {
+  return ( 
+    <div> 
+      <Heads>
+      <AiOutlineArrowLeft/>
+      Card
+      {/* <Div> */}
+        <BsSearch/>      
+        <BiDotsVerticalRounded/>
+      {/* </Div> */}
+      </Heads>
+      </div>      
   )
 }
 
-export default Cards
+export default Card
