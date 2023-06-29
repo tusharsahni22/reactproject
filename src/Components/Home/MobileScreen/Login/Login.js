@@ -30,7 +30,7 @@ function Login() {
   return (   
       <Heads>
          <AiOutlineArrowLeft/>
-        <div> Login </div>
+        <div> LoginDiv </div>
         <Div> 
          <BsSearch/>  
          <BiDotsVerticalRounded/>        
