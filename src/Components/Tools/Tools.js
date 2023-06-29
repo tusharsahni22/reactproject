@@ -8,7 +8,7 @@ import {MdOutlineContentCopy} from "react-icons/md";
 const Wrapper = styled.div`
 
   padding: 1% 2%;
-  width: auto;
+  width: 100%;
   @media (max-width: 767px){
     background-color: #212121;
   }
@@ -73,9 +73,7 @@ const GenratedText = styled.div`
     background-color: rgb(48 48 48);
     border: none;
   }
-  @media (max-width:767px){
-    min-height: auto;
-  }
+  
 `;
 const Title = styled.div`
   margin: 10px 0;

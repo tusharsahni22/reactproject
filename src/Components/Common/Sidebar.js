@@ -29,7 +29,6 @@ const ToolsSideBar = styled.div`
 const SpecialTools = styled.div`
 cursor: pointer;
   height: 20px;
-  /* width: 216px; */
   border: 0px;
   background: transparent;
   padding: 10px 8px;

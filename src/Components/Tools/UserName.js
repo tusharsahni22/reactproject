@@ -150,9 +150,10 @@ const Hint = styled.div`
   margin: 0 0 0 15px;
   color: #6c757d;
    @media (max-width: 767px){
-    color: white;
+    display: none;
+    /* color: white;
     margin: 2% 1%;
-    font-weight: 200;
+    font-weight: 200; */
   }
 `;
 
@@ -205,27 +206,10 @@ const ToggleInputChecked = styled(ToggleInput)`
    transform: translateX(26px);
  }
 `;
-const ToggleButton1 = styled.div`
+const ToggleButton = styled.div`
 @media (max-width: 767px){
   display: flex;
   justify-content: space-between;
-  width: 310px;
-  /* background-color: rgb(48 48 48); */
-}
-`;
-const ToggleButton2 = styled.div`
-@media (max-width: 767px){
-  display: flex;
-  justify-content: space-between;
-  width: 320px;
-  /* background-color: rgb(48 48 48); */
-}
-`;
-const ToggleButtons = styled.div`
-@media (max-width: 767px){
-  display: flex;
-  justify-content: space-between;
-  /* background-color: rgb(48 48 48); */
 }
 `;
 
@@ -347,7 +331,7 @@ function UserName(props) {
             setRandomWord(false)
             setCatchEmail(false)
           }}/>
-            <ToggleButton1>
+            <ToggleButton>
           <RadioButtonLabel>Plus addressed email</RadioButtonLabel>
           <Hint>Use your email provider's sub-addressing capabilities.</Hint>
           <ToggleSwitch>
@@ -357,7 +341,7 @@ function UserName(props) {
           }} />
           <ToggleSlider/>
           </ToggleSwitch>
-          </ToggleButton1>
+          </ToggleButton>
 
         </CheckBoxes>
         <CheckBoxes>
@@ -367,7 +351,7 @@ function UserName(props) {
             setRandomWord(false)
 
           }}/>
-           <ToggleButton2>
+           <ToggleButton>
           <RadioButtonLabel>Catch-all email</RadioButtonLabel>
           <Hint>Use your domain's configured catch-all inbox.</Hint>
          
@@ -379,13 +363,13 @@ function UserName(props) {
           }} />
           <ToggleSlider/>
           </ToggleSwitch>
-          </ToggleButton2>
+          </ToggleButton>
 
         </CheckBoxes>
        
         
         <CheckBoxes>
-           <ToggleButtons>
+           <ToggleButton>
           <RadioButton type="radio" name="username-type" onClick={(e) => {
             setRandomWord(!randomWord)
             setPlusEmail(false)
@@ -401,7 +385,7 @@ function UserName(props) {
           }} />
           <ToggleSlider/>
           </ToggleSwitch>
-        </ToggleButtons>
+        </ToggleButton>
           
         </CheckBoxes>
         </Mobile>
@@ -414,23 +398,23 @@ function UserName(props) {
         {randomWord? <div>
 
         <Title>Options</Title>
-        <ToggleButtons>
+        <ToggleButton>
           <CheckBoxSelector type="checkbox" onClick={(e) => {setReqCap(!reqCap)}} />
           <RadioButtonLabel >Capitalize</RadioButtonLabel>
           <ToggleSwitch>
           <ToggleInputChecked type ="checkbox" onClick={(e) => {setReqCap(!reqCap)}} />
           <ToggleSlider/>
           </ToggleSwitch>
-        </ToggleButtons>
+        </ToggleButton>
 
-        <ToggleButtons>
+        <ToggleButton>
           <CheckBoxSelector type="checkbox" onClick={(e) => {setReqNum(!reqNum)}} />
           <RadioButtonLabel >Include number</RadioButtonLabel>
           <ToggleSwitch>
           <ToggleInputChecked type ="checkbox" onClick={(e) => {setReqNum(!reqNum)}} />
           <ToggleSlider/>
           </ToggleSwitch>
-        </ToggleButtons>
+        </ToggleButton>
         </div> : ""}
 
         <Buttons>

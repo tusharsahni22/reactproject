@@ -7,7 +7,7 @@ import {MdRestartAlt} from "react-icons/md";
 import {RiSettings2Line} from "react-icons/ri";
 
 const Wrapper = styled.div`
-  background-color: rgb(23, 93, 220);
+ 
 `;
 
 const Head = styled.div`
