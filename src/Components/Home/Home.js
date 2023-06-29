@@ -122,9 +122,13 @@ display: flex;
 justify-content: flex-start;
 /* margin: 3px 5px 10px 0px ; */ 
 `;
-const LoginDiv = styled.div``;
+const LoginDiv = styled.div`
+margin: 0 5px 10px 5px
+`;
 
-const CardDiv = styled.div``;
+const CardDiv = styled.div`
+margin: 0 5px 10px 5px
+`;
 
 
 const Div =styled.div`

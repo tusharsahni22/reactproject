@@ -5,9 +5,11 @@ import {BiDotsVerticalRounded} from "react-icons/bi";
 import {BsSearch} from "react-icons/bs";
 
 const Heads = styled.div`
+@media (max-width: 767px){
 display: flex;
 justify-content: space-between;
 background-color: rgb(34 34 34);
+}
 @media (min-width: 768px){
   display: none;
 }
@@ -27,12 +29,12 @@ background-color: rgb(34 34 34);
 function Login() {
   return (   
       <Heads>
-      <AiOutlineArrowLeft/>
-      <div>Login</div>
-      <Div>
-        <BsSearch/>      
-        <BiDotsVerticalRounded/>
-      </Div>
+         <AiOutlineArrowLeft/>
+        <div> Login </div>
+        <Div> 
+         <BsSearch/>  
+         <BiDotsVerticalRounded/>        
+         </Div>
       </Heads>     
   )
 }

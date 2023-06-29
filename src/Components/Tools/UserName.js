@@ -92,6 +92,11 @@ const RadioButtonLabel = styled.label`
 `;
 
 const RadioButtonDiv = styled.div``;
+const Mobile = styled.div`
+@media (min-width: 768px){
+  display: none;
+}
+`;
 const Title = styled.div`
   margin: 10px 0;
   overflow: hidden;
@@ -115,7 +120,9 @@ const Title = styled.div`
 `;
 
 const CheckBoxes = styled.div`
+@media (max-width: 767px){
   margin: 10px 0;
+}
 `;
 
 const EmailField = styled.input`
@@ -308,6 +315,38 @@ function UserName(props) {
             setRandomWord(false)
             setCatchEmail(false)
           }}/>
+          <RadioButtonLabel>Plus addressed email</RadioButtonLabel>
+          <Hint>Use your email provider's sub-addressing capabilities.</Hint>
+        </CheckBoxes>
+        <CheckBoxes>
+          <RadioButton type="radio" name="username-type" onClick={(e) => {
+            setCatchEmail(!catchEmail)
+            setPlusEmail(false)
+            setRandomWord(false)
+
+          }}/>
+          <RadioButtonLabel>Catch-all email</RadioButtonLabel>
+          <Hint>Use your domain's configured catch-all inbox.</Hint>
+        </CheckBoxes>
+        <CheckBoxes>
+          <RadioButton type="radio" name="username-type" onClick={(e) => {
+            setRandomWord(!randomWord)
+            setPlusEmail(false)
+            setCatchEmail(false)
+          
+          }}/>
+          <RadioButtonLabel>Random word</RadioButtonLabel>
+        </CheckBoxes>
+      </RadioButtonDiv>
+     
+      <RadioButtonDiv>        
+      <Mobile>
+        <CheckBoxes>
+          <RadioButton type="radio" name="username-type" onClick={(e) => {
+            setPlusEmail(!plusEmail)
+            setRandomWord(false)
+            setCatchEmail(false)
+          }}/>
             <ToggleButton1>
           <RadioButtonLabel>Plus addressed email</RadioButtonLabel>
           <Hint>Use your email provider's sub-addressing capabilities.</Hint>
@@ -365,7 +404,9 @@ function UserName(props) {
         </ToggleButtons>
           
         </CheckBoxes>
+        </Mobile>
       </RadioButtonDiv>
+
       {!randomWord ? <div> <Title>Email address</Title>
     <EmailField onChange={(e) => {setEmail(e.target.value)}}></EmailField></div>:""} 
     {/* <EmailField2 onChange={(e) => {setEmail(e.target.value)}}></EmailField2></div>:""}  */}
