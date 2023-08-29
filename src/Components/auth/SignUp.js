@@ -66,9 +66,9 @@ const Email = styled.input`
   opacity: 1;
   color: rgb(82, 83, 84);
   font-family: "Work Sans";
-  font-size: 11px;
+  font-size: 25px;
   letter-spacing: 0px;
-  padding: 22px;
+  padding: 14px;
   width: 80%;
 `;
 const SingUpInputStyle = styled.div`
@@ -91,9 +91,9 @@ const Password = styled.input`
   opacity: 1;
   color: rgb(82, 83, 84);
   font-family: "Work Sans";
-  font-size: 11px;
+  font-size: 25px;
   letter-spacing: 0px;
-  padding: 22px;
+  padding: 14px;
   width: 80%;
 `;
 const RePassword = styled.input`
@@ -106,9 +106,9 @@ const RePassword = styled.input`
   opacity: 1;
   color: rgb(82, 83, 84);
   font-family: "Work Sans";
-  font-size: 11px;
+  font-size: 25px;
   letter-spacing: 0px;
-  padding: 22px;
+  padding: 14px;
   width: 80%;
 `;
 
