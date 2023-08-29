@@ -77,20 +77,6 @@ const Button = styled.button`
     background-color: darkblue;
   }
 `;
-// const Button2 = styled.button`
-//   display: flex;
-//   justify-content: space-between;
-//   background-color: #1466e9;
-//   color: white;
-//   font-size: 15px;
-//   border-radius: 5px;
-//   padding: 7px 13px 7px 15px;
-//   margin: 10px 20px 0 39%;
-//   cursor: pointer;
-//   &:hover {
-//     background-color: darkblue;
-//   }
-// `;
 const Line = styled.div`
   height: 1.5px;
   background-color: lightgrey;
@@ -160,6 +146,11 @@ const dummyData = [
 {
   name : "kapil",
   owner : "kapil",
+  type : "user"
+},
+{
+  name : "kapil",
+  owner : "me",
   type : "user"
 },
 ]
@@ -253,13 +244,6 @@ function Front() {
         <Line />
       </DataOfUser>
        ))}
-      {/* <Div>
-        <Img src="./img.png" />
-        <R4>There are no items to list.</R4>
-        <Button2 onClick={() => {setNewItem(!newItem)}}>
-        <AiOutlinePlus /> New item
-        </Button2>
-      </Div> */}
 
       {newItem ? <Item sendData={setNewItem} /> : " "}
       {editItem ? <Edit sendData={setEditItem} /> : " "}
