@@ -52,6 +52,7 @@ justify-content: space-between;
 `;
 const Name = styled.div`
 cursor:pointer;
+color: blue
 `;
 const Iconns = styled.div``;
 const Owner = styled.div``;
