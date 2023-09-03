@@ -36,8 +36,8 @@ function Footer() {
   <Wrapper>
    <Line/>
     <Footerr>    
-      <Copy>© 2023 Bitwarden Inc.</Copy>
-      <Copy>Version 2023.4.0</Copy>
+      <Copy>© 2023 Warden Inc One Stop For All Your Passwords.</Copy>
+      <Copy>Version 2023.08.0</Copy>
       </Footerr>
       </Wrapper>
   )

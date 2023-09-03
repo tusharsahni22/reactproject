@@ -11,6 +11,8 @@ import { AiOutlineCreditCard } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import { BsTrash3 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { userData } from "../services/profileServices";
 
 const Container = styled.div`
   width: 100%;
@@ -132,32 +134,28 @@ const ProfilePic = styled.img`
   cursor: pointer;
 `;
 
-const dummyData = [
-{
-  name : "Tushar",
-  owner : "Tushar",
-  type : "idpass"
-},
-{
-  name : "Tushar",
-  owner : "sahni",
-  type : "idpass"
-},
-{
-  name : "kapil",
-  owner : "kapil",
-  type : "user"
-},
-{
-  name : "kapil",
-  owner : "me",
-  type : "user"
-},
-]
  
 function Front() {
+  const [dummyData ,setDummyData] =useState([])
+  const [editObject,setEditObject] = useState([])
   const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState(false);
+
+  useEffect(()=>{
+    userData().then((result)=>{
+      setDummyData(result.data) 
+      
+    }).catch((err)=>{
+      console.log(err)
+    }) 
+  },[newItem])
+
+  const handleEditItem = (_id)=>{
+  setEditItem(!editItem)
+  const object = dummyData.find((e)=>{
+    return e._id ===_id}) 
+    setEditObject(object) 
+  }
   let navigate = useNavigate();
 
   return (
@@ -236,8 +234,8 @@ function Front() {
       <DataOfUser>
         <All>
         <Input type="checkbox" />
-        <Iconns>{e.type==="idpass"? <CiCreditCard1/> : <BsGlobeAmericas/>} </Iconns>
-        <Name onClick={() => { setEditItem(!editItem)}} >{e.name} </Name>
+        { <Iconns>{e.type==="login"?<BsGlobeAmericas/>: <CiCreditCard1/> } </Iconns> }
+        <Name onClick={()=>{handleEditItem(e._id)}}>{e.bankName || e.name} </Name>
         <Owner> Me </Owner>
         <BiDotsVerticalRounded />
         </All>
@@ -246,7 +244,7 @@ function Front() {
        ))}
 
       {newItem ? <Item sendData={setNewItem} /> : " "}
-      {editItem ? <Edit sendData={setEditItem} /> : " "}
+      {editItem ? <Edit sendData={setEditItem} apiData={editObject} /> : " "}
       
     </Container>
   );

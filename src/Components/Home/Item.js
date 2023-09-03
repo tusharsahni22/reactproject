@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { GrFormClose } from "react-icons/gr";
+import { addNewItem } from "../services/profileServices";
 
 
 const Container = styled.div`
@@ -191,10 +192,41 @@ display: flex;
 
 function Item(props) {
   const [select,setSelect] = useState("login");
+  const [userName,setUserName] = useState("");
+  const [password,setPassword] = useState("");
+  const [name,setName] = useState("");
+  const [url,setUrl] = useState("");
+  const [notes,setNotes] = useState("");
+  const [cvv,setCvv] = useState("");
+  const [cardholder,setCardholder] = useState("");
+  const [bank,setBank] = useState("");
+  const [cardNumber,setCardNumber] = useState("");
+  const [exYear,setExYear] = useState("");
+  const [exMonth,setExMonth] = useState("");
   
-  const handleClose = () => {
-    
+  
+  const handleClose = () => {    
     props.sendData(false);
+  };
+  const submitData = () => {
+    let data = {
+    "type":select,
+    "username":userName,
+    "password":password,
+    "name":name,
+    "url":url,
+    "notes":notes,
+    "cvv":cvv,
+    "cardholder":cardholder,
+    "bankName":bank,
+    "cardnumber":cardNumber,
+    "expiryMonth":exMonth,
+    "expiryYear":exYear
+    }
+    addNewItem(data)
+    handleClose()
+
+    
   };
   return (
     <Container>
@@ -218,29 +250,27 @@ function Item(props) {
             <Option value={"login"}> Login</Option>        
             <Option value={"card"}> Card</Option>
           </Select>
-          </Pannel>
-          {console.log("login",select)}
-          
+          </Pannel>          
           {(select === "login") ? <LoginDiv>
             <Pannel>
             <Title>Name</Title>
-          <Button1 type="text" placeholder="Domain"></Button1>
+          <Button1 type="text" value={name} onChange={(e)=>{setName(e.target.value)}} placeholder="Domain"></Button1>
 
           <Div>
             <User>
               <Title> Username</Title>
-              <Button2 type="text" placeholder="CaptainAmera"></Button2>
+              <Button2 type="text" value={userName} onChange={(e)=>{setUserName(e.target.value)}} placeholder="CaptainAmera"></Button2>
             </User>
             <Pwd>
               <Title> Password</Title>
-              <Button2 type="password"></Button2>
+              <Button2 value={password} type="password" onChange={(e)=>{setPassword(e.target.value)}}></Button2>
             </Pwd>
           </Div>
      
         <Title> URL </Title>
-        <Button1 type="text" placeholder="ex. https://facebook.com "></Button1>
+        <Button1 type="text" value={url} onChange={(e)=>{setUrl(e.target.value)}} placeholder="ex. https://facebook.com "></Button1>
         <Title>Notes </Title>
-        <Notes type= "text" placeholder='' > </Notes>
+        <Notes type= "text" value={notes} onChange={(e)=>{setNotes(e.target.value)}} placeholder='' > </Notes>
       </Pannel>
       <Line2/>
           </LoginDiv> :" "}
@@ -251,34 +281,34 @@ function Item(props) {
             <Div>
             <Card>
               <Title> Card Holder Name</Title>
-              <Button2 type="text" placeholder=""></Button2>
+              <Button2 type="text" value={cardholder} onChange={(e)=>{setCardholder(e.target.value)}} placeholder=""></Button2>
             </Card>
             <Card>
               <Title> Bank </Title>
-              <Button2 type="password" placeholder=""></Button2>
+              <Button2 type="text" value={bank} onChange={(e)=>{setBank(e.target.value)}} placeholder=""></Button2>
             </Card>
           </Div>
         
           <Div>
             <Card>
               <Title> Card Number</Title>
-              <Button2 type="number" placeholder=""></Button2>
+              <Button2 type="number" value={cardNumber} onChange={(e)=>{setCardNumber(e.target.value)}} placeholder=""></Button2>
             </Card>
             <Cardd>
               <Month>
                 <Title> Expiration Month </Title>
-                <Buttonn type="month" placeholder=""></Buttonn>
+                <Buttonn type="number" value={exMonth} onChange={(e)=>{setExMonth(e.target.value)}} placeholder=""></Buttonn>
               </Month>
               <Year>
                 <Title> Expiration Year </Title>
-                <Buttonn type="number" placeholder=""></Buttonn>
+                <Buttonn type="number" value={exYear} onChange={(e)=>{setExYear(e.target.value)}} placeholder=""></Buttonn>
               </Year>
             </Cardd>
           </Div>
           <Cvv>
             <div>
               <Title>Security Code (CVV)</Title>
-              <Button2 type="password" placeholder=""></Button2>
+              <Button2 type="password" value={cvv} onChange={(e)=>{setCvv(e.target.value)}} placeholder=""></Button2>
               </div>
               <div>
               <Title></Title>
@@ -291,7 +321,9 @@ function Item(props) {
           </div>: ""}
           
       <Footer>
-        <Button3> Save</Button3>
+        <Button3 onClick={() => {
+              submitData();
+            }}> Save</Button3>
         <Button4 onClick={() => {
               handleClose();
             }}> Cancel</Button4>
