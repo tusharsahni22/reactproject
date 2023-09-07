@@ -15,6 +15,7 @@ display: flex;
 `;
 const Heading =styled.div`
 font-size: 20px;
+margin: 15px 0 9px;
 font-weight: bold;
 letter-spacing: 0.5px;
 @media (max-width: 767px){
@@ -32,8 +33,7 @@ margin: 2% 0;
 const Input = styled.input`
     background-color: #fbfbfb;
     border-color: #ced4da;
-    color: #465057;
-    
+    color: #465057;    
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -46,6 +46,7 @@ const Input = styled.input`
     }
 `;
 
+
 const Lable = styled.div`
     color: #333;
     margin: 7px 0; 
@@ -56,24 +57,6 @@ const Lable = styled.div`
         margin: 2% 1%;
     }
 `;
-
-// const Submit = styled.div`
-// background-color: #175ddc;
-// border-color: #175ddc;
-// color: #fff;
-// cursor: pointer;
-// width: 70px;
-// height: 30px;
-// box-sizing: border-box;
-// overflow: hidden;
-// outline: none;
-// opacity: 1;
-// margin: 15px 0;
-// text-align: center;
-// padding: 6px;
-// border-radius: 5px;
-// &:hover{ background-color:darkblue;}
-// `;
 const Continue = styled.div`
 background-color: #175ddc;
 border-color: #175ddc;
