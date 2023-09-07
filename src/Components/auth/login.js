@@ -61,7 +61,7 @@ const Title = styled.div`
   @media (max-width: 768px){
    text-align: center;
    color: white;
-   margin-top: 115px;
+   margin-top: 100px;
   }
 `;
 const Fileds = styled.div`

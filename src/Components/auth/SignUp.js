@@ -61,7 +61,7 @@ const Title = styled.div`
    text-align: center;
    font-size: 35px;
    color: white;
-   margin-top: 115px;
+   margin-top: 100px;
   }
 `;
 const Fileds = styled.div`
