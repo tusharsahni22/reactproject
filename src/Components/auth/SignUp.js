@@ -87,7 +87,10 @@ const Email = styled.input`
   letter-spacing: 0px;
   padding: 14px;
   width: 80%;  
-  color: white;
+  color: black;
+  @media (max-width:767px){
+    color: white;
+  }
 `;
 const SingUpInputStyle = styled.div`
   height: 45px;
@@ -116,7 +119,10 @@ const Password = styled.input`
   letter-spacing: 0px;
   padding: 14px;
   width: 80%;
-  color: white;
+  color: black;
+  @media (max-width:767px){
+    color: white;
+  }
 `;
 const RePassword = styled.input`
   border: 0px;
@@ -132,7 +138,10 @@ const RePassword = styled.input`
   letter-spacing: 0px;
   padding: 14px;
   width: 80%;
-  color: white;
+  color: black;
+  @media (max-width:767px){
+    color: white;
+  }
 `;
 
 const TileDesc = styled.div``;
@@ -145,7 +154,7 @@ const SubmitButton = styled.button`
   border: none;
   color: white;
   cursor: pointer;
-   @media (max-width: 768px){
+   @media (max-width: 767px){
      margin: 90px 0 0 0;
   border-radius: 30px;
   }

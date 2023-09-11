@@ -70,7 +70,7 @@ const ProfilePic = styled.img`
 `;
 
 const Mobile = styled.div`
-position:absolute;
+position:fixed;
 bottom:0px;
 width:100%;
 display: flex;

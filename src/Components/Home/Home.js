@@ -8,11 +8,13 @@ import { useState } from "react";
 import { CiCreditCard1 } from "react-icons/ci";
 import { MdOutlineLogin } from "react-icons/md";
 import { AiOutlineCreditCard } from "react-icons/ai";
-import { BsSearch } from "react-icons/bs";
+import { FiPower } from "react-icons/fi";
+// import { BsSearch } from "react-icons/bs";
 import { BsTrash3 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { userData } from "../services/profileServices";
+import { doLogout } from "../auth";
 
 const Container = styled.div`
   width: 100%;
@@ -117,26 +119,29 @@ const VaultDiv = styled.div`
 const UserDetails = styled.div`
   display: flex;
   justify-content: flex-start;
-  /* margin: 3px 5px 10px 0px ; */
+  padding: 9px 0 0px 15px;
+  background-color: rgb(48,48,48);
 `;
 const LoginDiv = styled.div`
-  margin: 0 5px 10px 5px;
+  margin: 0px 15px 10px;
+  background-color: rgb(48,48,48);
 `;
 
 const CardDiv = styled.div`
-  margin: 0 5px 10px 5px;
+  margin: 0px 15px 10px;
+  background-color: rgb(48,48,48);
 `;
-const ProfilePic = styled.img`
-  vertical-align: middle;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-`;
+// const ProfilePic = styled.img`
+//   vertical-align: middle;
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 50%;
+//   cursor: pointer;
+// `;
 
  
 function Front() {
-  const [dummyData ,setDummyData] =useState([])
+  const [dummyData ,setDummyData] =useState([1,0])
   const [editObject,setEditObject] = useState([])
   const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState(false);
@@ -149,6 +154,9 @@ function Front() {
       console.log(err)
     }) 
   },[newItem])
+  const handleLogout = ()=>{
+    doLogout()
+}
 
   const handleEditItem = (_id)=>{
   setEditItem(!editItem)
@@ -171,52 +179,34 @@ function Front() {
         </Button>
       </Head>
       <Mobile>
-        <ProfilePic src="./avatar.jpg" />
+        <FiPower style={{ height: "25px", width: "25px",backgroundColor: "black" , marginTop: "10px" }} 
+        onClick={()=>{handleLogout()}}/>
+
         <div style={{ marginTop: "9px", backgroundColor: "black" }}>
           My vault
         </div>
         <div style={{ marginTop: "10px", backgroundColor: "black" }}>
-          <BsSearch />
-          <AiOutlinePlus
-            onClick={() => {
-              setNewItem(!newItem);
-            }}
-          />
-        </div>
+        <AiOutlinePlus style={{height: "25px", width: "25px",backgroundColor: "black"}} onClick={()=>{navigate("/newItem")}}/> </div>
       </Mobile>
       <MobileVault>
         <H1>Types</H1>
         <VaultDiv>
           <UserDetails>
-            <MdOutlineLogin
-              onClick={() => {
-                navigate("/LoginDetails");
-              }}
-            />
-            <LoginDiv
-              onClick={() => {
-                navigate("/LoginDetails");
-              }}
-            >
-              Login{" "}
-            </LoginDiv>
+            <MdOutlineLogin style={{backgroundColor:"rgb(48,48,48)"}}
+             onClick={() => {navigate("/LoginDetails")}}/>
+            <LoginDiv  onClick={() => {navigate("/LoginDetails")}}>Login</LoginDiv>
           </UserDetails>
           <UserDetails>
-            <AiOutlineCreditCard
-              onClick={() => {
-                navigate("/Cards");
-              }}
-            />
-            <CardDiv
-              onClick={() => {
-                navigate("/Cards");
-              }}
-            >
-              Card
-            </CardDiv>
+            <AiOutlineCreditCard  style={{backgroundColor:"rgb(48,48,48)"}}
+            onClick={() => {navigate("/Cards")}}/>
+            <CardDiv onClick={() => {navigate("/Cards")}}>Card</CardDiv>
           </UserDetails>
           <H1> Trash </H1>
-          <BsTrash3 /> Trash
+          <UserDetails>
+          <BsTrash3 /> 
+            <CardDiv>Trash</CardDiv>
+          </UserDetails>
+          
         </VaultDiv>
       </MobileVault>
       <MainHeader>
@@ -230,7 +220,7 @@ function Front() {
         <Line />
       </MainHeader>
 
-      {dummyData.map((e)=>(    
+      {dummyData?.map((e)=>(    
       <DataOfUser>
         <All>
         <Input type="checkbox" />

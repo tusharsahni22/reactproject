@@ -216,6 +216,11 @@ function ProfileComponent() {
             <Para>Careful, these actions are not reversible!</Para>
             <LogoutButton onClick={()=>{handleLogout()}}> Logout</LogoutButton>
         </LogoutBox>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         </Account> : <PrivacyComponent/>}
         </Wrapper>
 
