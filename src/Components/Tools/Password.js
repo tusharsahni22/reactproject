@@ -311,7 +311,6 @@ function Password(props) {
     <>
     <ToastContainer/>
     <Title>Password Type</Title>
-  {/* <FieldValue> */}
     <PasswordGENStyle>
       <Lable>Length</Lable>
       <LableInput value={Lenght} onChange={(e)=>{setLength(e.target.value)}}></LableInput>
@@ -324,7 +323,6 @@ function Password(props) {
       <LableInput2 type="range" min="1" max="100" value= {Lenght} onChange={(e)=> {setLength(e.target.value)}} ></LableInput2>
       </LenghtDiv>
       </Slider>   
-  {/* </FieldValue> */}
   <OptionField>
     <Title>Options</Title>
     <Line/>

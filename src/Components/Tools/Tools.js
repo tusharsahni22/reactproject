@@ -4,6 +4,7 @@ import Password from "./Password";
 import UserName from "./UserName";
 import {FiRefreshCw} from "react-icons/fi";
 import {MdOutlineContentCopy} from "react-icons/md";
+import {toast,ToastContainer} from "react-toastify";
 
 const Wrapper = styled.div`
 
@@ -152,7 +153,6 @@ const RadioButtonDiv = styled.div`
   background-color: white;
   @media (max-width: 767px){
    background-color: rgb(48 48 48);
-   /* margin: 5px; */
   }
 `;
 
@@ -161,10 +161,18 @@ function Tools() {
   const [GenPass, setGenPass] = useState("");
   const [UserNameCheck, setUserNameCheck] = useState("");
   const [PassCheckBox, setPassCheckBox] = useState("");
+  
+
+  function handleCopy (){
+    navigator.clipboard.writeText(GenPass)
+    toast.success("Copied!")
+
+  }
 
   return (
     <>
       <Wrapper>
+      <ToastContainer/>
         {/* <Genrator> */}
           <HeadingGen>Genrator</HeadingGen>
           <Line/>
@@ -172,8 +180,8 @@ function Tools() {
           <GenText>
           <GenratedText>{GenPass}</GenratedText>
           <DivGen>
-          <MdOutlineContentCopy style={{margin:'10px'}}/>
-          <FiRefreshCw style={{margin:'10px'}}/>
+          <MdOutlineContentCopy style={{margin:'10px'}} onClick={handleCopy}/>
+          <FiRefreshCw style={{margin:'10px'}} />
           </DivGen>
           </GenText>
 
@@ -187,9 +195,7 @@ function Tools() {
                 value="0"
                 name="passCheckBox"
                 onChange={(e) => {setPassCheckBox(!PassCheckBox)
-                  setUserNameCheck(false)}}
-                  // onClick={uncheck('userNameCheck')}
-              />
+                  setUserNameCheck(false)}}/>
               <RadioButtonLabel>Password</RadioButtonLabel>
             </Buttondiv>
             <Buttondiv>
@@ -205,9 +211,8 @@ function Tools() {
               <RadioButtonLabel>Username</RadioButtonLabel>
             </Buttondiv>
           </RadioButtonDiv>
-          {UserNameCheck ? <UserName  sendData={setGenPass} /> : ""}
+          {UserNameCheck ? <UserName  sendData={setGenPass} /> :""}
           {PassCheckBox ? <Password sendData={setGenPass} /> : ""}
-        {/* </Genrator> */}
       </Wrapper>
     </>
   );

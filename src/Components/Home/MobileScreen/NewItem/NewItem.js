@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 
@@ -49,8 +49,14 @@ margin: 10px 0;
 const Padding=styled.div`
 padding: 0 3%;
 `;
+const LoginDiv=styled.div`
+`;
+const CardDiv=styled.div`
+`;
 function NewItem() {
-    let navigate = useNavigate();
+  const [select,setSelect] = useState("login");
+  
+  let navigate = useNavigate();
   return (
     <Wrapper>
     <TopBar>
@@ -61,10 +67,13 @@ function NewItem() {
     <Padding>
 
     <H1>Types</H1>
-    <Selecter>
-        <Choice>Login</Choice>
-        <Choice>Card</Choice>
+    <Selecter onChange ={(e)=>(setSelect(e.target.value))}>
+        <Choice value={"login"}>Login</Choice>
+        <Choice value={"card"}>Card</Choice>
     </Selecter>
+    </Padding>
+    {(select === "login") ? <LoginDiv>
+    <Padding>
     <FieldTitle>Name</FieldTitle>
     <Input placeholder="Domain"/>
     <FieldTitle>Username</FieldTitle>
@@ -76,6 +85,24 @@ function NewItem() {
     <FieldTitle>Notes</FieldTitle>
     <Input/>
     </Padding>
+
+    </LoginDiv>:<CardDiv>
+    <Padding>
+    <FieldTitle>Card Holder</FieldTitle>
+    <Input placeholder="Name"/>
+    <FieldTitle>Bank Name</FieldTitle>
+    <Input placeholder="SBI"/>
+    <FieldTitle>Card Number</FieldTitle>
+    <Input type="text"/>
+    <FieldTitle>Valid From</FieldTitle>
+    <Input placeholder="07"/>
+    <FieldTitle>Year</FieldTitle>
+    <Input placeholder="2035"/>
+    <FieldTitle>Cvv</FieldTitle>
+    <Input/>
+    </Padding>
+    </CardDiv>
+    }
     
 
     </Wrapper>
