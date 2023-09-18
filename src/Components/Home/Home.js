@@ -141,7 +141,7 @@ const CardDiv = styled.div`
 
  
 function Front() {
-  const [dummyData ,setDummyData] =useState([1,0])
+  const [dummyData ,setDummyData] =useState([])
   const [editObject,setEditObject] = useState([])
   const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState(false);

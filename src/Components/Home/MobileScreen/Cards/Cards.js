@@ -1,9 +1,10 @@
-import React from "react";
+import React,{useEffect,useState}from "react";
 import styled from "styled-components";
 import {useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiOutlineCreditCard } from "react-icons/ai";
+import { userData } from '../../../services/profileServices';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -53,7 +54,16 @@ const LoginDiv = styled.div`
 
 
 function Card() {
+  const [dummyData ,setDummyData] =useState([])
   let navigate = useNavigate()
+  useEffect(()=>{
+    userData().then((result)=>{
+      setDummyData(result.data) 
+      
+    }).catch((err)=>{
+      console.log(err)
+    }) 
+  },[]) 
   return (
   <Wrapper>
     <Heads>
@@ -63,12 +73,25 @@ function Card() {
       <BiDotsVerticalRounded style={{height: "30px", width: "25px",backgroundColor: "black"}}/>        
        </Div>
     </Heads> 
-    <Items>Item</Items>  
-    <UserDetails>
+    <Items>Item</Items>
+    {dummyData?.map((e)=>(
+      e.type==="card"?
+      <UserDetails>
           <AiOutlineCreditCard  style={{backgroundColor:"rgb(48,48,48)"}}
           onClick={()=>{navigate("/ViewItem")}}/>
-          <LoginDiv onClick={()=>{navigate("/ViewItem")}}>Axis</LoginDiv>
-        </UserDetails>  
+          <LoginDiv onClick={()=>{navigate("/ViewItem",{ state: { 
+              type: e.type,
+              cvv:e.cvv,
+              cardholder:e.cardholder,
+              bankName:e.bankName,
+              cardnumber:e.cardnumber,
+              expiryMonth:e.expiryMonth,
+              expiryYear:e.expiryYear
+              } 
+            })}}>{e.bankName}</LoginDiv>
+        </UserDetails>:""
+    ))}  
+     
 </Wrapper>   
     
   );

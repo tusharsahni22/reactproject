@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
+import {addNewItem} from "../../../services/profileServices"
 
 const TopBar=styled.div`
 display: flex;
@@ -54,15 +55,49 @@ const LoginDiv=styled.div`
 const CardDiv=styled.div`
 `;
 function NewItem() {
+
   const [select,setSelect] = useState("login");
+  const [userName,setUserName] = useState("");
+  const [password,setPassword] = useState("");
+  const [name,setName] = useState("");
+  const [url,setUrl] = useState("");
+  const [notes,setNotes] = useState("");
+  const [cvv,setCvv] = useState("");
+  const [cardholder,setCardholder] = useState("");
+  const [bank,setBank] = useState("");
+  const [cardNumber,setCardNumber] = useState("");
+  const [exYear,setExYear] = useState("");
+  const [exMonth,setExMonth] = useState("");
   
   let navigate = useNavigate();
+
+  const submitData = () => {
+    let data = {
+    "type":select,
+    "username":userName,
+    "password":password,
+    "name":name,
+    "url":url,
+    "notes":notes,
+    "cvv":cvv,
+    "cardholder":cardholder,
+    "bankName":bank,
+    "cardnumber":cardNumber,
+    "expiryMonth":exMonth,
+    "expiryYear":exYear
+    }
+    addNewItem(data)
+    navigate("/")
+  
+
+    
+  };
   return (
     <Wrapper>
     <TopBar>
         <div onClick={()=>{navigate("/")}}>Cancel</div>
         <div>Add item</div>
-        <div onClick={()=>{navigate("/")}}> Save </div>
+        <div onClick={submitData}> Save </div>
     </TopBar>
     <Padding>
 
@@ -75,31 +110,31 @@ function NewItem() {
     {(select === "login") ? <LoginDiv>
     <Padding>
     <FieldTitle>Name</FieldTitle>
-    <Input placeholder="Domain"/>
+    <Input value={name} onChange={(e)=>{setName(e.target.value)}} placeholder="Domain"/>
     <FieldTitle>Username</FieldTitle>
-    <Input placeholder="CaptainAmera"/>
+    <Input value={userName} onChange={(e)=>{setUserName(e.target.value)}} placeholder="CaptainAmera"/>
     <FieldTitle>Password</FieldTitle>
-    <Input type="password"/>
+    <Input value={password} type="password" onChange={(e)=>{setPassword(e.target.value)}}/>
     <FieldTitle>Url</FieldTitle>
-    <Input placeholder="ex. https://facebook.com "/>
+    <Input value={url} onChange={(e)=>{setUrl(e.target.value)}} placeholder="ex. https://facebook.com "/>
     <FieldTitle>Notes</FieldTitle>
-    <Input/>
+    <Input type= "text" value={notes} onChange={(e)=>{setNotes(e.target.value)}} placeholder=''/>
     </Padding>
 
     </LoginDiv>:<CardDiv>
     <Padding>
     <FieldTitle>Card Holder</FieldTitle>
-    <Input placeholder="Name"/>
+    <Input type="text" value={cardholder} onChange={(e)=>{setCardholder(e.target.value)}} placeholder="Name"/>
     <FieldTitle>Bank Name</FieldTitle>
-    <Input placeholder="SBI"/>
+    <Input type="text" value={bank} onChange={(e)=>{setBank(e.target.value)}} placeholder="SBI"/>
     <FieldTitle>Card Number</FieldTitle>
-    <Input type="text"/>
+    <Input type="number" value={cardNumber} onChange={(e)=>{setCardNumber(e.target.value)}}/>
     <FieldTitle>Valid From</FieldTitle>
-    <Input placeholder="07"/>
+    <Input type="number" value={exMonth} onChange={(e)=>{setExMonth(e.target.value)}} placeholder="07"/>
     <FieldTitle>Year</FieldTitle>
-    <Input placeholder="2035"/>
+    <Input type="number" value={exYear} onChange={(e)=>{setExYear(e.target.value)}}  placeholder="2035"/>
     <FieldTitle>Cvv</FieldTitle>
-    <Input/>
+    <Input type="password" value={cvv} onChange={(e)=>{setCvv(e.target.value)}} placeholder=""/>
     </Padding>
     </CardDiv>
     }

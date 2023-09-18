@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation} from 'react-router-dom';
 import styled from 'styled-components'
 
 const TopBar=styled.div`
@@ -54,8 +54,10 @@ const LoginDiv=styled.div`
 const CardDiv=styled.div`
 `;
 function ViewItem() {
-  const [select,setSelect] = useState("login");
   let navigate = useNavigate();
+  const {state} = useLocation();
+  const {type,name,username,password,url,notes, cvv,cardholder,bankName,cardnumber,expiryMonth,expiryYear }= state
+  const [select,setSelect] = useState(type);
   return (
     <Wrapper>
     <TopBar>
@@ -67,38 +69,38 @@ function ViewItem() {
 
     <H1>Types</H1>
     <Selecter onChange ={(e)=>(setSelect(e.target.value))}>
-        <Choice value={"login"}>Login</Choice>
-        <Choice value={"card"}>Card</Choice>
+        <Choice value={"login"}>{select}</Choice>
+        {/* <Choice value={"card"}>{select}</Choice> */}
     </Selecter>
     </Padding>
     {(select === "login") ? <LoginDiv>
     <Padding>
     <FieldTitle>Name</FieldTitle>
-    <Input placeholder="Domain"/>
+    <Input value={name} placeholder="Domain"/>
     <FieldTitle>Username</FieldTitle>
-    <Input placeholder="CaptainAmera"/>
+    <Input value={username} placeholder="CaptainAmera"/>
     <FieldTitle>Password</FieldTitle>
-    <Input type="password"/>
+    <Input value={password} type="text"/>
     <FieldTitle>Url</FieldTitle>
-    <Input placeholder="ex. https://facebook.com "/>
+    <Input value={url} placeholder="ex. https://facebook.com "/>
     <FieldTitle>Notes</FieldTitle>
-    <Input/>
+    <Input value={notes}/>
     </Padding>
 
     </LoginDiv>:<CardDiv>
     <Padding>
     <FieldTitle>Card Holder</FieldTitle>
-    <Input placeholder="Name"/>
+    <Input value={cardholder} placeholder="Name"/>
     <FieldTitle>Bank Name</FieldTitle>
-    <Input placeholder="SBI"/>
+    <Input value={bankName} placeholder="SBI"/>
     <FieldTitle>Card Number</FieldTitle>
-    <Input type="text"/>
+    <Input value={cardnumber} type="text"/>
     <FieldTitle>Valid From</FieldTitle>
-    <Input placeholder="07"/>
+    <Input value={expiryMonth} placeholder="07"/>
     <FieldTitle>Year</FieldTitle>
-    <Input placeholder="2035"/>
+    <Input value={expiryYear} placeholder="2035"/>
     <FieldTitle>Cvv</FieldTitle>
-    <Input/>
+    <Input value={cvv}/>
     </Padding>
     </CardDiv>
     }
