@@ -34,8 +34,21 @@ const Lable = styled.div`
   margin: 7px 0;
   font-weight: 550;
   letter-spacing: 0.5px;
+  
   @media (max-width:767px){
     color: white;
+    margin: 20px 0px
+  }
+`;
+const Lablee = styled.div`
+  color: #333;
+  margin: 35px 0 7px 0;
+  font-weight: 550;
+  letter-spacing: 0.5px;
+  
+  @media (max-width:767px){
+    color: white;
+    margin: 20px 0;
   }
 `;
 const Input = styled.input`
@@ -150,9 +163,9 @@ function PrivacyComponent() {
       <Heading>Master password </Heading>
       <Line />
       <Heading2> Change master password</Heading2>
-      <br />
-      <br />
-      <Lable>Current master password</Lable>
+
+
+      <Lablee>Current master password</Lablee>
       <Input
         value={password}
         onChange={(e) => {
