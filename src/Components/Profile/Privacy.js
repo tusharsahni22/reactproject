@@ -11,6 +11,9 @@ const Heading = styled.div`
   color: "#175ddc";
   font-size: 20px;
   letter-spacing: 0.5px;
+   @media (max-width:767px){
+    font-weight: bold;
+  }
 `;
 const Line = styled.div`
   height: 1.5px;
@@ -21,6 +24,9 @@ const Heading2 = styled.div`
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.5px;
+   @media (max-width:767px){
+    font-weight: 100;
+  }
 `;
 
 const Lable = styled.div`
@@ -28,6 +34,9 @@ const Lable = styled.div`
   margin: 7px 0;
   font-weight: 550;
   letter-spacing: 0.5px;
+  @media (max-width:767px){
+    color: white;
+  }
 `;
 const Input = styled.input`
   background-color: #fbfbfb;
@@ -61,10 +70,16 @@ const Input2 = styled.input`
     width: auto;
     margin-left: 10px;
   }
+   @media (max-width:767px){
+   margin-left: 0px;
+  }
 `;
 const Div = styled.div`
   display: flex;
   justify-content: space-between;
+   @media (max-width:767px){
+    display: block;
+  }
 `;
 const Pwd = styled.div``;
 

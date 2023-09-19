@@ -48,7 +48,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function CustomizedAccordions() {
-  const [expanded, setExpanded] = React.useState('');
+  const [expanded, setExpanded] = React.useState('panel1');
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -60,10 +60,7 @@ export default function CustomizedAccordions() {
           <Typography style={{fontWeight:'bold', fontSize:15, color:'#5239d1' }}>All Items </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-          <AiOutlineStar style={{paddingRight :5}}/>
-           Favorites
-          </Typography>
+          
           <Typography>
             <MdOutlineLogin style={{paddingRight :5}}/>
            Login
@@ -71,6 +68,10 @@ export default function CustomizedAccordions() {
           <Typography>
             <AiOutlineCreditCard style={{paddingRight :5}}/>
            Card
+          </Typography>
+          <Typography>
+          <AiOutlineStar style={{paddingRight :5}}/>
+           Favorites
           </Typography>
           
           

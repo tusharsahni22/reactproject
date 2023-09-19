@@ -20,14 +20,14 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const Input = styled.input`
-  margin-left: 10px;
-  height: 15px;
-  border: none;
-  outline: none;
-  border: 0 white;
-  background-color: #24195f;
-`;
+// const Input = styled.input`
+//   margin-left: 10px;
+//   height: 15px;
+//   border: none;
+//   outline: none;
+//   border: 0 white;
+//   background-color: #24195f;
+// `;
 const MainHeader = styled.div`
   margin: 20px 10px 0 10px;
   padding-top: 20px;
@@ -54,9 +54,11 @@ justify-content: space-between;
 `;
 const Name = styled.div`
 cursor:pointer;
+width: 200px;
 `;
 const Iconns = styled.div``;
-const Owner = styled.div``;
+const Owner = styled.div`
+width:50px`;
 
 const Head = styled.div`
   display: flex;
@@ -84,7 +86,7 @@ const Button = styled.button`
 const Line = styled.div`
   height: 1.5px;
   background-color: lightgrey;
-  margin: 2%;
+  margin: 2% 7%;
   @media (max-width: 767px) {
     display: none;
   }
@@ -211,11 +213,13 @@ function Front() {
       </MobileVault>
       <MainHeader>
         <All>
-        <Input type="checkbox" />
+        {/* <Input type="checkbox" /> */}
+        <div></div>
         <Iconns>All </Iconns>
-        <Iconns>Name </Iconns>
+        <Name>Name </Name>
         <Owner> Owner </Owner>
         <BiDotsVerticalRounded />
+        <div></div>
         </All>
         <Line />
       </MainHeader>
@@ -223,11 +227,13 @@ function Front() {
       {dummyData?.map((e)=>(    
       <DataOfUser>
         <All>
-        <Input type="checkbox" />
+        {/* <Input type="checkbox" /> */}
+        <div></div>
         { <Iconns>{e.type==="login"?<BsGlobeAmericas/>: <CiCreditCard1/> } </Iconns> }
         <Name onClick={()=>{handleEditItem(e._id)}}>{e.bankName || e.name} </Name>
         <Owner> Me </Owner>
         <BiDotsVerticalRounded />
+        <div></div>
         </All>
         <Line />
       </DataOfUser>

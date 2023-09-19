@@ -88,6 +88,7 @@ margin: 15px 0;
 color: white;
 font-weight:200;
 margin: 2% 1%;
+display: none;
 }
 `;
 const LogoutBox = styled.div`
@@ -97,11 +98,8 @@ outline: solid .5px #ec3f3f;
 color: white;
 font-weight:200;
 margin: 2% 1%;
-@media (max-width: 767px){
-color: white;
-font-weight:200;
-margin: 2% 1%;
-}
+display: none;
+
 }
 `;
 const LogoutButton = styled.button`
@@ -135,6 +133,11 @@ color: white;
 font-weight:200;
 margin: 2% 1%;
     }
+`;
+const Mobile =styled.div`
+@media (min-width: 768px){
+    display: none;
+}
 `;
 
 
@@ -181,7 +184,7 @@ function ProfileComponent() {
      }
     }
 
-  return (
+  return (<>
   <Wrapper>
     <Sidebar sendData={setAccount}/>
        {account ?  <Account>
@@ -216,13 +219,16 @@ function ProfileComponent() {
             <Para>Careful, these actions are not reversible!</Para>
             <LogoutButton onClick={()=>{handleLogout()}}> Logout</LogoutButton>
         </LogoutBox>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        
         </Account> : <PrivacyComponent/>}
+        
         </Wrapper>
+        <Mobile>
+            <PrivacyComponent/>
+        </Mobile>
+        
+        
+    </>
 
   )
 }
