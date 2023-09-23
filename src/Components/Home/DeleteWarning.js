@@ -1,12 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import { IoIosClose } from "react-icons/io";
+import { deleteItem } from '../services/profileServices';
 
 function DeleteWarning(props) {
-    const handleDelete =()=>{
-        
-        props.setData(false)
+  
+    const handleDelete =()=>{ 
+      console.log("first",props._id)
+      let _id = {id:props._id}
+      deleteItem(_id)
+      props.setReload(!props.reload)
+      props.setData(false)
+      
     }
+  
     const Wrapper =styled.div`
     height: 220px;
     width: 500px;

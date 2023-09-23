@@ -139,6 +139,8 @@ function Front() {
   const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  const [reload,setReload] =useState(true)
+  const [id, setId] = useState("");
   
   useEffect(()=>{
     userData().then((result)=>{
@@ -147,13 +149,19 @@ function Front() {
     }).catch((err)=>{
       console.log(err)
     }) 
-  },[newItem])
-  const handleLogout = ()=>{
+    console.log("first from effect")
+  },[reload]
+)
+  
+  
+const handleLogout = ()=>{
     doLogout()
 }
 
-const handleShowDelete = ()=>{
+const handleShowDelete = (id)=>{
   setShowDelete(!showDelete)
+  setId(id)
+
 }
   const handleEditItem = (_id)=>{
   setEditItem(!editItem)
@@ -161,17 +169,16 @@ const handleShowDelete = ()=>{
     return e._id ===_id}) 
     setEditObject(object) 
   }
+  const handleNewItem = ()=>{
+    setNewItem(!newItem);
+  }
   let navigate = useNavigate();
 
   return (
     <Container>
       <Head>
         All vaults
-        <Button
-          onClick={() => {
-            setNewItem(!newItem);
-          }}
-        >
+        <Button onClick={() => {handleNewItem()}}>
           <AiOutlinePlus /> New item
         </Button>
       </Head>
@@ -225,16 +232,16 @@ const handleShowDelete = ()=>{
         { <Iconns>{e.type==="login"?<BsGlobeAmericas/>: <CiCreditCard1/> } </Iconns> }
         <Name onClick={()=>{handleEditItem(e._id)}}>{e.bankName || e.name} </Name>
         <Owner> Me </Owner>
-        <MdOutlineDeleteSweep onClick={()=>{handleShowDelete()}} />
+        <MdOutlineDeleteSweep onClick={()=>{handleShowDelete(e._id)}} />
         <div></div>
         </All>
         <Line />
       </DataOfUser>
        ))}
 
-      {newItem ? <Item sendData={setNewItem} /> : " "}
+      {newItem ? <Item sendData={setNewItem} setReload={setReload} reload={reload} /> : " "}
       {editItem ? <Edit sendData={setEditItem} apiData={editObject} /> : " "}
-      {showDelete? <DeleteWarning setData={setShowDelete}/>:""}
+      {showDelete? <DeleteWarning setData={setShowDelete} _id={id} setReload={setReload} reload={reload}/>:""}
       
     </Container>
   );
