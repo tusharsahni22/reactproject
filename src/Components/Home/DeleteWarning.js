@@ -9,7 +9,7 @@ function DeleteWarning(props) {
       console.log("first",props._id)
       let _id = {id:props._id}
       deleteItem(_id)
-      props.setReload(!props.reload)
+      props.setReload()
       props.setData(false)
       
     }
