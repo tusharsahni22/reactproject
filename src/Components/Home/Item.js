@@ -224,7 +224,8 @@ function Item(props) {
     "expiryYear":exYear
     }
     addNewItem(data)
-    props.setReload(!props.reload)
+    let state=props.reload
+    props.setReload(!state)
     handleClose()
   };
   return (

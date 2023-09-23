@@ -139,7 +139,7 @@ function Front() {
   const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
-  const [reload,setReload] =useState(true)
+  const [reload,setReload] =useState(false)
   const [id, setId] = useState("");
   
   useEffect(()=>{
@@ -150,8 +150,7 @@ function Front() {
       console.log(err)
     }) 
     console.log("first from effect")
-  },[reload]
-)
+  },[showDelete],[newItem])
   
   
 const handleLogout = ()=>{
