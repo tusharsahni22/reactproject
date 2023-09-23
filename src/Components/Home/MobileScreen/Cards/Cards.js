@@ -4,6 +4,7 @@ import {useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiOutlineCreditCard } from "react-icons/ai";
+import { MdOutlineDeleteSweep } from "react-icons/md";
 import { userData } from '../../../services/profileServices';
 
 const Wrapper = styled.div`
@@ -42,14 +43,18 @@ const Items = styled.div`
   margin: 10px 5px 15px 5px;
 `;
 const UserDetails = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  padding: 9px 0 0px 15px;
+ display: flex;
+  justify-content:space-between;
+  padding: 9px 15px 0px 15px;
   background-color: rgb(48,48,48);
 `;
 const LoginDiv = styled.div`
   margin: 0px 15px 10px;
   background-color: rgb(48,48,48);
+`;
+const First =styled.div`
+display:flex;
+background-color: rgb(48,48,48);
 `;
 
 
@@ -77,6 +82,7 @@ function Card() {
     {dummyData?.map((e)=>(
       e.type==="card"?
       <UserDetails>
+        <First>
           <AiOutlineCreditCard  style={{backgroundColor:"rgb(48,48,48)"}}
           onClick={()=>{navigate("/ViewItem")}}/>
           <LoginDiv onClick={()=>{navigate("/ViewItem",{ state: { 
@@ -89,6 +95,8 @@ function Card() {
               expiryYear:e.expiryYear
               } 
             })}}>{e.bankName}</LoginDiv>
+             </First>      
+            <MdOutlineDeleteSweep/>
         </UserDetails>:""
     ))}  
      

@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import { BiDotsVerticalRounded } from "react-icons/bi";
+import { MdOutlineDeleteSweep } from "react-icons/md";
 import { BsGlobeAmericas } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import Item from "./Item";
 import Edit from "./Edit";
+import DeleteWarning from "./DeleteWarning";
 import { useState } from "react";
 import { CiCreditCard1 } from "react-icons/ci";
 import { MdOutlineLogin } from "react-icons/md";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { FiPower } from "react-icons/fi";
-// import { BsSearch } from "react-icons/bs";
 import { BsTrash3 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -33,8 +34,6 @@ const MainHeader = styled.div`
   padding-top: 20px;
   margin-top: 10px;
   @media (max-width: 767px) {
-    /* background-color: rgb(48,48,48);
-    color: white; */
     display: none;
   }
 `;
@@ -43,8 +42,6 @@ const DataOfUser = styled.div`
   padding-top: 20px;
   margin-top: 10px;
   @media (max-width: 767px) {
-    /* background-color: rgb(48,48,48);
-    color: white; */
     display: none;
   }
 `;
@@ -57,8 +54,10 @@ cursor:pointer;
 width: 200px;
 `;
 const Iconns = styled.div``;
+
 const Owner = styled.div`
-width:50px`;
+width:50px;
+`;
 
 const Head = styled.div`
   display: flex;
@@ -96,7 +95,6 @@ const Mobile = styled.div`
     display: flex;
     font-size: 20px;
     padding: 10px;
-    /* margin: 20px 0 10px 20px; */
     justify-content: space-between;
     background-color: black;
     color: white;
@@ -133,13 +131,6 @@ const CardDiv = styled.div`
   margin: 0px 15px 10px;
   background-color: rgb(48,48,48);
 `;
-// const ProfilePic = styled.img`
-//   vertical-align: middle;
-//   width: 40px;
-//   height: 40px;
-//   border-radius: 50%;
-//   cursor: pointer;
-// `;
 
  
 function Front() {
@@ -147,7 +138,8 @@ function Front() {
   const [editObject,setEditObject] = useState([])
   const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState(false);
-
+  const [showDelete, setShowDelete] = useState(false);
+  
   useEffect(()=>{
     userData().then((result)=>{
       setDummyData(result.data) 
@@ -160,6 +152,9 @@ function Front() {
     doLogout()
 }
 
+const handleShowDelete = ()=>{
+  setShowDelete(!showDelete)
+}
   const handleEditItem = (_id)=>{
   setEditItem(!editItem)
   const object = dummyData.find((e)=>{
@@ -213,12 +208,11 @@ function Front() {
       </MobileVault>
       <MainHeader>
         <All>
-        {/* <Input type="checkbox" /> */}
         <div></div>
         <Iconns>All </Iconns>
         <Name>Name </Name>
         <Owner> Owner </Owner>
-        <BiDotsVerticalRounded />
+        <BiDotsVerticalRounded style={{height:"0px"}}/>
         <div></div>
         </All>
         <Line />
@@ -227,12 +221,11 @@ function Front() {
       {dummyData?.map((e)=>(    
       <DataOfUser>
         <All>
-        {/* <Input type="checkbox" /> */}
         <div></div>
         { <Iconns>{e.type==="login"?<BsGlobeAmericas/>: <CiCreditCard1/> } </Iconns> }
         <Name onClick={()=>{handleEditItem(e._id)}}>{e.bankName || e.name} </Name>
         <Owner> Me </Owner>
-        <BiDotsVerticalRounded />
+        <MdOutlineDeleteSweep onClick={()=>{handleShowDelete()}} />
         <div></div>
         </All>
         <Line />
@@ -241,6 +234,7 @@ function Front() {
 
       {newItem ? <Item sendData={setNewItem} /> : " "}
       {editItem ? <Edit sendData={setEditItem} apiData={editObject} /> : " "}
+      {showDelete? <DeleteWarning setData={setShowDelete}/>:""}
       
     </Container>
   );

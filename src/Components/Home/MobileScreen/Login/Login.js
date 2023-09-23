@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {useNavigate } from "react-router-dom";
 import {AiOutlineArrowLeft} from "react-icons/ai";
 import {BiDotsVerticalRounded} from "react-icons/bi";
-import { MdOutlineLogin } from "react-icons/md";
+import { MdOutlineLogin , MdOutlineDeleteSweep } from "react-icons/md";
 import { userData } from '../../../services/profileServices';
 
 
@@ -37,6 +37,10 @@ background-color: black;
 font-size: 20px;
 }
 `;
+const First =styled.div`
+display:flex;
+background-color: rgb(48,48,48);
+`;
 const Items = styled.div`
   color: skyblue;
   font-size: 15px;
@@ -44,8 +48,8 @@ const Items = styled.div`
 `;
 const UserDetails = styled.div`
   display: flex;
-  justify-content: flex-start;
-  padding: 9px 0 0px 15px;
+  justify-content:space-between;
+  padding: 9px 15px 0px 15px;
   background-color: rgb(48,48,48);
 `;
 const LoginDiv = styled.div`
@@ -75,7 +79,8 @@ function Login() {
       <Items>Item</Items>  
       {dummyData?.map((e)=>(
         e.type==="login"?
-      <UserDetails>          
+      <UserDetails>    
+        <First>
             <MdOutlineLogin  style={{backgroundColor:"rgb(48,48,48)"}} 
             onClick={()=>{navigate("/ViewItem")}}/>
             <LoginDiv onClick={()=>{navigate("/ViewItem",{ state: { 
@@ -83,8 +88,10 @@ function Login() {
               name: e.name,
               username:e.username,
               password:e.password,url:e.url,notes:e.notes
-              } 
-            })}}>{e.name}</LoginDiv>
+            } 
+          })}}>{e.name}</LoginDiv>
+        </First>      
+            <MdOutlineDeleteSweep/>
       </UserDetails>:""  
       ))}
   </Wrapper>  

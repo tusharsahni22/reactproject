@@ -1,7 +1,7 @@
 import React from "react";
 import {useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import {AiFillLock} from "react-icons/ai";
+import {TbShieldLock} from "react-icons/tb";
 import {RiSendPlaneFill} from "react-icons/ri";
 import {MdRestartAlt} from "react-icons/md";
 import {RiSettings2Line} from "react-icons/ri";
@@ -113,7 +113,7 @@ function Header() {
       
         <Profile>
           <Line1>
-        <AiFillLock onClick={()=>{navigate("/")}} style={style}/>
+        <TbShieldLock onClick={()=>{navigate("/")}} style={style}/>
           <Text onClick={()=>{navigate("/")}}>My vault</Text>
           </Line1>
           <Line1>

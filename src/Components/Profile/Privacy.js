@@ -13,7 +13,19 @@ const Heading = styled.div`
   letter-spacing: 0.5px;
    @media (max-width:767px){
     font-weight: bold;
+    display:none;
   }
+`;
+const HeadingMob = styled.div`
+font-size: 20px;
+margin: 15px 0 9px;
+font-weight: bold;
+letter-spacing: 0.5px;
+@media (max-width: 767px){
+color: white;
+font-weight:200;
+margin: 2% 1%;
+}
 `;
 const Line = styled.div`
   height: 1.5px;
@@ -26,6 +38,7 @@ const Heading2 = styled.div`
   letter-spacing: 0.5px;
    @media (max-width:767px){
     font-weight: 100;
+    display: none;
   }
 `;
 
@@ -161,6 +174,7 @@ function PrivacyComponent() {
     <Privacy>
       <ToastContainer />
       <Heading>Master password </Heading>
+      <HeadingMob> Change master password</HeadingMob>
       <Line />
       <Heading2> Change master password</Heading2>
 
@@ -192,8 +206,8 @@ function PrivacyComponent() {
           />
         </Pwd1>
       </Div>
-      <Lable> password hint</Lable>
-      <Input type="text" placeholder=" password hint" />
+      <Lable> Password Hint</Lable>
+      <Input type="text" placeholder="Password Hint" />
       <ChangePwd
         onClick={() => {
           handleUpdatePasword();
