@@ -1,7 +1,7 @@
 import React,{useEffect,useState}from "react";
 import styled from "styled-components";
 import {useNavigate } from "react-router-dom";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import { MdArrowBack } from "react-icons/md";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { MdOutlineDeleteSweep } from "react-icons/md";
@@ -72,7 +72,7 @@ function Card() {
   return (
   <Wrapper>
     <Heads>
-       <AiOutlineArrowLeft style={{height: "25px", width: "25px",backgroundColor: "black"}} onClick={()=>(navigate("/"))} />
+       <MdArrowBack style={{height: "25px", width: "25px",backgroundColor: "black"}} onClick={()=>(navigate("/"))} />
       <Title> Card </Title>
       <Div>  
       <BiDotsVerticalRounded style={{height: "30px", width: "25px",backgroundColor: "black"}}/>        
@@ -96,7 +96,7 @@ function Card() {
               } 
             })}}>{e.bankName}</LoginDiv>
              </First>      
-            <MdOutlineDeleteSweep/>
+            <MdOutlineDeleteSweep style={{backgroundColor:"rgb(48,48,48)"}}/>
         </UserDetails>:""
     ))}  
      

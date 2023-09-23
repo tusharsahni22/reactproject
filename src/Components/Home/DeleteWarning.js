@@ -13,7 +13,7 @@ function DeleteWarning(props) {
     overflow-y: hidden;
     overflow-x: hidden;
     background-color: white;
-    top: 10%;
+    top: 11%;
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -21,6 +21,9 @@ function DeleteWarning(props) {
     position: fixed;
     border: 1px solid;
     border-radius: 5px;
+    @media (max-width:768px){
+      width: 350px;
+    }
     `;
     const Head =styled.div`
     display:flex;
@@ -31,6 +34,9 @@ function DeleteWarning(props) {
     font-size:30px;
     font-weight: bold;
     margin: 10px;
+    @media (max-width:768px){
+    font-size: 25px;
+    }
     `;
     const Warning =styled.div`
     height:50px;

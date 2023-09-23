@@ -6,6 +6,9 @@ import { toast, ToastContainer } from "react-toastify";
 const Privacy = styled.div`
   width: 100%;
   padding: 10px;
+  @media (max-width:767px){
+    height: 85vh;
+  }
 `;
 const Heading = styled.div`
   color: "#175ddc";
