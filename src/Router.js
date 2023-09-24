@@ -8,6 +8,8 @@ import Profile from './Components/Profile';
 import PrivateRoutes from './Components/PrivateRoutes/PrivateRoutes';
 import Cards from './Components/Home/MobileScreen/Cards';
 import LoginDetails from './Components/Home/MobileScreen/Login';
+import NewItemComponemt from './Components/Home/MobileScreen/NewItem';
+import ViewItemComponemt from './Components/Home/MobileScreen/ViewItem';
 
 
 
@@ -25,6 +27,8 @@ function Router() {
       <Route path="user-profile" element={<Profile/>}/>
       <Route path="/Cards" element={<Cards/>}/>
       <Route path="/LoginDetails" element={<LoginDetails/>}/>
+      <Route path="/newItem" element={<NewItemComponemt/>}/>
+      <Route path="/viewItem" element={<ViewItemComponemt/>}/>
       
       </Route> 
       

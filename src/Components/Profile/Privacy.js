@@ -6,11 +6,29 @@ import { toast, ToastContainer } from "react-toastify";
 const Privacy = styled.div`
   width: 100%;
   padding: 10px;
+  @media (max-width:767px){
+    height: 85vh;
+  }
 `;
 const Heading = styled.div`
   color: "#175ddc";
   font-size: 20px;
   letter-spacing: 0.5px;
+   @media (max-width:767px){
+    font-weight: bold;
+    display:none;
+  }
+`;
+const HeadingMob = styled.div`
+font-size: 20px;
+margin: 15px 0 9px;
+font-weight: bold;
+letter-spacing: 0.5px;
+@media (max-width: 767px){
+color: white;
+font-weight:200;
+margin: 2% 1%;
+}
 `;
 const Line = styled.div`
   height: 1.5px;
@@ -21,6 +39,10 @@ const Heading2 = styled.div`
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.5px;
+   @media (max-width:767px){
+    font-weight: 100;
+    display: none;
+  }
 `;
 
 const Lable = styled.div`
@@ -28,6 +50,22 @@ const Lable = styled.div`
   margin: 7px 0;
   font-weight: 550;
   letter-spacing: 0.5px;
+  
+  @media (max-width:767px){
+    color: white;
+    margin: 20px 0px
+  }
+`;
+const Lablee = styled.div`
+  color: #333;
+  margin: 35px 0 7px 0;
+  font-weight: 550;
+  letter-spacing: 0.5px;
+  
+  @media (max-width:767px){
+    color: white;
+    margin: 20px 0;
+  }
 `;
 const Input = styled.input`
   background-color: #fbfbfb;
@@ -61,10 +99,16 @@ const Input2 = styled.input`
     width: auto;
     margin-left: 10px;
   }
+   @media (max-width:767px){
+   margin-left: 0px;
+  }
 `;
 const Div = styled.div`
   display: flex;
   justify-content: space-between;
+   @media (max-width:767px){
+    display: block;
+  }
 `;
 const Pwd = styled.div``;
 
@@ -133,11 +177,12 @@ function PrivacyComponent() {
     <Privacy>
       <ToastContainer />
       <Heading>Master password </Heading>
+      <HeadingMob> Change master password</HeadingMob>
       <Line />
       <Heading2> Change master password</Heading2>
-      <br />
-      <br />
-      <Lable>Current master password</Lable>
+
+
+      <Lablee>Current master password</Lablee>
       <Input
         value={password}
         onChange={(e) => {
@@ -164,8 +209,8 @@ function PrivacyComponent() {
           />
         </Pwd1>
       </Div>
-      <Lable> password hint</Lable>
-      <Input type="text" placeholder=" password hint" />
+      <Lable> Password Hint</Lable>
+      <Input type="text" placeholder="Password Hint" />
       <ChangePwd
         onClick={() => {
           handleUpdatePasword();

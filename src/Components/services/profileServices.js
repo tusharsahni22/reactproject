@@ -79,3 +79,23 @@ export const userData = (data)=>{
     })
     
 }
+
+export const deleteItem = (data)=>{
+    const token = currentUser()
+    const instance = axios.create({
+        baseURL:process.env.REACT_APP_BASE_URL,
+        timeout:10000,
+        headers:{"token":`Bearer ${token}`},
+        validateStatus:function(status){
+            return status <500;
+        }
+    })
+console.log("first",data)
+    return instance.post("/api/delete",data).then((result)=>{
+       console.log("first",result)
+        return result
+    }).catch((err)=>{
+        console.log("err from delete",err)
+    })
+
+}

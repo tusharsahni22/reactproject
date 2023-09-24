@@ -224,9 +224,8 @@ function Item(props) {
     "expiryYear":exYear
     }
     addNewItem(data)
+    props.setReload()
     handleClose()
-
-    
   };
   return (
     <Container>
@@ -281,11 +280,11 @@ function Item(props) {
             <Div>
             <Card>
               <Title> Card Holder Name</Title>
-              <Button2 type="text" value={cardholder} onChange={(e)=>{setCardholder(e.target.value)}} placeholder=""></Button2>
+              <Button2 type="text" value={cardholder} onChange={(e)=>{setCardholder(e.target.value)}} placeholder="Name"></Button2>
             </Card>
             <Card>
               <Title> Bank </Title>
-              <Button2 type="text" value={bank} onChange={(e)=>{setBank(e.target.value)}} placeholder=""></Button2>
+              <Button2 type="text" value={bank} onChange={(e)=>{setBank(e.target.value)}} placeholder="SBI"></Button2>
             </Card>
           </Div>
         
