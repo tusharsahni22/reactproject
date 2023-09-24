@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react'
 import styled from 'styled-components';
 import {useNavigate } from "react-router-dom";
 import {MdArrowBack} from "react-icons/md";
-import {BiDotsVerticalRounded} from "react-icons/bi";
+import {AiOutlinePlus} from "react-icons/ai";
 import { MdOutlineLogin , MdOutlineDeleteSweep } from "react-icons/md";
 import { userData } from '../../../services/profileServices';
 import DeleteWarning from "../../DeleteWarning"
@@ -86,7 +86,8 @@ function Login() {
          <MdArrowBack style={{height: "25px", width: "25px",backgroundColor: "black"}} onClick={()=>(navigate("/"))} />
         <Title> Login </Title>
         <Div>  
-        <BiDotsVerticalRounded style={{height: "30px", width: "25px",backgroundColor: "black"}}/>        
+        <AiOutlinePlus style={{height: "30px", width: "25px",backgroundColor: "black"}} onClick={()=>{navigate("/newItem")}}/>
+         
          </Div>
       </Heads> 
       <Items>Item</Items>  
@@ -104,7 +105,7 @@ function Login() {
             }})}}>{e.name}</LoginDiv>
         </First>      
             <MdOutlineDeleteSweep onClick={()=>handleDelete()} style={{backgroundColor:"rgb(48,48,48)"}}/>
-            {showDelete?<DeleteWarning setData={setShowDelete} _id={e._id} setReload={handleReload}/>:""}
+            {showDelete?<DeleteWarning setData={setShowDelete} _id={e._id} name={e.name} setReload={handleReload}/>:""}
       </UserDetails>:""  
       ))}
   </Wrapper>  

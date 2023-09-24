@@ -240,7 +240,7 @@ const handleShowDelete = (id)=>{
         <div></div>
         </All>
         <Line />
-        {showDelete? <DeleteWarning setData={setShowDelete} _id={e._id} setReload={handleReload}/>:""}
+        {showDelete? <DeleteWarning setData={setShowDelete} _id={e._id} name={"it"} setReload={handleReload}/>:""}
       </DataOfUser>
        ))}
 

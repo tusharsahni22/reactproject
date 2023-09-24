@@ -2,8 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { IoIosClose } from "react-icons/io";
 import { deleteItem } from '../services/profileServices';
+import { useNavigate } from 'react-router-dom';
 
 function DeleteWarning(props) {
+
+  let navigate = useNavigate()
   
     const handleDelete =()=>{ 
       console.log("first",props._id)
@@ -11,6 +14,7 @@ function DeleteWarning(props) {
       deleteItem(_id)
       props.setReload()
       props.setData(false)
+      navigate("/")
       
     }
   
