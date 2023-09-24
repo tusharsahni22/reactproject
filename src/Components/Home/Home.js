@@ -140,7 +140,7 @@ function Front() {
   const [editItem, setEditItem] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [reload,setReload] =useState(true)
-  const [id, setId] = useState("");
+  // const [id, setId] = useState("");
   
   useEffect(()=>{
     userData().then((result)=>{
@@ -159,7 +159,7 @@ const handleLogout = ()=>{
 
 const handleShowDelete = (id)=>{
   setShowDelete(!showDelete)
-  setId(id)
+  // setId(id)
 
 }
   const handleEditItem = (_id)=>{
@@ -173,6 +173,7 @@ const handleShowDelete = (id)=>{
   }
 
   const handleReload =()=>{
+    navigate("/")
     setReload(!reload)
   }
   let navigate = useNavigate();
@@ -239,12 +240,12 @@ const handleShowDelete = (id)=>{
         <div></div>
         </All>
         <Line />
+        {showDelete? <DeleteWarning setData={setShowDelete} _id={e._id} setReload={handleReload}/>:""}
       </DataOfUser>
        ))}
 
       {newItem ? <Item sendData={setNewItem} setReload={handleReload}/> : " "}
       {editItem ? <Edit sendData={setEditItem} apiData={editObject} /> : " "}
-      {showDelete? <DeleteWarning setData={setShowDelete} _id={id} setReload={handleReload}/>:""}
       
     </Container>
   );

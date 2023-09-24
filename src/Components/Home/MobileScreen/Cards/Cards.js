@@ -6,6 +6,7 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { MdOutlineDeleteSweep } from "react-icons/md";
 import { userData } from '../../../services/profileServices';
+import DeleteWarning from "../../DeleteWarning"
 
 const Wrapper = styled.div`
   width: 100%;
@@ -60,6 +61,8 @@ background-color: rgb(48,48,48);
 
 function Card() {
   const [dummyData ,setDummyData] =useState([])
+  const [showDelete ,setShowDelete] =useState(false)
+  const [reload,setReload] =useState(true)
   let navigate = useNavigate()
   useEffect(()=>{
     userData().then((result)=>{
@@ -69,6 +72,13 @@ function Card() {
       console.log(err)
     }) 
   },[]) 
+  const handleDelete = ()=>{
+    setShowDelete(!showDelete)
+    }
+    const handleReload =()=>{
+      setReload(!reload)
+      navigate("/")
+    }
   return (
   <Wrapper>
     <Heads>
@@ -96,7 +106,8 @@ function Card() {
               } 
             })}}>{e.bankName}</LoginDiv>
              </First>      
-            <MdOutlineDeleteSweep style={{backgroundColor:"rgb(48,48,48)"}}/>
+            <MdOutlineDeleteSweep onClick={()=>handleDelete()} style={{backgroundColor:"rgb(48,48,48)"}}/>
+            {showDelete?<DeleteWarning setData={setShowDelete} _id={e._id} setReload={handleReload}/>:""}
         </UserDetails>:""
     ))}  
      

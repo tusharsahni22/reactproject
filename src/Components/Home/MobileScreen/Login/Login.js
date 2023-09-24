@@ -5,6 +5,7 @@ import {MdArrowBack} from "react-icons/md";
 import {BiDotsVerticalRounded} from "react-icons/bi";
 import { MdOutlineLogin , MdOutlineDeleteSweep } from "react-icons/md";
 import { userData } from '../../../services/profileServices';
+import DeleteWarning from "../../DeleteWarning"
 
 
 const Wrapper = styled.div`
@@ -58,6 +59,9 @@ const LoginDiv = styled.div`
 `;
 function Login() {
   const [dummyData ,setDummyData] =useState([])
+  const [showDelete ,setShowDelete] =useState(false)
+  const [reload,setReload] =useState(true)
+
   let navigate = useNavigate()
   useEffect(()=>{
     userData().then((result)=>{
@@ -66,7 +70,16 @@ function Login() {
     }).catch((err)=>{
       console.log(err)
     }) 
-  },[])  
+  },[]) 
+  
+  const handleDelete = ()=>{
+  setShowDelete(!showDelete)
+  }
+  const handleReload =()=>{
+    setReload(!reload)
+    navigate("/")
+  }
+
   return ( 
   <Wrapper>
       <Heads>
@@ -87,11 +100,11 @@ function Login() {
               type: e.type,
               name: e.name,
               username:e.username,
-              password:e.password,url:e.url,notes:e.notes
-            } 
-          })}}>{e.name}</LoginDiv>
+              password:e.password,url:e.url,notes:e.notes,
+            }})}}>{e.name}</LoginDiv>
         </First>      
-            <MdOutlineDeleteSweep style={{backgroundColor:"rgb(48,48,48)"}}/>
+            <MdOutlineDeleteSweep onClick={()=>handleDelete()} style={{backgroundColor:"rgb(48,48,48)"}}/>
+            {showDelete?<DeleteWarning setData={setShowDelete} _id={e._id} setReload={handleReload}/>:""}
       </UserDetails>:""  
       ))}
   </Wrapper>  

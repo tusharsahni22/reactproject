@@ -30,6 +30,7 @@ function DeleteWarning(props) {
     border-radius: 5px;
     @media (max-width:768px){
       width: 350px;
+      top: 35%;
     }
     `;
     const Head =styled.div`
@@ -38,11 +39,13 @@ function DeleteWarning(props) {
     justify-content: space-between;
     `;
     const Title =styled.div`
-    font-size:30px;
+    font-size:25px;
     font-weight: bold;
     margin: 10px;
-    @media (max-width:768px){
-    font-size: 25px;
+    @media (max-width:767px){
+    font-size: 15px;
+    padding: 10px;
+    font-weight:100px
     }
     `;
     const Warning =styled.div`
