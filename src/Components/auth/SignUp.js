@@ -1,10 +1,11 @@
-import React from "react";
+import React  from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { singUpService } from "../services/auth_service";
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from "react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -225,6 +226,19 @@ function Singup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cnfPassword, setcnfPassword] = useState('');
+
+  useEffect(() => {
+    const listener = event => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        console.log("Enter key was pressed. Run your function.");
+        handlesignUpData()
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  });
 
   const handleRedirect=()=>{
     navigate("/login")
