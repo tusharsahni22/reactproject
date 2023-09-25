@@ -54,7 +54,7 @@ const CiCircleQuestions = styled.div`
 `;
 
 
-function Filter() {
+function Filter({setFilter}) {
   return (
     <Container>
     <Box>
@@ -66,7 +66,7 @@ function Filter() {
         </BoxHead>
           <SearchVault type="text" placeholder="Search vaults" />     
       
-        <Accordion2/>
+        <Accordion2 setFilter={setFilter}/>
 
        {/* 2nd approch */}
 

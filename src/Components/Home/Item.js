@@ -241,6 +241,7 @@ function Item(props) {
   }
   addNewItem(data)
   setError("")
+  props.sendData(false);
 }};
 
   return (

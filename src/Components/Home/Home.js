@@ -133,24 +133,38 @@ const CardDiv = styled.div`
 `;
 
  
-function Front() {
-  const [dummyData ,setDummyData] =useState([])
+function Front({filter}) {
   const [editObject,setEditObject] = useState([])
+  const [dummyData ,setDummyData] =useState([])
+  const [filteredData ,setFilteredData] =useState([])
   const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [reload,setReload] =useState(true)
-  // const [id, setId] = useState("");
   
   useEffect(()=>{
     userData().then((result)=>{
       setDummyData(result.data) 
+      setFilteredData(result.data)
       
     }).catch((err)=>{
       console.log(err)
     }) 
     console.log("first from effect")
   },[reload])
+
+  const filterr = ()=>{
+    if(filter===""){
+      setFilteredData(dummyData)
+    }else{
+    const data=dummyData.filter((e)=>(
+      e.type===`${filter}`))
+      setFilteredData(data)
+  }}
+
+  useEffect(()=>{
+    filterr()
+  },[filter])
   
   
 const handleLogout = ()=>{
@@ -159,7 +173,6 @@ const handleLogout = ()=>{
 
 const handleShowDelete = (id)=>{
   setShowDelete(!showDelete)
-  // setId(id)
 
 }
   const handleEditItem = (_id)=>{
@@ -229,7 +242,7 @@ const handleShowDelete = (id)=>{
         <Line />
       </MainHeader>
 
-      {dummyData?.map((e)=>(    
+      {filteredData?.map((e)=>(    
       <DataOfUser>
         <All>
         <div></div>

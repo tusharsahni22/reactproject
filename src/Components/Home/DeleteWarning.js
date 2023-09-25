@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { IoIosClose } from "react-icons/io";
 import { deleteItem } from '../services/profileServices';
 import { useNavigate } from 'react-router-dom';
+import {ToastContainer,toast} from "react-toastify";
 
 function DeleteWarning(props) {
 
@@ -11,12 +12,16 @@ function DeleteWarning(props) {
     const handleDelete =()=>{ 
       console.log("first",props._id)
       let _id = {id:props._id}
-      deleteItem(_id)
+      deleteItem(_id).then((result)=>{
+        console.log("log",result)
+        if(result.status === 200) {
+          toast.success("Login Sucess")           
+        }
       props.setReload()
       props.setData(false)
       navigate("/")
       
-    }
+    })}
   
     const Wrapper =styled.div`
     height: 220px;
@@ -93,6 +98,7 @@ function DeleteWarning(props) {
     `;
   return (
     <Wrapper>
+    <ToastContainer/>
     <Head>
     <Title>Delete Confirmation</Title>
     <IoIosClose onClick={()=>{props.setData(false)}}  style={{height:"25px",width:"25px",margin:"15px 10px",Hover:"cursor"}}/>

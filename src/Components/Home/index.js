@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Home from "./Home";
 import Filter from "./Filter";
 import Footer from "../Common/Footer";
+import { useState } from "react";
 
 const Div = styled.div`
   display: flex;
@@ -19,12 +20,14 @@ const Div = styled.div`
 `;
 
 function ToolComponent() {
+  const [filter,setFilter]=useState("")
+
   return (
     <div>
       <Header />
       <Div>
-        <Filter />
-        <Home />
+        <Filter setFilter={setFilter} />
+        <Home filter={filter}/>
       </Div>
       <Footer/>
     </div>
