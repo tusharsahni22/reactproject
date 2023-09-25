@@ -78,16 +78,14 @@ function NewItem() {
   let navigate = useNavigate();
 
   const submitData = () => {
-    if(select==="login"){
-      if(name==="" || userName==="" || password===""){
+    if((select==="login") && (name==="" || userName==="" || password==="")){
         setError("Enter Mandatory fields")
-         return 0
-      }}
-    else if(select==="card"){
-        if(cvv===""|| cardholder==="" || cardNumber==="" || exMonth==="" || exYear==="" || bank===""){
+         return 
+        }
+    else if((select==="card")&& (cvv===""|| cardholder==="" || cardNumber==="" || exMonth==="" || exYear==="" || bank==="")){
         setError("All fields are Mandatory")
-        return 0
-      }}
+        return
+      }
     else{
     console.log("first else")
     let data = {
@@ -142,17 +140,17 @@ function NewItem() {
     </LoginDiv>:<CardDiv>
     <Padding>
     <Error>{error}</Error>
-    <FieldTitle>Card Holder*</FieldTitle>
+    <FieldTitle>Card Holder</FieldTitle>
     <Input type="text" value={cardholder} onChange={(e)=>{setCardholder(e.target.value)}} placeholder="Name"/>
-    <FieldTitle>Bank Name*</FieldTitle>
+    <FieldTitle>Bank Name</FieldTitle>
     <Input type="text" value={bank} onChange={(e)=>{setBank(e.target.value)}} placeholder="SBI"/>
-    <FieldTitle>Card Number*</FieldTitle>
+    <FieldTitle>Card Number</FieldTitle>
     <Input type="number" value={cardNumber} onChange={(e)=>{setCardNumber(e.target.value)}}/>
-    <FieldTitle>Valid From*</FieldTitle>
+    <FieldTitle>Valid From</FieldTitle>
     <Input type="number" value={exMonth} onChange={(e)=>{setExMonth(e.target.value)}} placeholder="07"/>
-    <FieldTitle>Year*</FieldTitle>
+    <FieldTitle>Year</FieldTitle>
     <Input type="number" value={exYear} onChange={(e)=>{setExYear(e.target.value)}}  placeholder="2035"/>
-    <FieldTitle>Cvv*</FieldTitle>
+    <FieldTitle>Cvv</FieldTitle>
     <Input type="password" value={cvv} onChange={(e)=>{setCvv(e.target.value)}} placeholder=""/>
     
     </Padding>
