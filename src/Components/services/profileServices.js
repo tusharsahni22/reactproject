@@ -92,10 +92,83 @@ export const deleteItem = (data)=>{
     })
 console.log("first",data)
     return instance.post("/api/delete",data).then((result)=>{
-       console.log("first",result)
         return result
     }).catch((err)=>{
         console.log("err from delete",err)
     })
 
+}
+
+export const moveToTrash = (data)=>{
+    const token = currentUser()
+    const instance = axios.create({
+        baseURL:process.env.REACT_APP_BASE_URL,
+        timeout:10000,
+        headers:{"token":`Bearer ${token}`},
+        validateStatus:function(status){
+            return status <500;
+        }
+    })
+    return instance.post("/api/trash",data).then((result)=>{
+       console.log("first",result)
+        return result
+    }).catch((err)=>{
+        console.log("err from trash",err)
+    })
+
+}
+export const restore = (data)=>{
+    const token = currentUser()
+    const instance = axios.create({
+        baseURL:process.env.REACT_APP_BASE_URL,
+        timeout:10000,
+        headers:{"token":`Bearer ${token}`},
+        validateStatus:function(status){
+            return status <500;
+        }
+    })
+    return instance.post("/api/restore",data).then((result)=>{
+       console.log("first",result)
+        return result
+    }).catch((err)=>{
+        console.log("err from restore",err)
+    })
+
+}
+
+export const trashData = (data)=>{
+    const token = currentUser()
+    const instance = axios.create({
+        baseURL:process.env.REACT_APP_BASE_URL,
+        timeout:10000,
+        headers:{"token":`Bearer ${token}`},
+        validateStatus:function(status){
+            return status <500;
+        }
+    })
+    return instance.get("/api/view-trash",data).then((result)=>{
+        console.log("log",result)
+        return result
+    }).catch((err)=>{
+        console.log("err from server",err)
+    })
+    
+}
+export const emptyTrash = (data)=>{
+    const token = currentUser()
+    const instance = axios.create({
+        baseURL:process.env.REACT_APP_BASE_URL,
+        timeout:10000,
+        headers:{"token":`Bearer ${token}`},
+        validateStatus:function(status){
+            return status <500;
+        }
+    })
+    return instance.post("/api/emptytrash",data).then((result)=>{
+        console.log("log",result)
+        return result
+    }).catch((err)=>{
+        console.log("err from server",err)
+    })
+    
 }

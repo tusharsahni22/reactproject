@@ -1,18 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { IoIosClose } from "react-icons/io";
-import { moveToTrash } from '../services/profileServices';
+import { restore } from '../services/profileServices';
 import { useNavigate } from 'react-router-dom';
 import {ToastContainer,toast} from "react-toastify";
 
-function DeleteWarning(props) {
-
-  let navigate = useNavigate()
+function RestoreWarning(props) {
   
-    const handleDelete =()=>{ 
+    let navigate = useNavigate()
+  
+    const handleRestore =()=>{ 
       let _id = {id:props._id}
       console.log("log",_id)
-      moveToTrash(_id).then((result)=>{
+      restore(_id).then((result)=>{
         if(result.status === 200) {
           toast.success("Login Sucess")           
         }
@@ -99,7 +99,7 @@ function DeleteWarning(props) {
     <Wrapper>
     <ToastContainer/>
     <Head>
-    <Title>Delete Confirmation</Title>
+    <Title>Restore Confirmation</Title>
     <IoIosClose onClick={()=>{props.setData(false)}}  style={{height:"25px",width:"25px",margin:"15px 10px",Hover:"cursor"}}/>
     </Head>
     <Line></Line>
@@ -107,11 +107,11 @@ function DeleteWarning(props) {
     <Line></Line>
     <Buttons>
     <Cancel onClick={()=>{props.setData(false)}}>Cancel</Cancel>
-    <Delete onClick={handleDelete}>Delete</Delete>
+    <Delete onClick={handleRestore}>Restore</Delete>
     </Buttons>
 
     </Wrapper>
   )
 }
 
-export default DeleteWarning
+export default RestoreWarning

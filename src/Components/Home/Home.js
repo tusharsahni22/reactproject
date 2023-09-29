@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { BiDotsVerticalRounded } from "react-icons/bi";
-import { MdOutlineDeleteSweep } from "react-icons/md";
+import { MdDeleteSweep } from "react-icons/md";
 import { BsGlobeAmericas } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import Item from "./Item";
@@ -16,19 +16,11 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { userData } from "../services/profileServices";
 import { doLogout } from "../auth";
-
+import Trash from "./Trash";
 const Container = styled.div`
   width: 100%;
 `;
 
-// const Input = styled.input`
-//   margin-left: 10px;
-//   height: 15px;
-//   border: none;
-//   outline: none;
-//   border: 0 white;
-//   background-color: #24195f;
-// `;
 const MainHeader = styled.div`
   margin: 20px 10px 0 10px;
   padding-top: 20px;
@@ -132,8 +124,11 @@ const CardDiv = styled.div`
   background-color: rgb(48,48,48);
 `;
 
+const Home = styled.div`
+`;
+
  
-function Front({filter}) {
+function Front({filter,showTrash}) {
   const [editObject,setEditObject] = useState([])
   const [dummyData ,setDummyData] =useState([])
   const [filteredData ,setFilteredData] =useState([])
@@ -141,6 +136,7 @@ function Front({filter}) {
   const [editItem, setEditItem] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [reload,setReload] =useState(true)
+  const [id,setId] =useState("")
   
   useEffect(()=>{
     userData().then((result)=>{
@@ -164,6 +160,7 @@ function Front({filter}) {
 
   useEffect(()=>{
     filterr()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[filter])
   
   
@@ -172,6 +169,7 @@ const handleLogout = ()=>{
 }
 
 const handleShowDelete = (id)=>{
+  setId(id)
   setShowDelete(!showDelete)
 
 }
@@ -193,6 +191,8 @@ const handleShowDelete = (id)=>{
 
   return (
     <Container>
+      {showTrash?<Trash/>:
+      <Home>
       <Head>
         All vaults
         <Button onClick={() => {handleNewItem()}}>
@@ -224,7 +224,7 @@ const handleShowDelete = (id)=>{
           </UserDetails>
           <H1> Trash </H1>
           <UserDetails>
-          <BsTrash3 /> 
+          <BsTrash3 style={{backgroundColor:"rgb(48,48,48)"}}/> 
             <CardDiv>Trash</CardDiv>
           </UserDetails>
           
@@ -249,17 +249,17 @@ const handleShowDelete = (id)=>{
         { <Iconns>{e.type==="login"?<BsGlobeAmericas/>: <CiCreditCard1/> } </Iconns> }
         <Name onClick={()=>{handleEditItem(e._id)}}>{e.bankName || e.name} </Name>
         <Owner> Me </Owner>
-        <MdOutlineDeleteSweep onClick={()=>{handleShowDelete(e._id)}} />
+        <MdDeleteSweep style={{height: '20px',width:'20px'}} onClick={()=>{handleShowDelete(e._id)}} />
         <div></div>
         </All>
         <Line />
-        {showDelete? <DeleteWarning setData={setShowDelete} _id={e._id} name={"it"} setReload={handleReload}/>:""}
+        {showDelete? <DeleteWarning setData={setShowDelete} _id={id} name={"it"} setReload={handleReload}/>:""}
       </DataOfUser>
        ))}
 
       {newItem ? <Item sendData={setNewItem} setReload={handleReload}/> : " "}
       {editItem ? <Edit sendData={setEditItem} apiData={editObject} /> : " "}
-      
+      </Home>}
     </Container>
   );
 }

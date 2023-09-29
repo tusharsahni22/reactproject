@@ -9,6 +9,7 @@ import {MdOutlineLogin} from 'react-icons/md';
 import {AiOutlineCreditCard} from 'react-icons/ai';
 import {BsTrash3} from 'react-icons/bs';
 import styledd from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -50,12 +51,19 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 const Typographyy =styledd.div`
 font-weight: bold;
 font-size: 15px;
-color:'#5239d1
+cursor: pointer;
 
 `;
 
-export default function CustomizedAccordions({setFilter}) {
+export default function CustomizedAccordions({setFilter,setShowTrash}) {
   const [expanded, setExpanded] = React.useState('panel1');
+  let navigate = useNavigate()
+
+  const handleGoToAllVault =()=>{
+    setShowTrash(false)
+    navigate("/")
+    
+  }
 
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -65,7 +73,7 @@ export default function CustomizedAccordions({setFilter}) {
     <div>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typographyy>All Items </Typographyy>
+          <Typographyy onClick={()=>{handleGoToAllVault()}}>All Items </Typographyy>
         </AccordionSummary>
         <AccordionDetails>
           
@@ -84,8 +92,8 @@ export default function CustomizedAccordions({setFilter}) {
         </AccordionDetails>
       </Accordion>
       <div style={{display: 'flex', margin: 10}}>
-      <BsTrash3 style={{marginRight:10,marginLeft:10}}/>
-      <div style={{paddingBottom:20}}> Trash </div>
+      <BsTrash3 onClick={()=>{setShowTrash(true)}}  style={{marginRight:10,marginLeft:10,cursor:"pointer"}}/>
+      <div onClick={()=>{setShowTrash(true)}} style={{paddingBottom:20,cursor:"pointer"}}> Trash </div>
       </div>
      
     </div>

@@ -21,13 +21,14 @@ const Div = styled.div`
 
 function ToolComponent() {
   const [filter,setFilter]=useState("")
+  const [showTrash,setShowTrash]=useState(false)
 
   return (
     <div>
       <Header />
       <Div>
-        <Filter setFilter={setFilter} />
-        <Home filter={filter}/>
+        <Filter setFilter={setFilter} setShowTrash={setShowTrash} />
+        <Home filter={filter} showTrash={showTrash}/>
       </Div>
       <Footer/>
     </div>

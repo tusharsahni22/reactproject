@@ -242,6 +242,7 @@ function Item(props) {
   addNewItem(data)
   setError("")
   props.sendData(false);
+  props.setReload()
 }};
 
   return (
