@@ -108,7 +108,7 @@ function Card() {
             })}}>{e.bankName}</LoginDiv>
              </First>      
             <MdOutlineDeleteSweep onClick={()=>handleDelete()} style={{backgroundColor:"rgb(48,48,48)"}}/>
-            {showDelete?<DeleteWarning setData={setShowDelete} _id={e._id} name={e.bankName} setReload={handleReload}/>:""}
+            {showDelete?<DeleteWarning setData={setShowDelete} _id={e._id} name={e.bankName} do={"Delete"} setReload={handleReload}/>:""}
         </UserDetails>:""
     ))}  
      

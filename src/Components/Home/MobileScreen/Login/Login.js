@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import {useNavigate } from "react-router-dom";
 import {MdArrowBack} from "react-icons/md";
 import {AiOutlinePlus} from "react-icons/ai";
-import { MdOutlineLogin , MdOutlineDeleteSweep } from "react-icons/md";
+import {MdOutlineDeleteSweep } from "react-icons/md";
+import { BsGlobeAmericas } from "react-icons/bs";
 import { userData } from '../../../services/profileServices';
 import DeleteWarning from "../../DeleteWarning"
 
@@ -95,7 +96,7 @@ function Login() {
         e.type==="login"?
       <UserDetails>    
         <First>
-            <MdOutlineLogin  style={{backgroundColor:"rgb(48,48,48)"}} 
+            <BsGlobeAmericas  style={{backgroundColor:"rgb(48,48,48)"}} 
             onClick={()=>{navigate("/ViewItem")}}/>
             <LoginDiv onClick={()=>{navigate("/ViewItem",{ state: { 
               type: e.type,
@@ -105,7 +106,7 @@ function Login() {
             }})}}>{e.name}</LoginDiv>
         </First>      
             <MdOutlineDeleteSweep onClick={()=>handleDelete()} style={{backgroundColor:"rgb(48,48,48)"}}/>
-            {showDelete?<DeleteWarning setData={setShowDelete} _id={e._id} name={e.name} setReload={handleReload}/>:""}
+            {showDelete?<DeleteWarning setData={setShowDelete} _id={e._id} name={e.name} do={"Delete"}  setReload={handleReload}/>:""}
       </UserDetails>:""  
       ))}
   </Wrapper>  

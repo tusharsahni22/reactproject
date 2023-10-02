@@ -61,8 +61,12 @@ export default function CustomizedAccordions({setFilter,setShowTrash}) {
 
   const handleGoToAllVault =()=>{
     setShowTrash(false)
-    navigate("/")
-    
+    navigate("/") 
+  }
+
+  const handleTrash =()=>{
+    setShowTrash(true)
+    setExpanded("panel")
   }
 
 
@@ -70,7 +74,7 @@ export default function CustomizedAccordions({setFilter,setShowTrash}) {
     setExpanded(newExpanded ? panel : false);
   };
   return (
-    <div>
+    <div style={{height:"190px"}}>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typographyy onClick={()=>{handleGoToAllVault()}}>All Items </Typographyy>
@@ -93,7 +97,7 @@ export default function CustomizedAccordions({setFilter,setShowTrash}) {
       </Accordion>
       <div style={{display: 'flex', margin: 10}}>
       <BsTrash3 onClick={()=>{setShowTrash(true)}}  style={{marginRight:10,marginLeft:10,cursor:"pointer"}}/>
-      <div onClick={()=>{setShowTrash(true)}} style={{paddingBottom:20,cursor:"pointer"}}> Trash </div>
+      <div onClick={handleTrash} style={{cursor:"pointer"}}> Trash </div>
       </div>
      
     </div>

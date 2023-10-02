@@ -84,7 +84,7 @@ const PasswordGENStyle = styled.div`
 `;
 // const RadioButton = styled.input``;
 const RadioButtonLabel = styled.label`
-  margin: 0 15px 0 0;
+  margin: 0 15px 0 15px;
   font-size: 15px;
   text-transform: none;
   text-align: left;

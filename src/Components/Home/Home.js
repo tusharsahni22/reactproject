@@ -8,7 +8,6 @@ import Edit from "./Edit";
 import DeleteWarning from "./DeleteWarning";
 import { useState } from "react";
 import { CiCreditCard1 } from "react-icons/ci";
-import { MdOutlineLogin } from "react-icons/md";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { FiPower } from "react-icons/fi";
 import { BsTrash3 } from "react-icons/bs";
@@ -213,7 +212,7 @@ const handleShowDelete = (id)=>{
         <H1>Types</H1>
         <VaultDiv>
           <UserDetails>
-            <MdOutlineLogin style={{backgroundColor:"rgb(48,48,48)"}}
+            <BsGlobeAmericas style={{backgroundColor:"rgb(48,48,48)"}}
              onClick={() => {navigate("/LoginDetails")}}/>
             <LoginDiv  onClick={() => {navigate("/LoginDetails")}}>Login</LoginDiv>
           </UserDetails>
@@ -224,8 +223,8 @@ const handleShowDelete = (id)=>{
           </UserDetails>
           <H1> Trash </H1>
           <UserDetails>
-          <BsTrash3 style={{backgroundColor:"rgb(48,48,48)"}}/> 
-            <CardDiv>Trash</CardDiv>
+          <BsTrash3 onClick={()=>{navigate("/trash")}} style={{backgroundColor:"rgb(48,48,48)"}}/> 
+            <CardDiv onClick={()=>{navigate("/trash")}}>Trash</CardDiv>
           </UserDetails>
           
         </VaultDiv>
@@ -253,7 +252,7 @@ const handleShowDelete = (id)=>{
         <div></div>
         </All>
         <Line />
-        {showDelete? <DeleteWarning setData={setShowDelete} _id={id} name={"it"} setReload={handleReload}/>:""}
+        {showDelete? <DeleteWarning setData={setShowDelete} _id={id} name={"it"} do={"Delete"}  setReload={handleReload}/>:""}
       </DataOfUser>
        ))}
 

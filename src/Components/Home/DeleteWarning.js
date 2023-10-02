@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { IoIosClose } from "react-icons/io";
-import { moveToTrash } from '../services/profileServices';
+import { emptyTrash, moveToTrash, restore } from '../services/profileServices';
 import { useNavigate } from 'react-router-dom';
 import {ToastContainer,toast} from "react-toastify";
 
@@ -11,16 +11,32 @@ function DeleteWarning(props) {
   
     const handleDelete =()=>{ 
       let _id = {id:props._id}
-      console.log("log",_id)
-      moveToTrash(_id).then((result)=>{
+      if(props.do==="Restore"){
+      restore(_id).then((result)=>{
         if(result.status === 200) {
           toast.success("Login Sucess")           
         }
       props.setReload()
       props.setData(false)
       navigate("/")
-      
-    })}
+       })}
+       else if(props.do==="EmptyBin"){
+        emptyTrash().then((result)=>{
+          console.log("trash",result)
+          props.setReload()
+      }).catch((err)=>{
+          console.log("trash",err)
+      })
+      }else{
+        moveToTrash(_id).then((result)=>{
+          if(result.status === 200) {
+            toast.success("Login Sucess")           
+          }
+        props.setReload()
+        props.setData(false)
+        navigate("/")
+         })}
+    }  
   
     const Wrapper =styled.div`
     height: 220px;
@@ -99,15 +115,15 @@ function DeleteWarning(props) {
     <Wrapper>
     <ToastContainer/>
     <Head>
-    <Title>Delete Confirmation</Title>
+    <Title>{props.do} Confirmation</Title>
     <IoIosClose onClick={()=>{props.setData(false)}}  style={{height:"25px",width:"25px",margin:"15px 10px",Hover:"cursor"}}/>
     </Head>
     <Line></Line>
-    <Warning>Are you sure you want to delete the '{props.name}' ?</Warning>
+    <Warning>Are you sure you want to {props.do} ?</Warning>
     <Line></Line>
     <Buttons>
     <Cancel onClick={()=>{props.setData(false)}}>Cancel</Cancel>
-    <Delete onClick={handleDelete}>Delete</Delete>
+    <Delete onClick={handleDelete}>{props.do}</Delete>
     </Buttons>
 
     </Wrapper>

@@ -111,7 +111,7 @@ const Title = styled.div`
 `;
 const RadioButton = styled.input``;
 const RadioButtonLabel = styled.label`
-  margin: 0 15px 0 0;
+  margin: 0px 15px 0px 15px;
   font-size: 13px;
   text-transform: none;
   text-align: left;
@@ -126,7 +126,6 @@ const RadioButtonLabel = styled.label`
     color: white;
     margin-left: 5px;
      background-color: rgb(48 48 48);
-    
   }
 `;
 const Line = styled.div`
@@ -143,6 +142,7 @@ background-color: rgb(34 34 34);
 `;
 const Buttondiv = styled.div`
 background-color: white;
+width: 100px;
 @media (max-width: 767px){
   background-color: rgb(48 48 48);
 }
@@ -166,17 +166,14 @@ function Tools() {
   function handleCopy (){
     navigator.clipboard.writeText(GenPass)
     toast.success("Copied!")
-
   }
 
   return (
     <>
       <Wrapper>
       <ToastContainer/>
-        {/* <Genrator> */}
           <HeadingGen>Genrator</HeadingGen>
           <Line/>
-
           <GenText>
           <GenratedText>{GenPass}</GenratedText>
           <DivGen>
