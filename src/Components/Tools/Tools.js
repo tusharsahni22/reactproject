@@ -177,8 +177,8 @@ function Tools() {
           <GenText>
           <GenratedText>{GenPass}</GenratedText>
           <DivGen>
-          <MdOutlineContentCopy style={{margin:'10px'}} onClick={handleCopy}/>
-          <FiRefreshCw style={{margin:'10px'}} />
+          <MdOutlineContentCopy style={{margin:'10px',backgroundColor:"rgb(48,48,48)"}} onClick={handleCopy}/>
+          <FiRefreshCw style={{margin:'10px',backgroundColor:"rgb(48,48,48)"}} />
           </DivGen>
           </GenText>
 

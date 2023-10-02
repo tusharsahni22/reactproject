@@ -202,7 +202,7 @@ const handleShowDelete = (id)=>{
         <FiPower style={{ height: "25px", width: "25px",backgroundColor: "black" , marginTop: "10px" }} 
         onClick={()=>{handleLogout()}}/>
 
-        <div style={{ marginTop: "9px", backgroundColor: "black" }}>
+        <div style={{ marginTop: "9px", backgroundColor: "black",fontWeight:"bold" }}>
           My vault
         </div>
         <div style={{ marginTop: "10px", backgroundColor: "black" }}>

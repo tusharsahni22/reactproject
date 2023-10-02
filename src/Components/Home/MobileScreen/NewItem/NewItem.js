@@ -111,7 +111,7 @@ function NewItem() {
     <Wrapper>
     <TopBar>
         <div onClick={()=>{navigate("/")}}>Cancel</div>
-        <div>Add item</div>
+        <div style={{fontWeight:"bold"}}>Add item</div>
         <div onClick={()=>{submitData()}}> Save </div>
     </TopBar>
     <Padding>
