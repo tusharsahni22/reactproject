@@ -103,7 +103,7 @@ function RestoreWarning(props) {
     <IoIosClose onClick={()=>{props.setData(false)}}  style={{height:"25px",width:"25px",margin:"15px 10px",Hover:"cursor"}}/>
     </Head>
     <Line></Line>
-    <Warning>Are you sure you want to delete the '{props.name}' ?</Warning>
+    <Warning>Are you sure you want to restore it ?</Warning>
     <Line></Line>
     <Buttons>
     <Cancel onClick={()=>{props.setData(false)}}>Cancel</Cancel>

@@ -127,14 +127,14 @@ const Home = styled.div`
 `;
 
  
-function Front({filter,showTrash}) {
+function Front({filter,showTrash,refreshByFilter}) {
   const [editObject,setEditObject] = useState([])
   const [dummyData ,setDummyData] =useState([])
   const [filteredData ,setFilteredData] =useState([])
   const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
-  const [reload,setReload] =useState(true)
+  const [reload,setReload] =useState(0)
   const [id,setId] =useState("")
   
   useEffect(()=>{
@@ -146,7 +146,7 @@ function Front({filter,showTrash}) {
       console.log(err)
     }) 
     console.log("first from effect")
-  },[reload])
+  },[reload,refreshByFilter])
 
   const filterr = ()=>{
     if(filter===""){
@@ -183,8 +183,8 @@ const handleShowDelete = (id)=>{
   }
 
   const handleReload =()=>{
+    setReload((reload)=>reload+1)
     navigate("/")
-    setReload(!reload)
   }
   let navigate = useNavigate();
 

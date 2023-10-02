@@ -1,5 +1,4 @@
 import React, {useState,useEffect} from 'react'
-// import { useNavigate } from "react-router-dom";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { LuDatabaseBackup } from "react-icons/lu";
 import { CiCreditCard1 } from "react-icons/ci";
@@ -9,7 +8,8 @@ import Edit from "./Edit";
 import RestoreWarning from './RestoreWarning';
 import { MdDeleteForever } from "react-icons/md";
 import { BsGlobeAmericas } from "react-icons/bs";
-import { emptyTrash, trashData } from '../services/profileServices';
+import {trashData } from '../services/profileServices';
+import DeleteWarning from './DeleteWarning';
 
 const TrashDiv = styled.div`
 
@@ -83,11 +83,10 @@ function Trash() {
   const [dummyData ,setDummyData] =useState([])
   const [filteredData ,setFilteredData] =useState([])
   const [showRestore, setShowRestore] = useState(false);
-  const [reload,setReload] =useState(true)
+  const [showEmptyBin, setShowEmptyBin] = useState(false);
+  const [reload,setReload] =useState(0)
   const [id,setId] =useState("")
-  const [refresh,setRefresh] =useState(false)
-  
-//   let navigate = useNavigate();
+
 
   useEffect(()=>{
     trashData().then((result)=>{
@@ -97,20 +96,14 @@ function Trash() {
     }).catch((err)=>{
       console.log(err)
     })
-  },[refresh])
+  },[reload])
     
 
   const handleEmptyBin = ()=>{
-    emptyTrash().then((result)=>{
-        console.log("trash",result)
-        setRefresh(!refresh)
-    }).catch((err)=>{
-        console.log("trash",err)
-    })
+   setShowEmptyBin(!showEmptyBin)
   }
   const handleReload =()=>{
-    // navigate("/")
-    setReload(!reload)
+    setReload((reload=>reload+1))
   }
   const handleRestore = (id)=>{
     setId(id)
@@ -130,7 +123,7 @@ function Trash() {
         <Head>
         Deleted Items
         <Button onClick={() => {handleEmptyBin()}}>
-          <MdDeleteForever /> Empty Bin
+          <MdDeleteForever onClick={() => {handleEmptyBin()}} /> Empty Bin
         </Button>
       </Head>
       
@@ -157,12 +150,13 @@ function Trash() {
         <div></div>
         </All>
         <Line />
-        {showRestore ? <RestoreWarning setData={setShowRestore} _id={id} name={"it"} setReload={handleReload}/>:""}
+        {showRestore ? <RestoreWarning setData={setShowRestore} _id={id} setReload={handleReload}/>:""}
       </DataOfUser>
        ))}
 
       {newItem ? <Item sendData={setNewItem} setReload={handleReload}/> : " "}
       {editItem ? <Edit sendData={setEditItem} apiData={editObject} /> : " "}
+      {showEmptyBin ? <DeleteWarning setData={setShowEmptyBin} _id={id}  do={"EmptyBin"} setReload={handleReload}/>:""}
       </TrashDiv>
   )
 }

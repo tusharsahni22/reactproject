@@ -271,7 +271,7 @@ function EditDetails(props) {
           <Div>
             <Card>
               <Title> Card Number</Title>
-              <Button2 type="number" value={cardNumber} onChange={(e)=>{setCardNumber(e.target.value)}} placeholder=""></Button2>
+              <Button2 type="text" value={cardNumber} onChange={(e)=>{setCardNumber(e.target.value)}} placeholder=""></Button2>
             </Card>
             <Cardd>
               <Month>

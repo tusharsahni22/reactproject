@@ -22,13 +22,18 @@ const Div = styled.div`
 function ToolComponent() {
   const [filter,setFilter]=useState("")
   const [showTrash,setShowTrash]=useState(false)
+  const [refreshByFilter,setRefreshByFilter]=useState(0)
+
+  const handleRefresh = ()=>{
+    setRefreshByFilter((refreshByFilter)=>refreshByFilter+1)
+  }
 
   return (
     <div>
       <Header />
       <Div>
-        <Filter setFilter={setFilter} setShowTrash={setShowTrash} />
-        <Home filter={filter} showTrash={showTrash}/>
+        <Filter setFilter={setFilter} setShowTrash={setShowTrash}  handleRefresh={handleRefresh} />
+        <Home filter={filter} showTrash={showTrash} refreshByFilter={refreshByFilter}/>
       </Div>
       <Footer/>
     </div>

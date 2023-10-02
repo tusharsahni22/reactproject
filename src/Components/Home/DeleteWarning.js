@@ -24,6 +24,7 @@ function DeleteWarning(props) {
         emptyTrash().then((result)=>{
           console.log("trash",result)
           props.setReload()
+          props.setData(false)
       }).catch((err)=>{
           console.log("trash",err)
       })

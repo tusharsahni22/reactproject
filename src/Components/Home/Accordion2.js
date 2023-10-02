@@ -9,7 +9,6 @@ import {MdOutlineLogin} from 'react-icons/md';
 import {AiOutlineCreditCard} from 'react-icons/ai';
 import {BsTrash3} from 'react-icons/bs';
 import styledd from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -55,13 +54,13 @@ cursor: pointer;
 
 `;
 
-export default function CustomizedAccordions({setFilter,setShowTrash}) {
+export default function CustomizedAccordions({setFilter,setShowTrash,handleRefresh}) {
   const [expanded, setExpanded] = React.useState('panel1');
-  let navigate = useNavigate()
+
 
   const handleGoToAllVault =()=>{
     setShowTrash(false)
-    navigate("/") 
+    handleRefresh()
   }
 
   const handleTrash =()=>{
