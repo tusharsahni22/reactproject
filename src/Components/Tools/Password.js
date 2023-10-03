@@ -95,6 +95,7 @@ const RadioButtonLabel = styled.label`
   visibility: visible;
   color: rgb(51, 51, 51);
   font-family: "Nanum Gothic";
+
   @media (max-width: 767px){
     color: white;
     letter-spacing: 2px;
