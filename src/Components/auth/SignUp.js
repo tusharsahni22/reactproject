@@ -23,6 +23,13 @@ const Head = styled.div`
   font-size: 12px;
   justify-content: flex-end;
   margin: 50px 50px 0 0;
+   @media (max-width: 768px){
+   display: flex;
+   justify-content: center;
+   font-size: 12px;
+    margin: 8px 0 0 0;
+   }
+
 `;
 const Section2 = styled.div`
   width: 100%;
@@ -50,10 +57,20 @@ const Title = styled.div`
   visibility: visible;
   color: rgb(39, 43, 48);
   font-family: "Work Sans";
+   @media (max-width: 768px){
+   text-align: center;
+   font-size: 35px;
+   color: white;
+   margin-top: 100px;
+  }
 `;
 const Fileds = styled.div`
   display: flex;
   flex-direction: column;
+   @media (max-width: 768px){
+    margin-top:40px ;
+    padding: 10% 20%;
+  }
 `;
 
 const Email = styled.input`
@@ -66,13 +83,17 @@ const Email = styled.input`
   opacity: 1;
   color: rgb(82, 83, 84);
   font-family: "Work Sans";
-  font-size: 11px;
+  font-size: 15px;
   letter-spacing: 0px;
-  padding: 22px;
-  width: 80%;
+  padding: 14px;
+  width: 80%;  
+  color: black;
+  @media (max-width:767px){
+    color: white;
+  }
 `;
 const SingUpInputStyle = styled.div`
-  height: 56px;
+  height: 45px;
   margin: 5px 0;
   overflow: hidden;
   opacity: 1;
@@ -80,6 +101,9 @@ const SingUpInputStyle = styled.div`
   background-color: rgb(250, 250, 250);
   border-radius: 11px;
   border: 1px solid rgb(192, 192, 192);
+   @media (max-width: 768px){
+    background-color: rgb(34,34,34);
+  }
 `;
 const Password = styled.input`
   border: 0px;
@@ -91,10 +115,14 @@ const Password = styled.input`
   opacity: 1;
   color: rgb(82, 83, 84);
   font-family: "Work Sans";
-  font-size: 11px;
+  font-size: 15px;
   letter-spacing: 0px;
-  padding: 22px;
+  padding: 14px;
   width: 80%;
+  color: black;
+  @media (max-width:767px){
+    color: white;
+  }
 `;
 const RePassword = styled.input`
   border: 0px;
@@ -106,10 +134,14 @@ const RePassword = styled.input`
   opacity: 1;
   color: rgb(82, 83, 84);
   font-family: "Work Sans";
-  font-size: 11px;
+  font-size: 15px;
   letter-spacing: 0px;
-  padding: 22px;
+  padding: 14px;
   width: 80%;
+  color: black;
+  @media (max-width:767px){
+    color: white;
+  }
 `;
 
 const TileDesc = styled.div``;
@@ -122,6 +154,10 @@ const SubmitButton = styled.button`
   border: none;
   color: white;
   cursor: pointer;
+   @media (max-width: 767px){
+     margin: 90px 0 0 0;
+  border-radius: 30px;
+  }
 `;
 
 const Features = styled.div`
@@ -160,6 +196,25 @@ text-align: center;
 
 const Error=styled.div`
 color:red;
+text-align: center;
+`;
+const Desktop = styled.div`
+display: flex;
+width: 100%;
+@media (max-width:767px){
+  display: none;
+
+}
+`;
+const Mobile = styled.div`
+width: 100%;
+@media (min-width: 768px){
+  display: none;
+}
+`;
+const Text = styled.div`
+width: 100%;
+color: white;
 text-align: center;
 `;
 
@@ -205,7 +260,9 @@ function Singup() {
 }
 
   return (
-    <Wrapper>
+    <Wrapper> 
+      <Desktop>
+
       <ToastContainer />
       <Section1>
         <HeadingFeature>Features</HeadingFeature>
@@ -244,6 +301,34 @@ function Singup() {
           
         </SingUpSection>
       </Section2>
+      </Desktop>
+      <Mobile>
+      <Title>Create New Account</Title>
+      <Text>Please fill in the form to Continue</Text>
+      <Fileds>
+           
+          <SingUpInputStyle>
+              <Email value={name} onChange={(e)=>(setName(e.target.value))}  placeholder="Name"></Email>
+            </SingUpInputStyle>
+
+            <SingUpInputStyle>
+              <Email value={email} onChange={(e)=>(setEmail(e.target.value))} placeholder="Email"></Email>
+            </SingUpInputStyle>
+            <SingUpInputStyle>
+              <Password type="password" value={password} onChange={(e)=>(setPassword(e.target.value))} placeholder="Password"></Password>
+            </SingUpInputStyle>
+            <SingUpInputStyle>
+              <RePassword value={cnfPassword} onChange={(e)=>(setcnfPassword(e.target.value))} placeholder="Repeat Password"></RePassword>
+            </SingUpInputStyle>
+          <SubmitButton onClick={()=>{handlesignUpData()}}>Sing Up</SubmitButton>
+          <Error>{error}</Error>
+          <Head>
+          <AlreadyLogin>Have An Account ?</AlreadyLogin>
+          <AlreadyLoginSingin onClick={()=>{navigate("/login")}}>Sign in</AlreadyLoginSingin>
+        </Head>
+          </Fileds>
+      
+      </Mobile>
     </Wrapper>
   );
 }

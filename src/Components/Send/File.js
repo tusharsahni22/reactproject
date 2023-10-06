@@ -24,6 +24,7 @@ const Container = styled.div`
     width: 400px;
     overflow: hidden;
     top: 15%;
+    display: none;
   }
 `;
 const Position = styled.div`

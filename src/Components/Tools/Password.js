@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { generate } from '@wcj/generate-password';
+import {toast,ToastContainer} from "react-toastify";
+
 
 
 
@@ -22,6 +24,7 @@ display :flex;
 `; 
 
 const CopyButton =styled.button`
+    cursor: pointer;
     border: 0px;
     width: 158px;
     height: 32px;
@@ -298,11 +301,16 @@ function Password(props) {
     props.sendData(copiedData)
     setRandomPass(copiedData)
   }
+  function handleCopy (){
+    navigator.clipboard.writeText(RandomPass)
+    toast.success("Copied!")
+
+  }
 
   return (
     <>
+    <ToastContainer/>
     <Title>Password Type</Title>
-  {/* <FieldValue> */}
     <PasswordGENStyle>
       <Lable>Length</Lable>
       <LableInput value={Lenght} onChange={(e)=>{setLength(e.target.value)}}></LableInput>
@@ -315,7 +323,6 @@ function Password(props) {
       <LableInput2 type="range" min="1" max="100" value= {Lenght} onChange={(e)=> {setLength(e.target.value)}} ></LableInput2>
       </LenghtDiv>
       </Slider>   
-  {/* </FieldValue> */}
   <OptionField>
     <Title>Options</Title>
     <Line/>
@@ -358,7 +365,7 @@ function Password(props) {
     <Buttons>
 
     <RegenratePasswordButton onClick={()=>{handleRandomPass()}}>Regenrate Password</RegenratePasswordButton>
-    <CopyButton onClick={(e)=>{navigator.clipboard.writeText(RandomPass)}}>Copy Password</CopyButton>
+    <CopyButton onClick={handleCopy}>Copy Password</CopyButton>
     </Buttons>
   </OptionField>
   

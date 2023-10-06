@@ -4,14 +4,20 @@ import Password from "./Password";
 import UserName from "./UserName";
 import {FiRefreshCw} from "react-icons/fi";
 import {MdOutlineContentCopy} from "react-icons/md";
+import {toast,ToastContainer} from "react-toastify";
 
 const Wrapper = styled.div`
 
   padding: 1% 2%;
-  width: 100%;
+  width: 70%;
+  @media (max-width: 1024px){
+    width: 60%;
+  }
   @media (max-width: 767px){
     background-color: #212121;
+    width: 100%;
   }
+ 
   
 `;
 const HeadingGen = styled.div`
@@ -46,8 +52,9 @@ const GenText = styled.div`
 `;
 const DivGen = styled.div`
 @media (max-width: 767px){
-  align-items: center;
+/* align-items: center; */
 display: flex;
+padding: 15px 0;
 justify-content: space-between;
 background-color: rgb(48 48 48);
 }
@@ -58,11 +65,12 @@ background-color: rgb(48 48 48);
 `;
 
 const GenratedText = styled.div`
-  padding-left: 5px;
+    display: inline-block;
+ width: 100%;
+  word-wrap: break-word;
+  padding: 10px 5px;
   letter-spacing: 1px;
-  display: flex;
   align-items: center;
-  height: 60px;
   overflow: hidden;
   opacity: 1;
   outline: none;
@@ -70,6 +78,10 @@ const GenratedText = styled.div`
   border-radius: 0px;
   border: 1px solid rgb(237, 238, 237);
   @media (max-width: 767px){
+    padding: 23px 5px;
+    display: inline-block;
+    max-width: 100%;
+    word-wrap: break-word;
     background-color: rgb(48 48 48);
     border: none;
   }
@@ -92,7 +104,7 @@ const Title = styled.div`
   @media (max-width: 767px){
     color: white;
     letter-spacing: 2px;
-    margin: 2% 1%;
+    margin: 2% 0%;
     font-weight: 200;
     background-color: rgb(48 48 48);
   }
@@ -141,7 +153,6 @@ const RadioButtonDiv = styled.div`
   background-color: white;
   @media (max-width: 767px){
    background-color: rgb(48 48 48);
-   margin: 5px;
   }
 `;
 
@@ -150,10 +161,18 @@ function Tools() {
   const [GenPass, setGenPass] = useState("");
   const [UserNameCheck, setUserNameCheck] = useState("");
   const [PassCheckBox, setPassCheckBox] = useState("");
+  
+
+  function handleCopy (){
+    navigator.clipboard.writeText(GenPass)
+    toast.success("Copied!")
+
+  }
 
   return (
     <>
       <Wrapper>
+      <ToastContainer/>
         {/* <Genrator> */}
           <HeadingGen>Genrator</HeadingGen>
           <Line/>
@@ -161,8 +180,8 @@ function Tools() {
           <GenText>
           <GenratedText>{GenPass}</GenratedText>
           <DivGen>
-          <MdOutlineContentCopy style={{margin:'10px'}}/>
-          <FiRefreshCw style={{margin:'10px'}}/>
+          <MdOutlineContentCopy style={{margin:'10px'}} onClick={handleCopy}/>
+          <FiRefreshCw style={{margin:'10px'}} />
           </DivGen>
           </GenText>
 
@@ -176,9 +195,7 @@ function Tools() {
                 value="0"
                 name="passCheckBox"
                 onChange={(e) => {setPassCheckBox(!PassCheckBox)
-                  setUserNameCheck(false)}}
-                  // onClick={uncheck('userNameCheck')}
-              />
+                  setUserNameCheck(false)}}/>
               <RadioButtonLabel>Password</RadioButtonLabel>
             </Buttondiv>
             <Buttondiv>
@@ -194,9 +211,8 @@ function Tools() {
               <RadioButtonLabel>Username</RadioButtonLabel>
             </Buttondiv>
           </RadioButtonDiv>
-          {UserNameCheck ? <UserName  sendData={setGenPass} /> : ""}
+          {UserNameCheck ? <UserName  sendData={setGenPass} /> :""}
           {PassCheckBox ? <Password sendData={setGenPass} /> : ""}
-        {/* </Genrator> */}
       </Wrapper>
     </>
   );

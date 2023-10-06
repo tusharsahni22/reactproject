@@ -1,36 +1,39 @@
 import styled from "styled-components";
 import { BiDotsVerticalRounded } from "react-icons/bi";
+import { MdOutlineDeleteSweep } from "react-icons/md";
 import { BsGlobeAmericas } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import Item from "./Item";
 import Edit from "./Edit";
+import DeleteWarning from "./DeleteWarning";
 import { useState } from "react";
 import { CiCreditCard1 } from "react-icons/ci";
 import { MdOutlineLogin } from "react-icons/md";
 import { AiOutlineCreditCard } from "react-icons/ai";
-import { BsSearch } from "react-icons/bs";
+import { FiPower } from "react-icons/fi";
 import { BsTrash3 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { userData } from "../services/profileServices";
+import { doLogout } from "../auth";
 
 const Container = styled.div`
   width: 100%;
 `;
 
-const Input = styled.input`
-  margin-left: 10px;
-  height: 15px;
-  border: none;
-  outline: none;
-  border: 0 white;
-  background-color: #24195f;
-`;
+// const Input = styled.input`
+//   margin-left: 10px;
+//   height: 15px;
+//   border: none;
+//   outline: none;
+//   border: 0 white;
+//   background-color: #24195f;
+// `;
 const MainHeader = styled.div`
   margin: 20px 10px 0 10px;
   padding-top: 20px;
   margin-top: 10px;
   @media (max-width: 767px) {
-    /* background-color: rgb(48,48,48);
-    color: white; */
     display: none;
   }
 `;
@@ -39,8 +42,6 @@ const DataOfUser = styled.div`
   padding-top: 20px;
   margin-top: 10px;
   @media (max-width: 767px) {
-    /* background-color: rgb(48,48,48);
-    color: white; */
     display: none;
   }
 `;
@@ -50,9 +51,13 @@ justify-content: space-between;
 `;
 const Name = styled.div`
 cursor:pointer;
+width: 200px;
 `;
 const Iconns = styled.div``;
-const Owner = styled.div``;
+
+const Owner = styled.div`
+width:50px;
+`;
 
 const Head = styled.div`
   display: flex;
@@ -77,24 +82,10 @@ const Button = styled.button`
     background-color: darkblue;
   }
 `;
-// const Button2 = styled.button`
-//   display: flex;
-//   justify-content: space-between;
-//   background-color: #1466e9;
-//   color: white;
-//   font-size: 15px;
-//   border-radius: 5px;
-//   padding: 7px 13px 7px 15px;
-//   margin: 10px 20px 0 39%;
-//   cursor: pointer;
-//   &:hover {
-//     background-color: darkblue;
-//   }
-// `;
 const Line = styled.div`
   height: 1.5px;
   background-color: lightgrey;
-  margin: 2%;
+  margin: 2% 7%;
   @media (max-width: 767px) {
     display: none;
   }
@@ -104,7 +95,6 @@ const Mobile = styled.div`
     display: flex;
     font-size: 20px;
     padding: 10px;
-    /* margin: 20px 0 10px 20px; */
     justify-content: space-between;
     background-color: black;
     color: white;
@@ -129,140 +119,133 @@ const VaultDiv = styled.div`
 const UserDetails = styled.div`
   display: flex;
   justify-content: flex-start;
-  /* margin: 3px 5px 10px 0px ; */
+  padding: 9px 0 0px 15px;
+  background-color: rgb(48,48,48);
 `;
 const LoginDiv = styled.div`
-  margin: 0 5px 10px 5px;
+  margin: 0px 15px 10px;
+  background-color: rgb(48,48,48);
 `;
 
 const CardDiv = styled.div`
-  margin: 0 5px 10px 5px;
-`;
-const ProfilePic = styled.img`
-  vertical-align: middle;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
+  margin: 0px 15px 10px;
+  background-color: rgb(48,48,48);
 `;
 
-const dummyData = [
-{
-  name : "Tushar",
-  owner : "Tushar",
-  type : "idpass"
-},
-{
-  name : "Tushar",
-  owner : "sahni",
-  type : "idpass"
-},
-{
-  name : "kapil",
-  owner : "kapil",
-  type : "user"
-},
-]
  
 function Front() {
+  const [dummyData ,setDummyData] =useState([])
+  const [editObject,setEditObject] = useState([])
   const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [reload,setReload] =useState(true)
+  // const [id, setId] = useState("");
+  
+  useEffect(()=>{
+    userData().then((result)=>{
+      setDummyData(result.data) 
+      
+    }).catch((err)=>{
+      console.log(err)
+    }) 
+    console.log("first from effect")
+  },[reload])
+  
+  
+const handleLogout = ()=>{
+    doLogout()
+}
+
+const handleShowDelete = (id)=>{
+  setShowDelete(!showDelete)
+  // setId(id)
+
+}
+  const handleEditItem = (_id)=>{
+  setEditItem(!editItem)
+  const object = dummyData.find((e)=>{
+    return e._id ===_id}) 
+    setEditObject(object) 
+  }
+  const handleNewItem = ()=>{
+    setNewItem(!newItem);
+  }
+
+  const handleReload =()=>{
+    navigate("/")
+    setReload(!reload)
+  }
   let navigate = useNavigate();
 
   return (
     <Container>
       <Head>
         All vaults
-        <Button
-          onClick={() => {
-            setNewItem(!newItem);
-          }}
-        >
+        <Button onClick={() => {handleNewItem()}}>
           <AiOutlinePlus /> New item
         </Button>
       </Head>
       <Mobile>
-        <ProfilePic src="./avatar.jpg" />
+        <FiPower style={{ height: "25px", width: "25px",backgroundColor: "black" , marginTop: "10px" }} 
+        onClick={()=>{handleLogout()}}/>
+
         <div style={{ marginTop: "9px", backgroundColor: "black" }}>
           My vault
         </div>
         <div style={{ marginTop: "10px", backgroundColor: "black" }}>
-          <BsSearch />
-          <AiOutlinePlus
-            onClick={() => {
-              setNewItem(!newItem);
-            }}
-          />
-        </div>
+        <AiOutlinePlus style={{height: "25px", width: "25px",backgroundColor: "black"}} onClick={()=>{navigate("/newItem")}}/> </div>
       </Mobile>
       <MobileVault>
         <H1>Types</H1>
         <VaultDiv>
           <UserDetails>
-            <MdOutlineLogin
-              onClick={() => {
-                navigate("/LoginDetails");
-              }}
-            />
-            <LoginDiv
-              onClick={() => {
-                navigate("/LoginDetails");
-              }}
-            >
-              Login{" "}
-            </LoginDiv>
+            <MdOutlineLogin style={{backgroundColor:"rgb(48,48,48)"}}
+             onClick={() => {navigate("/LoginDetails")}}/>
+            <LoginDiv  onClick={() => {navigate("/LoginDetails")}}>Login</LoginDiv>
           </UserDetails>
           <UserDetails>
-            <AiOutlineCreditCard
-              onClick={() => {
-                navigate("/Cards");
-              }}
-            />
-            <CardDiv
-              onClick={() => {
-                navigate("/Cards");
-              }}
-            >
-              Card
-            </CardDiv>
+            <AiOutlineCreditCard  style={{backgroundColor:"rgb(48,48,48)"}}
+            onClick={() => {navigate("/Cards")}}/>
+            <CardDiv onClick={() => {navigate("/Cards")}}>Card</CardDiv>
           </UserDetails>
           <H1> Trash </H1>
-          <BsTrash3 /> Trash
+          <UserDetails>
+          <BsTrash3 /> 
+            <CardDiv>Trash</CardDiv>
+          </UserDetails>
+          
         </VaultDiv>
       </MobileVault>
       <MainHeader>
         <All>
-        <Input type="checkbox" />
+        <div></div>
         <Iconns>All </Iconns>
-        <Iconns>Name </Iconns>
+        <Name>Name </Name>
         <Owner> Owner </Owner>
-        <BiDotsVerticalRounded />
+        <BiDotsVerticalRounded style={{height:"0px"}}/>
+        <div></div>
         </All>
         <Line />
       </MainHeader>
 
-      {dummyData.map((e)=>(    
+      {dummyData?.map((e)=>(    
       <DataOfUser>
         <All>
-        <Input type="checkbox" />
-        <Iconns>{e.type==="idpass"? <CiCreditCard1/> : <BsGlobeAmericas/>} </Iconns>
-        <Name onClick={() => { setEditItem(!editItem)}} >{e.name} </Name>
+        <div></div>
+        { <Iconns>{e.type==="login"?<BsGlobeAmericas/>: <CiCreditCard1/> } </Iconns> }
+        <Name onClick={()=>{handleEditItem(e._id)}}>{e.bankName || e.name} </Name>
         <Owner> Me </Owner>
-        <BiDotsVerticalRounded />
+        <MdOutlineDeleteSweep onClick={()=>{handleShowDelete(e._id)}} />
+        <div></div>
         </All>
         <Line />
+        {showDelete? <DeleteWarning setData={setShowDelete} _id={e._id} setReload={handleReload}/>:""}
       </DataOfUser>
        ))}
-      {/* <Div>
-        <Img src="./img.png" />
-        <R4>There are no items to list.</R4>
-        <Button2 onClick={() => {setNewItem(!newItem)}}>
-        <AiOutlinePlus /> New item
-        </Button2>
-      </Div> */}
 
-      {newItem ? <Item sendData={setNewItem} /> : " "}
-      {editItem ? <Edit sendData={setEditItem} /> : " "}
+      {newItem ? <Item sendData={setNewItem} setReload={handleReload}/> : " "}
+      {editItem ? <Edit sendData={setEditItem} apiData={editObject} /> : " "}
       
     </Container>
   );

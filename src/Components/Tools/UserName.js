@@ -1,7 +1,7 @@
 import React from "react";
 import {useState} from "react";
 import styled from "styled-components";
-// import { generateFromEmail, generateUsername } from "unique-username-generator";
+import {toast,ToastContainer} from "react-toastify";
 
 const CheckBoxSelector = styled.input`
 cursor: pointer;
@@ -18,7 +18,8 @@ const Buttons = styled.div`
 `;
 
 const CopyButton = styled.button`
- border: 0px;
+  border: 0px;
+  cursor: pointer;
   width: 158px;
   height: 32px;
   background: transparent;
@@ -235,6 +236,12 @@ function UserName(props) {
   const [reqNum, setReqNum] = useState(false);
   const [reqCap, setReqCap] = useState(false);
 
+  function handleCopy (){
+    navigator.clipboard.writeText(mail)
+    toast.success("Copied!")
+
+  }
+
   function handleRegen() 
   {
     if (plusEmail) {
@@ -291,6 +298,7 @@ function UserName(props) {
 
     return (
     <div>
+      <ToastContainer/>
       <Title>Username type</Title>
       <RadioButtonDiv>
         <CheckBoxes>
@@ -419,7 +427,7 @@ function UserName(props) {
 
         <Buttons>
           <RegenratePasswordButton onClick={(e) => {handleRegen()}}> Regenrate UserName </RegenratePasswordButton>
-          <CopyButton onClick={(e)=>{navigator.clipboard.writeText(mail)}}>Copy UserName</CopyButton>
+          <CopyButton onClick={handleCopy}>Copy UserName</CopyButton>
         </Buttons>
       </OptionField>
     </div>
