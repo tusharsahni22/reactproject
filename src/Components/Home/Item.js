@@ -68,6 +68,11 @@ const Title = styled.div`
   margin: 15px 0 8px 4px;
   font-weight: 550;
 `;
+const Error = styled.div`
+  margin: 15px 0 8px 4px;
+  font-weight: 550;
+  color: red;
+`;
 const Select = styled.select`
   margin-left: 4px;
   width: 45%;
@@ -203,30 +208,43 @@ function Item(props) {
   const [cardNumber,setCardNumber] = useState("");
   const [exYear,setExYear] = useState("");
   const [exMonth,setExMonth] = useState("");
+  const [error , setError] = useState("")
   
   
   const handleClose = () => {    
     props.sendData(false);
   };
   const submitData = () => {
-    let data = {
-    "type":select,
-    "username":userName,
-    "password":password,
-    "name":name,
-    "url":url,
-    "notes":notes,
-    "cvv":cvv,
-    "cardholder":cardholder,
-    "bankName":bank,
-    "cardnumber":cardNumber,
-    "expiryMonth":exMonth,
-    "expiryYear":exYear
+    if((select==="login") && (name==="" || userName==="" || password==="")){
+      setError("Enter Mandatory fields")
+       return 
+      }
+  else if((select==="card")&& (cvv===""|| cardholder==="" || cardNumber==="" || exMonth==="" || exYear==="" || bank==="")){
+      setError("All fields are Mandatory")
+      return
     }
-    addNewItem(data)
-    props.setReload()
-    handleClose()
-  };
+  else{
+  console.log("first else")
+  let data = {
+  "type":select,
+  "username":userName,
+  "password":password,
+  "name":name,
+  "url":url,
+  "notes":notes,
+  "cvv":cvv,
+  "cardholder":cardholder,
+  "bankName":bank,
+  "cardnumber":cardNumber,
+  "expiryMonth":exMonth,
+  "expiryYear":exYear
+  }
+  addNewItem(data)
+  setError("")
+  props.sendData(false);
+  props.setReload()
+}};
+
   return (
     <Container>
       <Position>
@@ -252,16 +270,17 @@ function Item(props) {
           </Pannel>          
           {(select === "login") ? <LoginDiv>
             <Pannel>
-            <Title>Name</Title>
+              <Error>{error}</Error>
+            <Title>Name*</Title>
           <Button1 type="text" value={name} onChange={(e)=>{setName(e.target.value)}} placeholder="Domain"></Button1>
 
           <Div>
             <User>
-              <Title> Username</Title>
+              <Title> Username*</Title>
               <Button2 type="text" value={userName} onChange={(e)=>{setUserName(e.target.value)}} placeholder="CaptainAmera"></Button2>
             </User>
             <Pwd>
-              <Title> Password</Title>
+              <Title> Password*</Title>
               <Button2 value={password} type="password" onChange={(e)=>{setPassword(e.target.value)}}></Button2>
             </Pwd>
           </Div>
@@ -275,8 +294,8 @@ function Item(props) {
           </LoginDiv> :" "}
 
           {(select === "card") ? <div>
-            <Pannel>
-
+            <Pannel> 
+            <Error>{error}</Error>
             <Div>
             <Card>
               <Title> Card Holder Name</Title>

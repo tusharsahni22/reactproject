@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { BiDotsVerticalRounded } from "react-icons/bi";
-import { MdOutlineDeleteSweep } from "react-icons/md";
+import { MdDeleteSweep } from "react-icons/md";
 import { BsGlobeAmericas } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import Item from "./Item";
@@ -8,7 +8,6 @@ import Edit from "./Edit";
 import DeleteWarning from "./DeleteWarning";
 import { useState } from "react";
 import { CiCreditCard1 } from "react-icons/ci";
-import { MdOutlineLogin } from "react-icons/md";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { FiPower } from "react-icons/fi";
 import { BsTrash3 } from "react-icons/bs";
@@ -16,19 +15,11 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { userData } from "../services/profileServices";
 import { doLogout } from "../auth";
-
+import Trash from "./Trash";
 const Container = styled.div`
   width: 100%;
 `;
 
-// const Input = styled.input`
-//   margin-left: 10px;
-//   height: 15px;
-//   border: none;
-//   outline: none;
-//   border: 0 white;
-//   background-color: #24195f;
-// `;
 const MainHeader = styled.div`
   margin: 20px 10px 0 10px;
   padding-top: 20px;
@@ -132,25 +123,44 @@ const CardDiv = styled.div`
   background-color: rgb(48,48,48);
 `;
 
+const Home = styled.div`
+`;
+
  
-function Front() {
-  const [dummyData ,setDummyData] =useState([])
+function Front({filter,showTrash,refreshByFilter}) {
   const [editObject,setEditObject] = useState([])
+  const [dummyData ,setDummyData] =useState([])
+  const [filteredData ,setFilteredData] =useState([])
   const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
-  const [reload,setReload] =useState(true)
-  // const [id, setId] = useState("");
+  const [reload,setReload] =useState(0)
+  const [id,setId] =useState("")
   
   useEffect(()=>{
     userData().then((result)=>{
       setDummyData(result.data) 
+      setFilteredData(result.data)
       
     }).catch((err)=>{
       console.log(err)
     }) 
     console.log("first from effect")
-  },[reload])
+  },[reload,refreshByFilter])
+
+  const filterr = ()=>{
+    if(filter===""){
+      setFilteredData(dummyData)
+    }else{
+    const data=dummyData.filter((e)=>(
+      e.type===`${filter}`))
+      setFilteredData(data)
+  }}
+
+  useEffect(()=>{
+    filterr()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[filter])
   
   
 const handleLogout = ()=>{
@@ -158,8 +168,8 @@ const handleLogout = ()=>{
 }
 
 const handleShowDelete = (id)=>{
+  setId(id)
   setShowDelete(!showDelete)
-  // setId(id)
 
 }
   const handleEditItem = (_id)=>{
@@ -173,13 +183,15 @@ const handleShowDelete = (id)=>{
   }
 
   const handleReload =()=>{
+    setReload((reload)=>reload+1)
     navigate("/")
-    setReload(!reload)
   }
   let navigate = useNavigate();
 
   return (
     <Container>
+      {showTrash?<Trash/>:
+      <Home>
       <Head>
         All vaults
         <Button onClick={() => {handleNewItem()}}>
@@ -190,7 +202,7 @@ const handleShowDelete = (id)=>{
         <FiPower style={{ height: "25px", width: "25px",backgroundColor: "black" , marginTop: "10px" }} 
         onClick={()=>{handleLogout()}}/>
 
-        <div style={{ marginTop: "9px", backgroundColor: "black" }}>
+        <div style={{ marginTop: "9px", backgroundColor: "black",fontWeight:"bold" }}>
           My vault
         </div>
         <div style={{ marginTop: "10px", backgroundColor: "black" }}>
@@ -200,7 +212,7 @@ const handleShowDelete = (id)=>{
         <H1>Types</H1>
         <VaultDiv>
           <UserDetails>
-            <MdOutlineLogin style={{backgroundColor:"rgb(48,48,48)"}}
+            <BsGlobeAmericas style={{backgroundColor:"rgb(48,48,48)"}}
              onClick={() => {navigate("/LoginDetails")}}/>
             <LoginDiv  onClick={() => {navigate("/LoginDetails")}}>Login</LoginDiv>
           </UserDetails>
@@ -211,8 +223,8 @@ const handleShowDelete = (id)=>{
           </UserDetails>
           <H1> Trash </H1>
           <UserDetails>
-          <BsTrash3 /> 
-            <CardDiv>Trash</CardDiv>
+          <BsTrash3 onClick={()=>{navigate("/trash")}} style={{backgroundColor:"rgb(48,48,48)"}}/> 
+            <CardDiv onClick={()=>{navigate("/trash")}}>Trash</CardDiv>
           </UserDetails>
           
         </VaultDiv>
@@ -229,24 +241,24 @@ const handleShowDelete = (id)=>{
         <Line />
       </MainHeader>
 
-      {dummyData?.map((e)=>(    
+      {filteredData?.map((e)=>(    
       <DataOfUser>
         <All>
         <div></div>
         { <Iconns>{e.type==="login"?<BsGlobeAmericas/>: <CiCreditCard1/> } </Iconns> }
         <Name onClick={()=>{handleEditItem(e._id)}}>{e.bankName || e.name} </Name>
         <Owner> Me </Owner>
-        <MdOutlineDeleteSweep onClick={()=>{handleShowDelete(e._id)}} />
+        <MdDeleteSweep style={{height: '20px',width:'20px'}} onClick={()=>{handleShowDelete(e._id)}} />
         <div></div>
         </All>
         <Line />
-        {showDelete? <DeleteWarning setData={setShowDelete} _id={e._id} setReload={handleReload}/>:""}
+        {showDelete? <DeleteWarning setData={setShowDelete} _id={id} name={"it"} do={"Delete"}  setReload={handleReload}/>:""}
       </DataOfUser>
        ))}
 
       {newItem ? <Item sendData={setNewItem} setReload={handleReload}/> : " "}
       {editItem ? <Edit sendData={setEditItem} apiData={editObject} /> : " "}
-      
+      </Home>}
     </Container>
   );
 }

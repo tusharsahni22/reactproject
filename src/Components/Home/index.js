@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Home from "./Home";
 import Filter from "./Filter";
 import Footer from "../Common/Footer";
+import { useState } from "react";
 
 const Div = styled.div`
   display: flex;
@@ -19,12 +20,20 @@ const Div = styled.div`
 `;
 
 function ToolComponent() {
+  const [filter,setFilter]=useState("")
+  const [showTrash,setShowTrash]=useState(false)
+  const [refreshByFilter,setRefreshByFilter]=useState(0)
+
+  const handleRefresh = ()=>{
+    setRefreshByFilter((refreshByFilter)=>refreshByFilter+1)
+  }
+
   return (
     <div>
       <Header />
       <Div>
-        <Filter />
-        <Home />
+        <Filter setFilter={setFilter} setShowTrash={setShowTrash}  handleRefresh={handleRefresh} />
+        <Home filter={filter} showTrash={showTrash} refreshByFilter={refreshByFilter}/>
       </Div>
       <Footer/>
     </div>

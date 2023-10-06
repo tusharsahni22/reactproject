@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React ,{useState,useEffect} from "react";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
 import {loginService} from "../services/auth_service"
@@ -202,13 +202,26 @@ function Login() {
   const [email,setEmail]= useState("")
   const [password,setPassword]= useState("")
 
+  useEffect(() => {
+    const listener = event => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        console.log("Enter key was pressed. Run your function.");
+        handleLogin()
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  });
+
   const clearState=()=>{
     setPassword("")
         setEmail("")
         navigate("/")
   }
   
-  const handleLogin =()=>{
+  function handleLogin() { 
     let data = {
       "email":email,
       "password":password
@@ -258,7 +271,7 @@ function Login() {
               <Password type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password"></Password>
             </SingUpInputStyle>
           </Fileds>
-          <SubmitButton onClick={()=>{handleLogin()}}>LogIn</SubmitButton>
+          <SubmitButton onClick={(e)=>{handleLogin(e)}}>LogIn</SubmitButton>
         </SingUpSection>
       </Section2>
       </Desktop>
@@ -278,7 +291,7 @@ function Login() {
             <ForgetPassword>Forgot Password ?</ForgetPassword></LoginOptions>
             
           </Fileds>
-          <SubmitButton onClick={()=>{handleLogin()}}>Sign In</SubmitButton>
+          <SubmitButton onClick={handleLogin}>Sign In</SubmitButton>
         </SingUpSection>
       </Mobile>
     </Wrapper>

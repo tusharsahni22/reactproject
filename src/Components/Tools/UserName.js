@@ -72,7 +72,7 @@ const RadioButton = styled.input`
 }
 `;
 const RadioButtonLabel = styled.label`
-  margin: 0 15px 0 0;
+  margin: 0 15px 0 10px;
   font-size: 15px;
   text-transform: none;
   text-align: left;
@@ -148,7 +148,7 @@ const EmailField = styled.input`
 `;
 const Hint = styled.div`
   font-size: small;
-  margin: 0 0 0 15px;
+  margin: 0 0 0 25px;
   color: #6c757d;
    @media (max-width: 767px){
     display: none;

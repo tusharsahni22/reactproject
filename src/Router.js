@@ -10,6 +10,7 @@ import Cards from './Components/Home/MobileScreen/Cards';
 import LoginDetails from './Components/Home/MobileScreen/Login';
 import NewItemComponemt from './Components/Home/MobileScreen/NewItem';
 import ViewItemComponemt from './Components/Home/MobileScreen/ViewItem';
+import Trash from './Components/Home/MobileScreen/Trash';
 
 
 
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/LoginDetails" element={<LoginDetails/>}/>
       <Route path="/newItem" element={<NewItemComponemt/>}/>
       <Route path="/viewItem" element={<ViewItemComponemt/>}/>
+      <Route path="/trash" element={<Trash/>}/>
       
       </Route> 
       

@@ -47,6 +47,11 @@ const FieldTitle=styled.div`
 width: 100%;
 margin: 10px 0;
 `;
+const Error=styled.div`
+width: 100%;
+margin: 10px 0;
+color: red;
+`;
 const Padding=styled.div`
 padding: 0 3%;
 `;
@@ -68,10 +73,21 @@ function NewItem() {
   const [cardNumber,setCardNumber] = useState("");
   const [exYear,setExYear] = useState("");
   const [exMonth,setExMonth] = useState("");
+  const [error , setError] = useState("")
   
   let navigate = useNavigate();
 
   const submitData = () => {
+    if((select==="login") && (name==="" || userName==="" || password==="")){
+        setError("Enter Mandatory fields")
+         return 
+        }
+    else if((select==="card")&& (cvv===""|| cardholder==="" || cardNumber==="" || exMonth==="" || exYear==="" || bank==="")){
+        setError("All fields are Mandatory")
+        return
+      }
+    else{
+    console.log("first else")
     let data = {
     "type":select,
     "username":userName,
@@ -87,17 +103,16 @@ function NewItem() {
     "expiryYear":exYear
     }
     addNewItem(data)
+    setError("")
     navigate("/")
-  
+  }};
 
-    
-  };
   return (
     <Wrapper>
     <TopBar>
         <div onClick={()=>{navigate("/")}}>Cancel</div>
-        <div>Add item</div>
-        <div onClick={submitData}> Save </div>
+        <div style={{fontWeight:"bold"}}>Add item</div>
+        <div onClick={()=>{submitData()}}> Save </div>
     </TopBar>
     <Padding>
 
@@ -109,11 +124,12 @@ function NewItem() {
     </Padding>
     {(select === "login") ? <LoginDiv>
     <Padding>
-    <FieldTitle>Name</FieldTitle>
+    <Error>{error}</Error>
+    <FieldTitle>Name *</FieldTitle>
     <Input value={name} onChange={(e)=>{setName(e.target.value)}} placeholder="Domain"/>
-    <FieldTitle>Username</FieldTitle>
+    <FieldTitle>Username*</FieldTitle>
     <Input value={userName} onChange={(e)=>{setUserName(e.target.value)}} placeholder="CaptainAmera"/>
-    <FieldTitle>Password</FieldTitle>
+    <FieldTitle>Password*</FieldTitle>
     <Input value={password} type="password" onChange={(e)=>{setPassword(e.target.value)}}/>
     <FieldTitle>Url</FieldTitle>
     <Input value={url} onChange={(e)=>{setUrl(e.target.value)}} placeholder="ex. https://facebook.com "/>
@@ -123,6 +139,7 @@ function NewItem() {
 
     </LoginDiv>:<CardDiv>
     <Padding>
+    <Error>{error}</Error>
     <FieldTitle>Card Holder</FieldTitle>
     <Input type="text" value={cardholder} onChange={(e)=>{setCardholder(e.target.value)}} placeholder="Name"/>
     <FieldTitle>Bank Name</FieldTitle>
@@ -135,6 +152,7 @@ function NewItem() {
     <Input type="number" value={exYear} onChange={(e)=>{setExYear(e.target.value)}}  placeholder="2035"/>
     <FieldTitle>Cvv</FieldTitle>
     <Input type="password" value={cvv} onChange={(e)=>{setCvv(e.target.value)}} placeholder=""/>
+    
     </Padding>
     </CardDiv>
     }

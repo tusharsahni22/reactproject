@@ -4,11 +4,11 @@ import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import {AiOutlineStar} from 'react-icons/ai';
 import {MdOutlineLogin} from 'react-icons/md';
 import {AiOutlineCreditCard} from 'react-icons/ai';
 import {BsTrash3} from 'react-icons/bs';
+import styledd from 'styled-components';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -47,39 +47,56 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 }));
 
-export default function CustomizedAccordions() {
+const Typographyy =styledd.div`
+font-weight: bold;
+font-size: 15px;
+cursor: pointer;
+
+`;
+
+export default function CustomizedAccordions({setFilter,setShowTrash,handleRefresh}) {
   const [expanded, setExpanded] = React.useState('panel1');
+
+
+  const handleGoToAllVault =()=>{
+    setShowTrash(false)
+    handleRefresh()
+  }
+
+  const handleTrash =()=>{
+    setShowTrash(true)
+    setExpanded("panel")
+  }
+
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
   return (
-    <div>
+    <div style={{height:"190px"}}>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography style={{fontWeight:'bold', fontSize:15, color:'#5239d1' }}>All Items </Typography>
+          <Typographyy onClick={()=>{handleGoToAllVault()}}>All Items </Typographyy>
         </AccordionSummary>
         <AccordionDetails>
           
-          <Typography>
+          <Typographyy onClick={()=>{setFilter("")}}>
+          <AiOutlineStar style={{paddingRight :5}}/>
+           All
+          </Typographyy>
+          <Typographyy onClick={()=>{setFilter("login")}}>
             <MdOutlineLogin style={{paddingRight :5}}/>
            Login
-          </Typography>
-          <Typography>
+          </Typographyy>
+          <Typographyy onClick={()=>{setFilter("card")}}>
             <AiOutlineCreditCard style={{paddingRight :5}}/>
            Card
-          </Typography>
-          <Typography>
-          <AiOutlineStar style={{paddingRight :5}}/>
-           Favorites
-          </Typography>
-          
-          
+          </Typographyy>          
         </AccordionDetails>
       </Accordion>
       <div style={{display: 'flex', margin: 10}}>
-      <BsTrash3 style={{marginRight:10,marginLeft:10}}/>
-      <div style={{paddingBottom:20}}> Trash </div>
+      <BsTrash3 onClick={()=>{setShowTrash(true)}}  style={{marginRight:10,marginLeft:10,cursor:"pointer"}}/>
+      <div onClick={handleTrash} style={{cursor:"pointer"}}> Trash </div>
       </div>
      
     </div>
