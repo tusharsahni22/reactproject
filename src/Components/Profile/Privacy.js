@@ -20,14 +20,17 @@ const Heading = styled.div`
   }
 `;
 const HeadingMob = styled.div`
+display:none;
+@media (max-width: 767px){
+display:block;
 font-size: 20px;
 margin: 15px 0 9px;
 font-weight: bold;
 letter-spacing: 0.5px;
-@media (max-width: 767px){
 color: white;
 font-weight:200;
 margin: 2% 1%;
+
 }
 `;
 const Line = styled.div`
@@ -177,7 +180,7 @@ function PrivacyComponent() {
     <Privacy>
       <ToastContainer />
       <Heading>Master password </Heading>
-      <HeadingMob> Change master password</HeadingMob>
+      <HeadingMob> Change password</HeadingMob>
       <Line />
       <Heading2> Change master password</Heading2>
 
